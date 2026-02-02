@@ -1,0 +1,14 @@
+GMAIL
+slsustudent3@gmail.com
+SLSUstudent3?
+
+Database password
+WdOKepBHqJViEVZZ
+
+TEST ACCOUNTS
+Admin Account:
+Email: admin@slsu.edu.ph
+Password: admin123
+Student Account:
+Email: student@example.com
+Password: student123
