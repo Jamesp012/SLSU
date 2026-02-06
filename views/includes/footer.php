@@ -1,8 +1,7 @@
-            </main>
-        </div>
     </div>
+</div>
 
-    <!-- Scripts -->
+<!-- Scripts -->
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap 5 Bundle JS -->
@@ -16,5 +15,35 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Custom JS -->
     <script src="../../assets/js/main.js"></script>
+    <script>
+        $(document).ready(function() {
+            function toggleSidebar() {
+                if ($(window).width() >= 992) {
+                    // Desktop toggle
+                    $('#sidebar').toggleClass('collapsed');
+                    $('#mainContent').toggleClass('expanded');
+                } else {
+                    // Mobile toggle
+                    $('#sidebar').toggleClass('show');
+                    $('#sidebarBackdrop').toggleClass('show');
+                }
+            }
+
+            $('#sidebarToggle, #mobileCloseSidebar, #sidebarBackdrop').on('click', function(e) {
+                e.preventDefault();
+                toggleSidebar();
+            });
+
+            // Handle window resize
+            $(window).resize(function() {
+                if ($(window).width() >= 992) {
+                    $('#sidebarBackdrop').removeClass('show');
+                    if (!$('#sidebar').hasClass('collapsed')) {
+                        $('#mainContent').removeClass('expanded');
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>

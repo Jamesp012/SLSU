@@ -49,4 +49,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         exit();
     }
+
+    if ($action === 'update_profile') {
+        $lrn = $_POST['lrn'] ?? '';
+        $recent_school = $_POST['recent_school'] ?? '';
+        $preferred_track = $_POST['preferred_track'] ?? '';
+        $email = $_SESSION['email'];
+
+        if (empty($lrn) || empty($recent_school) || empty($preferred_track)) {
+            echo json_encode(['status' => 'error', 'message' => 'All fields are required']);
+            exit();
+        }
+
+        $profile = $studentModel->getStudentByEmail($email, true);
+        if (!$profile) {
+            echo json_encode(['status' => 'error', 'message' => 'Profile not found']);
+            exit();
+        }
+
+        $data = [
+            'lrn' => $lrn,
+            'recent_school' => $recent_school,
+            'preferred_track' => $preferred_track,
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+
+        $result = $studentModel->updateStudent($profile['id'], $data, true);
+
+        if (isset($result['error'])) {
+            echo json_encode(['status' => 'error', 'message' => 'Failed to update profile: ' . $result['error']]);
+        } else {
+            echo json_encode(['status' => 'success', 'message' => 'Profile updated successfully']);
+        }
+        exit();
+    }
 }

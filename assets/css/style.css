@@ -1,13 +1,4 @@
 /* Custom styles for Entrance Exam Portal */
 .sidebar {
-    transition: all 0.3s;
-}
-
-@media (max-width: 768px) {
-    .sidebar {
-        margin-left: -100%;
-    }
-    .sidebar.show {
-        margin-left: 0;
-    }
+    transition: all 0.3s ease;
 }

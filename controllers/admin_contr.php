@@ -2,6 +2,7 @@
 // controllers/admin_contr.php
 require_once __DIR__ . '/../models/StudentModel.php';
 require_once __DIR__ . '/../models/UserModel.php';
+require_once __DIR__ . '/../models/STEMQuestionModel.php';
 require_once __DIR__ . '/../helpers/EmailHelper.php';
 session_start();
 
@@ -13,6 +14,7 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
 
 $studentModel = new StudentModel();
 $userModel = new UserModel();
+$questionModel = new STEMQuestionModel();
 
 function generateTempPassword($length = 10) {
     return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
@@ -121,6 +123,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
         exit();
     }
+
+    if ($action === 'add_question') {
+        $data = [
+            'pathway_id' => (int)$_POST['pathway_id'],
+            'question_number' => (int)$_POST['question_number'],
+            'question_text' => $_POST['question_text']
+        ];
+        $result = $questionModel->addQuestion($data);
+        if (isset($result['error'])) {
+            echo json_encode(['status' => 'error', 'message' => $result['error']]);
+        } else {
+            echo json_encode(['status' => 'success', 'message' => 'Question added successfully']);
+        }
+        exit();
+    }
+
+    if ($action === 'update_question') {
+        $id = $_POST['question_id'];
+        $data = [
+            'pathway_id' => (int)$_POST['pathway_id'],
+            'question_number' => (int)$_POST['question_number'],
+            'question_text' => $_POST['question_text']
+        ];
+        $result = $questionModel->updateQuestion($id, $data);
+        if (isset($result['error'])) {
+            echo json_encode(['status' => 'error', 'message' => $result['error']]);
+        } else {
+            echo json_encode(['status' => 'success', 'message' => 'Question updated successfully']);
+        }
+        exit();
+    }
+
+    if ($action === 'delete_question') {
+        $id = $_POST['id'];
+        $result = $questionModel->deleteQuestion($id);
+        if (isset($result['error'])) {
+            echo json_encode(['status' => 'error', 'message' => $result['error']]);
+        } else {
+            echo json_encode(['status' => 'success', 'message' => 'Question deleted successfully']);
+        }
+        exit();
+    }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -129,6 +173,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if ($action === 'fetch_students') {
         $students = $studentModel->getAllStudents(true);
         echo json_encode(['data' => $students]);
+        exit();
+    }
+
+    if ($action === 'fetch_questions') {
+        $pathway_id = $_GET['pathway_id'] ?? null;
+        if ($pathway_id) {
+            $questions = $questionModel->getQuestionsByPathway($pathway_id);
+        } else {
+            $questions = $questionModel->getAllQuestions();
+        }
+        echo json_encode(['data' => $questions]);
         exit();
     }
 }

@@ -7,7 +7,7 @@ class UserModel {
 
     public function login($email, $password, $useServiceRole = false) {
         global $php_fetch;
-        $result = $php_fetch($this->table, '*', ['email' => $email], null, $useServiceRole);
+        $result = $php_fetch($this->table, '*', ['email' => "ilike.$email"], null, $useServiceRole);
         
         if (!empty($result) && !isset($result['error'])) {
             $user = $result[0];
@@ -23,9 +23,9 @@ class UserModel {
         return null;
     }
 
-    public function getUserByEmail($email, $useServiceRole = false) {
+    public function getUserByEmail($email, $useServiceRole = true) {
         global $php_fetch;
-        $result = $php_fetch($this->table, '*', ['email' => $email], null, $useServiceRole);
+        $result = $php_fetch($this->table, '*', ['email' => "ilike.$email"], null, $useServiceRole);
         return !empty($result) && !isset($result['error']) ? $result[0] : null;
     }
 

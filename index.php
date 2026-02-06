@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <style>
         body {
-            background: linear-gradient(135deg, #0d6efd 0%, #002752 100%);
+            background: linear-gradient(135deg, #184226 0%, #0a1f12 100%);
             height: 100vh;
             display: flex;
             align-items: center;
@@ -21,15 +21,28 @@
         .login-card {
             width: 100%;
             max-width: 400px;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             background: white;
+            border-top: 5px solid #f0b508;
         }
         .login-logo {
-            font-size: 3rem;
-            color: #0d6efd;
+            font-size: 3.5rem;
+            color: #184226;
             margin-bottom: 1rem;
+        }
+        .btn-primary {
+            background-color: #184226;
+            border-color: #184226;
+        }
+        .btn-primary:hover {
+            background-color: #2d7a46;
+            border-color: #2d7a46;
+        }
+        .form-control:focus {
+            border-color: #184226;
+            box-shadow: 0 0 0 0.25rem rgba(24, 66, 38, 0.25);
         }
     </style>
 </head>

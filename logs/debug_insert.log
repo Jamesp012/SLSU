@@ -103,3 +103,1303 @@ Data: {"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick",
 Result: [{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password":"$2y$10$CIMd8pgY7n28pZ9Gz0kqtuKmZiWeofGPOdUE4sfw\/TYgqpwUTrrTu"},"created_at":"2026-02-06T19:38:18+00:00","updated_at":"2026-02-06T18:38:23.994739+00:00"}]
 
 ---
+Table: profiles
+Data: {"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","metadata":{"password":"$2y$10$tdDqFDhHuV6ubZppjsbuduOydIOh\/aUD2mqTsg6QOU9xzpS7bZvna"},"created_at":"2026-02-06 19:58:34"}
+Result: [{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password":"$2y$10$tdDqFDhHuV6ubZppjsbuduOydIOh\/aUD2mqTsg6QOU9xzpS7bZvna"},"created_at":"2026-02-06T19:58:34+00:00","updated_at":"2026-02-06T18:58:39.968733+00:00"}]
+
+---
+Table: profiles
+Data: {"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","metadata":{"password":"$2y$10$c1TKWd3qtAwDkUTjZen1YeDThfhBUlFgNXDraZG7eD2Ep2C5PWp1G"},"created_at":"2026-02-06 20:09:11"}
+Result: [{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password":"$2y$10$c1TKWd3qtAwDkUTjZen1YeDThfhBUlFgNXDraZG7eD2Ep2C5PWp1G"},"created_at":"2026-02-06T20:09:11+00:00","updated_at":"2026-02-06T19:09:16.693622+00:00"}]
+
+---
+Table: profiles
+Data: {"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","metadata":{"password":"$2y$10$EXD6sva13xrWHjMux0iEUuzb107bPCAHYeUaexzDRVHISwPpNdwgm"},"created_at":"2026-02-06 20:15:33"}
+Result: [{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password":"$2y$10$EXD6sva13xrWHjMux0iEUuzb107bPCAHYeUaexzDRVHISwPpNdwgm"},"created_at":"2026-02-06T20:15:33+00:00","updated_at":"2026-02-06T19:15:38.561009+00:00"}]
+
+---
+Table: profiles
+Data: {"password":"test"}
+Result: {"error":"HTTP Error: 400","response":"{\"code\":\"PGRST204\",\"details\":null,\"hint\":null,\"message\":\"Could not find the 'password' column of 'profiles' in the schema cache\"}","method":"POST","endpoint":"profiles"}
+
+---
+Table: profiles
+Data: {"lrn":"test"}
+Result: {"error":"HTTP Error: 400","response":"{\"code\":\"23502\",\"details\":\"Failing row contains (null, null, null, null, null, student, test, null, null, {}, 2026-02-06 19:20:08.560007+00, 2026-02-06 19:20:08.560007+00).\",\"hint\":null,\"message\":\"null value in column \\\"id\\\" of relation \\\"profiles\\\" violates not-null constraint\"}","method":"POST","endpoint":"profiles"}
+
+---
+Table: profiles
+Data: {"recent_school":"test"}
+Result: {"error":"HTTP Error: 400","response":"{\"code\":\"23502\",\"details\":\"Failing row contains (null, null, null, null, null, student, null, test, null, {}, 2026-02-06 19:20:08.990964+00, 2026-02-06 19:20:08.990964+00).\",\"hint\":null,\"message\":\"null value in column \\\"id\\\" of relation \\\"profiles\\\" violates not-null constraint\"}","method":"POST","endpoint":"profiles"}
+
+---
+Table: profiles
+Data: {"preferred_track":"test"}
+Result: {"error":"HTTP Error: 400","response":"{\"code\":\"23502\",\"details\":\"Failing row contains (null, null, null, null, null, student, null, null, test, {}, 2026-02-06 19:20:09.546318+00, 2026-02-06 19:20:09.546318+00).\",\"hint\":null,\"message\":\"null value in column \\\"id\\\" of relation \\\"profiles\\\" violates not-null constraint\"}","method":"POST","endpoint":"profiles"}
+
+---
+Table: profiles
+Data: {"onboarding_completed":"test"}
+Result: {"error":"HTTP Error: 400","response":"{\"code\":\"PGRST204\",\"details\":null,\"hint\":null,\"message\":\"Could not find the 'onboarding_completed' column of 'profiles' in the schema cache\"}","method":"POST","endpoint":"profiles"}
+
+---
+Table: stem_pathways
+Data: {"name":"Computer Science"}
+Result: [{"id":1,"name":"Computer Science","created_at":"2026-02-06T20:51:10.485749+00:00"}]
+
+---
+Table: stem_pathways
+Data: {"name":"Information Technology"}
+Result: [{"id":2,"name":"Information Technology","created_at":"2026-02-06T20:51:10.899116+00:00"}]
+
+---
+Table: stem_pathways
+Data: {"name":"Civil Engineering"}
+Result: [{"id":3,"name":"Civil Engineering","created_at":"2026-02-06T20:51:11.457416+00:00"}]
+
+---
+Table: stem_pathways
+Data: {"name":"Mechanical Engineering"}
+Result: [{"id":4,"name":"Mechanical Engineering","created_at":"2026-02-06T20:51:11.841727+00:00"}]
+
+---
+Table: stem_pathways
+Data: {"name":"Electrical Engineering"}
+Result: [{"id":5,"name":"Electrical Engineering","created_at":"2026-02-06T20:51:12.426248+00:00"}]
+
+---
+Table: stem_pathways
+Data: {"name":"Nursing"}
+Result: [{"id":6,"name":"Nursing","created_at":"2026-02-06T20:51:12.86182+00:00"}]
+
+---
+Table: stem_pathways
+Data: {"name":"Medical Technology \/ Medical Laboratory Science"}
+Result: [{"id":7,"name":"Medical Technology \/ Medical Laboratory Science","created_at":"2026-02-06T20:51:13.251559+00:00"}]
+
+---
+Table: stem_pathways
+Data: {"name":"Pharmacy"}
+Result: [{"id":8,"name":"Pharmacy","created_at":"2026-02-06T20:51:13.652263+00:00"}]
+
+---
+Table: stem_pathways
+Data: {"name":"Biology"}
+Result: [{"id":9,"name":"Biology","created_at":"2026-02-06T20:51:14.060611+00:00"}]
+
+---
+Table: stem_pathways
+Data: {"name":"Chemistry"}
+Result: [{"id":10,"name":"Chemistry","created_at":"2026-02-06T20:51:14.53322+00:00"}]
+
+---
+Table: stem_pathways
+Data: {"name":"Mathematics \/ Statistics"}
+Result: [{"id":11,"name":"Mathematics \/ Statistics","created_at":"2026-02-06T20:51:14.943318+00:00"}]
+
+---
+Table: stem_pathways
+Data: {"name":"Education major in Sciences"}
+Result: [{"id":12,"name":"Education major in Sciences","created_at":"2026-02-06T20:51:15.343927+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":1,"question_text":"I am interested in writing clean, efficient code to build responsive and user-friendly software applications.","pathway_id":1}
+Result: [{"id":1,"pathway_id":1,"question_text":"I am interested in writing clean, efficient code to build responsive and user-friendly software applications.","question_number":1,"created_at":"2026-02-06T21:04:07.602973+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":13,"question_text":"I want to delve into machine learning algorithms to create intelligent models that process vast datasets.","pathway_id":1}
+Result: [{"id":2,"pathway_id":1,"question_text":"I want to delve into machine learning algorithms to create intelligent models that process vast datasets.","question_number":13,"created_at":"2026-02-06T21:04:08.078458+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":25,"question_text":"I am interested in designing and managing complex architectures for large-scale data storage and retrieval.","pathway_id":1}
+Result: [{"id":3,"pathway_id":1,"question_text":"I am interested in designing and managing complex architectures for large-scale data storage and retrieval.","question_number":25,"created_at":"2026-02-06T21:04:08.661105+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":37,"question_text":"I want to study neural networks and natural language processing to develop systems that mimic human cognition.","pathway_id":1}
+Result: [{"id":4,"pathway_id":1,"question_text":"I want to study neural networks and natural language processing to develop systems that mimic human cognition.","question_number":37,"created_at":"2026-02-06T21:04:09.101242+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":49,"question_text":"I am fascinated by the full software development lifecycle, from gathering user requirements to system maintenance.","pathway_id":1}
+Result: [{"id":5,"pathway_id":1,"question_text":"I am fascinated by the full software development lifecycle, from gathering user requirements to system maintenance.","question_number":49,"created_at":"2026-02-06T21:04:09.492558+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":61,"question_text":"I want to optimize database queries and data warehousing techniques to drive business intelligence.","pathway_id":1}
+Result: [{"id":6,"pathway_id":1,"question_text":"I want to optimize database queries and data warehousing techniques to drive business intelligence.","question_number":61,"created_at":"2026-02-06T21:04:10.123272+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":73,"question_text":"I am interested in specializing in front-end development using modern UI\/UX design principles and frameworks.","pathway_id":1}
+Result: [{"id":7,"pathway_id":1,"question_text":"I am interested in specializing in front-end development using modern UI\/UX design principles and frameworks.","question_number":73,"created_at":"2026-02-06T21:04:10.536615+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":85,"question_text":"I want to explore the mathematical foundations of cryptography to secure digital communication and data.","pathway_id":1}
+Result: [{"id":8,"pathway_id":1,"question_text":"I want to explore the mathematical foundations of cryptography to secure digital communication and data.","question_number":85,"created_at":"2026-02-06T21:04:11.192407+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":97,"question_text":"I am driven to build and train deep learning models for computer vision or autonomous system tasks.","pathway_id":1}
+Result: [{"id":9,"pathway_id":1,"question_text":"I am driven to build and train deep learning models for computer vision or autonomous system tasks.","question_number":97,"created_at":"2026-02-06T21:04:11.773411+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":109,"question_text":"I want to master DevOps practices to automate software delivery and improve infrastructure reliability.","pathway_id":1}
+Result: [{"id":10,"pathway_id":1,"question_text":"I want to master DevOps practices to automate software delivery and improve infrastructure reliability.","question_number":109,"created_at":"2026-02-06T21:04:12.22256+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":121,"question_text":"I am interested in developing firmware and embedded systems for Internet of Things (IoT) devices.","pathway_id":1}
+Result: [{"id":11,"pathway_id":1,"question_text":"I am interested in developing firmware and embedded systems for Internet of Things (IoT) devices.","question_number":121,"created_at":"2026-02-06T21:04:12.631408+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":133,"question_text":"I want to use statistical inference and A\/B testing to guide digital product feature decisions.","pathway_id":1}
+Result: [{"id":12,"pathway_id":1,"question_text":"I want to use statistical inference and A\/B testing to guide digital product feature decisions.","question_number":133,"created_at":"2026-02-06T21:04:13.03776+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":145,"question_text":"I am keen on architecting scalable and fault-tolerant applications on global cloud computing platforms.","pathway_id":1}
+Result: [{"id":13,"pathway_id":1,"question_text":"I am keen on architecting scalable and fault-tolerant applications on global cloud computing platforms.","question_number":145,"created_at":"2026-02-06T21:04:13.472358+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":157,"question_text":"I want to explore ethical AI practices to ensure algorithms are fair, transparent, and socially responsible.","pathway_id":1}
+Result: [{"id":14,"pathway_id":1,"question_text":"I want to explore ethical AI practices to ensure algorithms are fair, transparent, and socially responsible.","question_number":157,"created_at":"2026-02-06T21:04:13.901412+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":169,"question_text":"I am interested in developing video game engines and real-time graphics rendering algorithms.","pathway_id":1}
+Result: [{"id":15,"pathway_id":1,"question_text":"I am interested in developing video game engines and real-time graphics rendering algorithms.","question_number":169,"created_at":"2026-02-06T21:04:14.310865+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":181,"question_text":"I want to learn parallel computing techniques to optimize code for high-performance multi-core processors.","pathway_id":1}
+Result: [{"id":16,"pathway_id":1,"question_text":"I want to learn parallel computing techniques to optimize code for high-performance multi-core processors.","question_number":181,"created_at":"2026-02-06T21:04:14.745811+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":193,"question_text":"I am driven to develop recommender systems that personalize digital content for millions of users.","pathway_id":1}
+Result: [{"id":17,"pathway_id":1,"question_text":"I am driven to develop recommender systems that personalize digital content for millions of users.","question_number":193,"created_at":"2026-02-06T21:04:15.192316+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":205,"question_text":"I want to learn compiler design and operating system internals to understand hardware-software interactions.","pathway_id":1}
+Result: [{"id":18,"pathway_id":1,"question_text":"I want to learn compiler design and operating system internals to understand hardware-software interactions.","question_number":205,"created_at":"2026-02-06T21:04:15.629928+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":217,"question_text":"I am interested in creating interactive data visualization tools that make complex information understandable.","pathway_id":1}
+Result: [{"id":19,"pathway_id":1,"question_text":"I am interested in creating interactive data visualization tools that make complex information understandable.","question_number":217,"created_at":"2026-02-06T21:04:16.098157+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":229,"question_text":"I want to use anomaly detection and machine learning to identify and prevent digital fraud.","pathway_id":1}
+Result: [{"id":20,"pathway_id":1,"question_text":"I want to use anomaly detection and machine learning to identify and prevent digital fraud.","question_number":229,"created_at":"2026-02-06T21:04:16.566498+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":2,"question_text":"I am driven to identify security vulnerabilities through ethical hacking and penetration testing.","pathway_id":2}
+Result: [{"id":21,"pathway_id":2,"question_text":"I am driven to identify security vulnerabilities through ethical hacking and penetration testing.","question_number":2,"created_at":"2026-02-06T21:04:16.979148+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":14,"question_text":"I want to design and maintain secure enterprise networks to ensure continuous business operations.","pathway_id":2}
+Result: [{"id":22,"pathway_id":2,"question_text":"I want to design and maintain secure enterprise networks to ensure continuous business operations.","question_number":14,"created_at":"2026-02-06T21:04:17.377473+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":26,"question_text":"I am interested in bridging the gap between business needs and technological IT infrastructure solutions.","pathway_id":2}
+Result: [{"id":23,"pathway_id":2,"question_text":"I am interested in bridging the gap between business needs and technological IT infrastructure solutions.","question_number":26,"created_at":"2026-02-06T21:04:17.770397+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":38,"question_text":"I want to create disaster recovery plans and intrusion detection systems to protect organizational data.","pathway_id":2}
+Result: [{"id":24,"pathway_id":2,"question_text":"I want to create disaster recovery plans and intrusion detection systems to protect organizational data.","question_number":38,"created_at":"2026-02-06T21:04:18.179695+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":50,"question_text":"I am fascinated by server virtualization and cloud storage management for global digital services.","pathway_id":2}
+Result: [{"id":25,"pathway_id":2,"question_text":"I am fascinated by server virtualization and cloud storage management for global digital services.","question_number":50,"created_at":"2026-02-06T21:04:18.618156+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":62,"question_text":"I want to specialize in digital forensics to investigate and recover data after security breaches.","pathway_id":2}
+Result: [{"id":26,"pathway_id":2,"question_text":"I want to specialize in digital forensics to investigate and recover data after security breaches.","question_number":62,"created_at":"2026-02-06T21:04:19.108206+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":74,"question_text":"I am interested in managing large-scale IT projects using agile and waterfall methodologies.","pathway_id":2}
+Result: [{"id":27,"pathway_id":2,"question_text":"I am interested in managing large-scale IT projects using agile and waterfall methodologies.","question_number":74,"created_at":"2026-02-06T21:04:19.589384+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":86,"question_text":"I want to configure and secure wireless networks and VPNs for remote employee access.","pathway_id":2}
+Result: [{"id":28,"pathway_id":2,"question_text":"I want to configure and secure wireless networks and VPNs for remote employee access.","question_number":86,"created_at":"2026-02-06T21:04:20.019728+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":98,"question_text":"I am keen on performing cost-benefit analyses for IT hardware and software procurement.","pathway_id":2}
+Result: [{"id":29,"pathway_id":2,"question_text":"I am keen on performing cost-benefit analyses for IT hardware and software procurement.","question_number":98,"created_at":"2026-02-06T21:04:20.450931+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":110,"question_text":"I want to implement Identity and Access Management (IAM) systems to control user permissions.","pathway_id":2}
+Result: [{"id":30,"pathway_id":2,"question_text":"I want to implement Identity and Access Management (IAM) systems to control user permissions.","question_number":110,"created_at":"2026-02-06T21:04:20.948151+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":122,"question_text":"I am interested in mastering containerization technologies like Docker and Kubernetes for IT efficiency.","pathway_id":2}
+Result: [{"id":31,"pathway_id":2,"question_text":"I am interested in mastering containerization technologies like Docker and Kubernetes for IT efficiency.","question_number":122,"created_at":"2026-02-06T21:04:21.375705+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":134,"question_text":"I want to develop security awareness training programs to protect employees from social engineering.","pathway_id":2}
+Result: [{"id":32,"pathway_id":2,"question_text":"I want to develop security awareness training programs to protect employees from social engineering.","question_number":134,"created_at":"2026-02-06T21:04:21.784864+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":146,"question_text":"I am driven to translate operational requirements into technical specifications for IT teams.","pathway_id":2}
+Result: [{"id":33,"pathway_id":2,"question_text":"I am driven to translate operational requirements into technical specifications for IT teams.","question_number":146,"created_at":"2026-02-06T21:04:22.334202+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":158,"question_text":"I want to monitor network traffic performance metrics to optimize the end-user experience.","pathway_id":2}
+Result: [{"id":34,"pathway_id":2,"question_text":"I want to monitor network traffic performance metrics to optimize the end-user experience.","question_number":158,"created_at":"2026-02-06T21:04:22.723339+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":170,"question_text":"I am interested in ensuring organizational compliance with data privacy laws like GDPR and HIPAA.","pathway_id":2}
+Result: [{"id":35,"pathway_id":2,"question_text":"I am interested in ensuring organizational compliance with data privacy laws like GDPR and HIPAA.","question_number":170,"created_at":"2026-02-06T21:04:23.128717+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":182,"question_text":"I want to manage relational and non-relational database systems to ensure data integrity.","pathway_id":2}
+Result: [{"id":36,"pathway_id":2,"question_text":"I want to manage relational and non-relational database systems to ensure data integrity.","question_number":182,"created_at":"2026-02-06T21:04:23.539089+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":194,"question_text":"I am driven to implement Security Information and Event Management (SIEM) for real-time monitoring.","pathway_id":2}
+Result: [{"id":37,"pathway_id":2,"question_text":"I am driven to implement Security Information and Event Management (SIEM) for real-time monitoring.","question_number":194,"created_at":"2026-02-06T21:04:23.939657+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":206,"question_text":"I want to analyze data flows to ensure seamless integration between different enterprise applications.","pathway_id":2}
+Result: [{"id":38,"pathway_id":2,"question_text":"I want to analyze data flows to ensure seamless integration between different enterprise applications.","question_number":206,"created_at":"2026-02-06T21:04:24.349311+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":218,"question_text":"I am interested in designing zero-trust network security architectures for modern businesses.","pathway_id":2}
+Result: [{"id":39,"pathway_id":2,"question_text":"I am interested in designing zero-trust network security architectures for modern businesses.","question_number":218,"created_at":"2026-02-06T21:04:24.815102+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":230,"question_text":"I want to lead IT service desks to resolve technical issues and maintain high user satisfaction.","pathway_id":2}
+Result: [{"id":40,"pathway_id":2,"question_text":"I want to lead IT service desks to resolve technical issues and maintain high user satisfaction.","question_number":230,"created_at":"2026-02-06T21:04:25.397144+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":3,"question_text":"I want to manage large-scale construction projects and ensure structural safety from design to completion.","pathway_id":3}
+Result: [{"id":41,"pathway_id":3,"question_text":"I want to manage large-scale construction projects and ensure structural safety from design to completion.","question_number":3,"created_at":"2026-02-06T21:04:25.822105+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":15,"question_text":"I am interested in designing essential public infrastructure such as bridges and mass transit systems.","pathway_id":3}
+Result: [{"id":42,"pathway_id":3,"question_text":"I am interested in designing essential public infrastructure such as bridges and mass transit systems.","question_number":15,"created_at":"2026-02-06T21:04:26.234581+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":27,"question_text":"I want to develop sustainable solutions for urban water resources and wastewater treatment.","pathway_id":3}
+Result: [{"id":43,"pathway_id":3,"question_text":"I want to develop sustainable solutions for urban water resources and wastewater treatment.","question_number":27,"created_at":"2026-02-06T21:04:26.650924+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":39,"question_text":"I am fascinated by geotechnical analysis to ensure stable foundations for heavy structures.","pathway_id":3}
+Result: [{"id":44,"pathway_id":3,"question_text":"I am fascinated by geotechnical analysis to ensure stable foundations for heavy structures.","question_number":39,"created_at":"2026-02-06T21:04:27.046636+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":51,"question_text":"I want to conduct environmental impact assessments to ensure eco-friendly urban development.","pathway_id":3}
+Result: [{"id":45,"pathway_id":3,"question_text":"I want to conduct environmental impact assessments to ensure eco-friendly urban development.","question_number":51,"created_at":"2026-02-06T21:04:27.446224+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":63,"question_text":"I am interested in using Building Information Modeling (BIM) for 3D simulation of civil works.","pathway_id":3}
+Result: [{"id":46,"pathway_id":3,"question_text":"I am interested in using Building Information Modeling (BIM) for 3D simulation of civil works.","question_number":63,"created_at":"2026-02-06T21:04:27.880811+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":75,"question_text":"I want to plan efficient transportation systems and design intelligent traffic control networks.","pathway_id":3}
+Result: [{"id":47,"pathway_id":3,"question_text":"I want to plan efficient transportation systems and design intelligent traffic control networks.","question_number":75,"created_at":"2026-02-06T21:04:28.300104+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":87,"question_text":"I am driven to design resilient distribution networks for clean drinking water in municipalities.","pathway_id":3}
+Result: [{"id":48,"pathway_id":3,"question_text":"I am driven to design resilient distribution networks for clean drinking water in municipalities.","question_number":87,"created_at":"2026-02-06T21:04:28.756867+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":99,"question_text":"I want to implement earthquake retrofitting techniques to improve the resilience of old buildings.","pathway_id":3}
+Result: [{"id":49,"pathway_id":3,"question_text":"I want to implement earthquake retrofitting techniques to improve the resilience of old buildings.","question_number":99,"created_at":"2026-02-06T21:04:29.254096+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":111,"question_text":"I am interested in utilizing GIS for site planning and monitoring topographical changes.","pathway_id":3}
+Result: [{"id":50,"pathway_id":3,"question_text":"I am interested in utilizing GIS for site planning and monitoring topographical changes.","question_number":111,"created_at":"2026-02-06T21:04:29.729883+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":123,"question_text":"I want to manage construction site safety and supervise labor to ensure regulatory compliance.","pathway_id":3}
+Result: [{"id":51,"pathway_id":3,"question_text":"I want to manage construction site safety and supervise labor to ensure regulatory compliance.","question_number":123,"created_at":"2026-02-06T21:04:30.216706+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":135,"question_text":"I am interested in studying urban hydrology to manage storm runoff and prevent flooding.","pathway_id":3}
+Result: [{"id":52,"pathway_id":3,"question_text":"I am interested in studying urban hydrology to manage storm runoff and prevent flooding.","question_number":135,"created_at":"2026-02-06T21:04:30.660453+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":147,"question_text":"I want to develop smart-city infrastructure that incorporates green spaces and renewable energy.","pathway_id":3}
+Result: [{"id":53,"pathway_id":3,"question_text":"I want to develop smart-city infrastructure that incorporates green spaces and renewable energy.","question_number":147,"created_at":"2026-02-06T21:04:31.172717+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":159,"question_text":"I am driven to research and test low-carbon concrete and recycled materials for construction.","pathway_id":3}
+Result: [{"id":54,"pathway_id":3,"question_text":"I am driven to research and test low-carbon concrete and recycled materials for construction.","question_number":159,"created_at":"2026-02-06T21:04:31.580912+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":171,"question_text":"I want to manage occupational health and safety protocols at large-scale engineering sites.","pathway_id":3}
+Result: [{"id":55,"pathway_id":3,"question_text":"I want to manage occupational health and safety protocols at large-scale engineering sites.","question_number":171,"created_at":"2026-02-06T21:04:31.993618+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":183,"question_text":"I am interested in coastal engineering to protect urban structures against rising sea levels.","pathway_id":3}
+Result: [{"id":56,"pathway_id":3,"question_text":"I am interested in coastal engineering to protect urban structures against rising sea levels.","question_number":183,"created_at":"2026-02-06T21:04:32.392808+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":195,"question_text":"I want to assess slope stability and soil mechanics to prevent landslides in mountainous regions.","pathway_id":3}
+Result: [{"id":57,"pathway_id":3,"question_text":"I want to assess slope stability and soil mechanics to prevent landslides in mountainous regions.","question_number":195,"created_at":"2026-02-06T21:04:32.801624+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":207,"question_text":"I am interested in designing municipal landfill systems that minimize soil and water contamination.","pathway_id":3}
+Result: [{"id":58,"pathway_id":3,"question_text":"I am interested in designing municipal landfill systems that minimize soil and water contamination.","question_number":207,"created_at":"2026-02-06T21:04:33.215589+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":219,"question_text":"I want to analyze wind and seismic loads to ensure the stability of ultra-tall skyscrapers.","pathway_id":3}
+Result: [{"id":59,"pathway_id":3,"question_text":"I want to analyze wind and seismic loads to ensure the stability of ultra-tall skyscrapers.","question_number":219,"created_at":"2026-02-06T21:04:33.635791+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":231,"question_text":"I am interested in managing public-private partnerships for financing large public works.","pathway_id":3}
+Result: [{"id":60,"pathway_id":3,"question_text":"I am interested in managing public-private partnerships for financing large public works.","question_number":231,"created_at":"2026-02-06T21:04:34.051092+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":4,"question_text":"I want to design and optimize automated production lines for industrial manufacturing.","pathway_id":4}
+Result: [{"id":61,"pathway_id":4,"question_text":"I want to design and optimize automated production lines for industrial manufacturing.","question_number":4,"created_at":"2026-02-06T21:04:34.474591+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":16,"question_text":"I am interested in engineering fuel-efficient engines and studying thermodynamic cycles.","pathway_id":4}
+Result: [{"id":62,"pathway_id":4,"question_text":"I am interested in engineering fuel-efficient engines and studying thermodynamic cycles.","question_number":16,"created_at":"2026-02-06T21:04:34.886005+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":28,"question_text":"I want to integrate advanced sensors and control logic for autonomous robotic systems.","pathway_id":4}
+Result: [{"id":63,"pathway_id":4,"question_text":"I want to integrate advanced sensors and control logic for autonomous robotic systems.","question_number":28,"created_at":"2026-02-06T21:04:35.314736+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":40,"question_text":"I am fascinated by thermal power generation systems and energy conversion devices.","pathway_id":4}
+Result: [{"id":64,"pathway_id":4,"question_text":"I am fascinated by thermal power generation systems and energy conversion devices.","question_number":40,"created_at":"2026-02-06T21:04:35.743722+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":52,"question_text":"I want to use CAD and Finite Element Analysis (FEA) to perform stress tests on new products.","pathway_id":4}
+Result: [{"id":65,"pathway_id":4,"question_text":"I want to use CAD and Finite Element Analysis (FEA) to perform stress tests on new products.","question_number":52,"created_at":"2026-02-06T21:04:36.512445+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":64,"question_text":"I am interested in mechatronics, the synergy of mechanical, electrical, and computer systems.","pathway_id":4}
+Result: [{"id":66,"pathway_id":4,"question_text":"I am interested in mechatronics, the synergy of mechanical, electrical, and computer systems.","question_number":64,"created_at":"2026-02-06T21:04:36.896288+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":76,"question_text":"I want to optimize the performance of fluid machinery such as pumps and turbines.","pathway_id":4}
+Result: [{"id":67,"pathway_id":4,"question_text":"I want to optimize the performance of fluid machinery such as pumps and turbines.","question_number":76,"created_at":"2026-02-06T21:04:37.308331+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":88,"question_text":"I am keen on using 3D printing and additive manufacturing for rapid hardware prototyping.","pathway_id":4}
+Result: [{"id":68,"pathway_id":4,"question_text":"I am keen on using 3D printing and additive manufacturing for rapid hardware prototyping.","question_number":88,"created_at":"2026-02-06T21:04:37.701218+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":100,"question_text":"I want to research composite materials and metal alloys to create more durable components.","pathway_id":4}
+Result: [{"id":69,"pathway_id":4,"question_text":"I want to research composite materials and metal alloys to create more durable components.","question_number":100,"created_at":"2026-02-06T21:04:38.112246+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":112,"question_text":"I am interested in designing biomedical devices such as robotic prosthetics and implants.","pathway_id":4}
+Result: [{"id":70,"pathway_id":4,"question_text":"I am interested in designing biomedical devices such as robotic prosthetics and implants.","question_number":112,"created_at":"2026-02-06T21:04:38.51753+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":124,"question_text":"I want to solve heat transfer problems to protect electronics and industrial machinery.","pathway_id":4}
+Result: [{"id":71,"pathway_id":4,"question_text":"I want to solve heat transfer problems to protect electronics and industrial machinery.","question_number":124,"created_at":"2026-02-06T21:04:38.958091+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":136,"question_text":"I am driven to develop high-performance control systems for autonomous vehicle navigation.","pathway_id":4}
+Result: [{"id":72,"pathway_id":4,"question_text":"I am driven to develop high-performance control systems for autonomous vehicle navigation.","question_number":136,"created_at":"2026-02-06T21:04:39.437019+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":148,"question_text":"I want to design mechanical components for renewable energy systems like wind turbines.","pathway_id":4}
+Result: [{"id":73,"pathway_id":4,"question_text":"I want to design mechanical components for renewable energy systems like wind turbines.","question_number":148,"created_at":"2026-02-06T21:04:39.872505+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":160,"question_text":"I am interested in simulating multi-body dynamics to predict how complex machines will move.","pathway_id":4}
+Result: [{"id":74,"pathway_id":4,"question_text":"I am interested in simulating multi-body dynamics to predict how complex machines will move.","question_number":160,"created_at":"2026-02-06T21:04:40.363145+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":172,"question_text":"I want to ensure mechanical safety through failure analysis and non-destructive testing (NDT).","pathway_id":4}
+Result: [{"id":75,"pathway_id":4,"question_text":"I want to ensure mechanical safety through failure analysis and non-destructive testing (NDT).","question_number":172,"created_at":"2026-02-06T21:04:40.785364+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":184,"question_text":"I am interested in designing high-pressure vessels and piping for chemical and oil industries.","pathway_id":4}
+Result: [{"id":76,"pathway_id":4,"question_text":"I am interested in designing high-pressure vessels and piping for chemical and oil industries.","question_number":184,"created_at":"2026-02-06T21:04:41.201997+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":196,"question_text":"I want to study mechanical vibrations to reduce noise and wear in consumer products.","pathway_id":4}
+Result: [{"id":77,"pathway_id":4,"question_text":"I want to study mechanical vibrations to reduce noise and wear in consumer products.","question_number":196,"created_at":"2026-02-06T21:04:41.625699+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":208,"question_text":"I am keen on developing soft robotics using smart materials that change shape with stimulus.","pathway_id":4}
+Result: [{"id":78,"pathway_id":4,"question_text":"I am keen on developing soft robotics using smart materials that change shape with stimulus.","question_number":208,"created_at":"2026-02-06T21:04:42.038471+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":220,"question_text":"I want to optimize combustion efficiency in engines to reduce harmful environmental emissions.","pathway_id":4}
+Result: [{"id":79,"pathway_id":4,"question_text":"I want to optimize combustion efficiency in engines to reduce harmful environmental emissions.","question_number":220,"created_at":"2026-02-06T21:04:42.441385+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":232,"question_text":"I am interested in performing life-cycle assessments (LCA) to minimize manufacturing waste.","pathway_id":4}
+Result: [{"id":80,"pathway_id":4,"question_text":"I am interested in performing life-cycle assessments (LCA) to minimize manufacturing waste.","question_number":232,"created_at":"2026-02-06T21:04:42.833131+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":5,"question_text":"I want to design and manage the electrical power grid and smart-grid integration technologies.","pathway_id":5}
+Result: [{"id":81,"pathway_id":5,"question_text":"I want to design and manage the electrical power grid and smart-grid integration technologies.","question_number":5,"created_at":"2026-02-06T21:04:43.249621+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":17,"question_text":"I am interested in designing integrated circuits and microprocessors for modern electronics.","pathway_id":5}
+Result: [{"id":82,"pathway_id":5,"question_text":"I am interested in designing integrated circuits and microprocessors for modern electronics.","question_number":17,"created_at":"2026-02-06T21:04:43.66693+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":29,"question_text":"I want to develop next-generation communication protocols for fiber optics and wireless systems.","pathway_id":5}
+Result: [{"id":83,"pathway_id":5,"question_text":"I want to develop next-generation communication protocols for fiber optics and wireless systems.","question_number":29,"created_at":"2026-02-06T21:04:44.053697+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":41,"question_text":"I am fascinated by control systems and automation logic for industrial robotics.","pathway_id":5}
+Result: [{"id":84,"pathway_id":5,"question_text":"I am fascinated by control systems and automation logic for industrial robotics.","question_number":41,"created_at":"2026-02-06T21:04:44.519792+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":53,"question_text":"I want to analyze electromagnetic wave propagation for satellite and cellular communication.","pathway_id":5}
+Result: [{"id":85,"pathway_id":5,"question_text":"I want to analyze electromagnetic wave propagation for satellite and cellular communication.","question_number":53,"created_at":"2026-02-06T21:04:44.961226+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":65,"question_text":"I am interested in power electronics for electric vehicle (EV) charging and battery systems.","pathway_id":5}
+Result: [{"id":86,"pathway_id":5,"question_text":"I am interested in power electronics for electric vehicle (EV) charging and battery systems.","question_number":65,"created_at":"2026-02-06T21:04:45.491391+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":77,"question_text":"I want to work on Very Large Scale Integration (VLSI) design for high-performance chips.","pathway_id":5}
+Result: [{"id":87,"pathway_id":5,"question_text":"I want to work on Very Large Scale Integration (VLSI) design for high-performance chips.","question_number":77,"created_at":"2026-02-06T21:04:45.914305+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":89,"question_text":"I am driven to develop Digital Signal Processing (DSP) algorithms for audio and video tools.","pathway_id":5}
+Result: [{"id":88,"pathway_id":5,"question_text":"I am driven to develop Digital Signal Processing (DSP) algorithms for audio and video tools.","question_number":89,"created_at":"2026-02-06T21:04:46.323102+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":101,"question_text":"I want to monitor and control large utility processes using SCADA and industrial networks.","pathway_id":5}
+Result: [{"id":89,"pathway_id":5,"question_text":"I want to monitor and control large utility processes using SCADA and industrial networks.","question_number":101,"created_at":"2026-02-06T21:04:46.73079+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":113,"question_text":"I am interested in antenna design and radio frequency (RF) engineering for high-speed data.","pathway_id":5}
+Result: [{"id":90,"pathway_id":5,"question_text":"I am interested in antenna design and radio frequency (RF) engineering for high-speed data.","question_number":113,"created_at":"2026-02-06T21:04:47.15008+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":125,"question_text":"I want to design precision analog circuits and signal filters for scientific measurement.","pathway_id":5}
+Result: [{"id":91,"pathway_id":5,"question_text":"I want to design precision analog circuits and signal filters for scientific measurement.","question_number":125,"created_at":"2026-02-06T21:04:47.585518+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":137,"question_text":"I am interested in conducting energy audits and optimizing building electrical efficiency.","pathway_id":5}
+Result: [{"id":92,"pathway_id":5,"question_text":"I am interested in conducting energy audits and optimizing building electrical efficiency.","question_number":137,"created_at":"2026-02-06T21:04:48.01057+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":149,"question_text":"I want to develop hardware components for the future of quantum computing.","pathway_id":5}
+Result: [{"id":93,"pathway_id":5,"question_text":"I want to develop hardware components for the future of quantum computing.","question_number":149,"created_at":"2026-02-06T21:04:48.444173+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":161,"question_text":"I am driven to mitigate electromagnetic interference (EMI) in sensitive medical electronics.","pathway_id":5}
+Result: [{"id":94,"pathway_id":5,"question_text":"I am driven to mitigate electromagnetic interference (EMI) in sensitive medical electronics.","question_number":161,"created_at":"2026-02-06T21:04:48.953197+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":173,"question_text":"I want to program microcontrollers to manage sensors and actuators in robotic projects.","pathway_id":5}
+Result: [{"id":95,"pathway_id":5,"question_text":"I want to program microcontrollers to manage sensors and actuators in robotic projects.","question_number":173,"created_at":"2026-02-06T21:04:49.468452+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":185,"question_text":"I am interested in designing high-voltage substations and transformer distribution networks.","pathway_id":5}
+Result: [{"id":96,"pathway_id":5,"question_text":"I am interested in designing high-voltage substations and transformer distribution networks.","question_number":185,"created_at":"2026-02-06T21:04:49.970967+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":197,"question_text":"I want to implement secure telecommunication protocols to protect critical infrastructure.","pathway_id":5}
+Result: [{"id":97,"pathway_id":5,"question_text":"I want to implement secure telecommunication protocols to protect critical infrastructure.","question_number":197,"created_at":"2026-02-06T21:04:50.491692+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":209,"question_text":"I am keen on creating advanced instrumentation for laboratory and industrial sensing.","pathway_id":5}
+Result: [{"id":98,"pathway_id":5,"question_text":"I am keen on creating advanced instrumentation for laboratory and industrial sensing.","question_number":209,"created_at":"2026-02-06T21:04:51.01543+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":221,"question_text":"I want to use machine learning for predictive maintenance of national electrical grids.","pathway_id":5}
+Result: [{"id":99,"pathway_id":5,"question_text":"I want to use machine learning for predictive maintenance of national electrical grids.","question_number":221,"created_at":"2026-02-06T21:04:51.524647+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":233,"question_text":"I am interested in optoelectronics, using lasers and LEDs for high-speed communication.","pathway_id":5}
+Result: [{"id":100,"pathway_id":5,"question_text":"I am interested in optoelectronics, using lasers and LEDs for high-speed communication.","question_number":233,"created_at":"2026-02-06T21:04:51.962154+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":6,"question_text":"I am committed to providing holistic, evidence-based patient care for recovery and comfort.","pathway_id":6}
+Result: [{"id":101,"pathway_id":6,"question_text":"I am committed to providing holistic, evidence-based patient care for recovery and comfort.","question_number":6,"created_at":"2026-02-06T21:04:52.410106+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":18,"question_text":"I want to specialize in critical care nursing to monitor patients in high-stakes environments.","pathway_id":6}
+Result: [{"id":102,"pathway_id":6,"question_text":"I want to specialize in critical care nursing to monitor patients in high-stakes environments.","question_number":18,"created_at":"2026-02-06T21:04:52.910972+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":30,"question_text":"I am interested in educating the community on health prevention and wellness advocacy.","pathway_id":6}
+Result: [{"id":103,"pathway_id":6,"question_text":"I am interested in educating the community on health prevention and wellness advocacy.","question_number":30,"created_at":"2026-02-06T21:04:53.374438+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":42,"question_text":"I want to manage trauma responses and medical care in international disaster relief efforts.","pathway_id":6}
+Result: [{"id":104,"pathway_id":6,"question_text":"I want to manage trauma responses and medical care in international disaster relief efforts.","question_number":42,"created_at":"2026-02-06T21:04:54.115481+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":54,"question_text":"I am driven to conduct clinical research that improves nursing protocols and patient safety.","pathway_id":6}
+Result: [{"id":105,"pathway_id":6,"question_text":"I am driven to conduct clinical research that improves nursing protocols and patient safety.","question_number":54,"created_at":"2026-02-06T21:04:54.544096+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":66,"question_text":"I am interested in geriatric nursing to support the unique health needs of aging populations.","pathway_id":6}
+Result: [{"id":106,"pathway_id":6,"question_text":"I am interested in geriatric nursing to support the unique health needs of aging populations.","question_number":66,"created_at":"2026-02-06T21:04:54.970901+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":78,"question_text":"I want to provide mental health support and therapeutic communication for psychiatric patients.","pathway_id":6}
+Result: [{"id":107,"pathway_id":6,"question_text":"I want to provide mental health support and therapeutic communication for psychiatric patients.","question_number":78,"created_at":"2026-02-06T21:04:55.406458+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":90,"question_text":"I am keen on working in school health to manage pediatric wellness and immunization.","pathway_id":6}
+Result: [{"id":108,"pathway_id":6,"question_text":"I am keen on working in school health to manage pediatric wellness and immunization.","question_number":90,"created_at":"2026-02-06T21:04:55.841221+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":102,"question_text":"I want to master nursing informatics to improve patient charting and data accuracy.","pathway_id":6}
+Result: [{"id":109,"pathway_id":6,"question_text":"I want to master nursing informatics to improve patient charting and data accuracy.","question_number":102,"created_at":"2026-02-06T21:04:56.246005+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":114,"question_text":"I am interested in becoming a Nurse Practitioner to diagnose and treat patients independently.","pathway_id":6}
+Result: [{"id":110,"pathway_id":6,"question_text":"I am interested in becoming a Nurse Practitioner to diagnose and treat patients independently.","question_number":114,"created_at":"2026-02-06T21:04:56.668059+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":126,"question_text":"I want to coordinate hospital disaster preparedness plans for pandemics or mass casualties.","pathway_id":6}
+Result: [{"id":111,"pathway_id":6,"question_text":"I want to coordinate hospital disaster preparedness plans for pandemics or mass casualties.","question_number":126,"created_at":"2026-02-06T21:04:57.082639+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":138,"question_text":"I am driven to educate chronic disease patients on self-management and drug adherence.","pathway_id":6}
+Result: [{"id":112,"pathway_id":6,"question_text":"I am driven to educate chronic disease patients on self-management and drug adherence.","question_number":138,"created_at":"2026-02-06T21:04:57.50472+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":150,"question_text":"I want to specialize in oncology nursing, providing clinical and emotional support to cancer patients.","pathway_id":6}
+Result: [{"id":113,"pathway_id":6,"question_text":"I want to specialize in oncology nursing, providing clinical and emotional support to cancer patients.","question_number":150,"created_at":"2026-02-06T21:04:57.932997+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":162,"question_text":"I am interested in leading nursing units as a manager to ensure efficient staff operations.","pathway_id":6}
+Result: [{"id":114,"pathway_id":6,"question_text":"I am interested in leading nursing units as a manager to ensure efficient staff operations.","question_number":162,"created_at":"2026-02-06T21:04:58.410563+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":174,"question_text":"I want to specialize in neonatal intensive care (NICU) to provide support for newborns.","pathway_id":6}
+Result: [{"id":115,"pathway_id":6,"question_text":"I want to specialize in neonatal intensive care (NICU) to provide support for newborns.","question_number":174,"created_at":"2026-02-06T21:04:58.862359+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":186,"question_text":"I am driven to promote maternal and child health through postpartum and prenatal care.","pathway_id":6}
+Result: [{"id":116,"pathway_id":6,"question_text":"I am driven to promote maternal and child health through postpartum and prenatal care.","question_number":186,"created_at":"2026-02-06T21:04:59.360478+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":198,"question_text":"I want to focus on occupational health nursing to protect the safety of workers in factories.","pathway_id":6}
+Result: [{"id":117,"pathway_id":6,"question_text":"I want to focus on occupational health nursing to protect the safety of workers in factories.","question_number":198,"created_at":"2026-02-06T21:04:59.801248+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":210,"question_text":"I am interested in designing public health vaccination campaigns to reduce infectious diseases.","pathway_id":6}
+Result: [{"id":118,"pathway_id":6,"question_text":"I am interested in designing public health vaccination campaigns to reduce infectious diseases.","question_number":210,"created_at":"2026-02-06T21:05:00.30973+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":222,"question_text":"I want to provide skilled medical care to patients within their private home environments.","pathway_id":6}
+Result: [{"id":119,"pathway_id":6,"question_text":"I want to provide skilled medical care to patients within their private home environments.","question_number":222,"created_at":"2026-02-06T21:05:00.779049+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":234,"question_text":"I am driven to use my clinical expertise as a legal nurse consultant for medical lawsuits.","pathway_id":6}
+Result: [{"id":120,"pathway_id":6,"question_text":"I am driven to use my clinical expertise as a legal nurse consultant for medical lawsuits.","question_number":234,"created_at":"2026-02-06T21:05:01.243762+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":7,"question_text":"I want to operate complex laboratory analyzers for clinical blood and chemical testing.","pathway_id":7}
+Result: [{"id":121,"pathway_id":7,"question_text":"I want to operate complex laboratory analyzers for clinical blood and chemical testing.","question_number":7,"created_at":"2026-02-06T21:05:01.660324+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":19,"question_text":"I am interested in interpreting lab results to help doctors diagnose various medical conditions.","pathway_id":7}
+Result: [{"id":122,"pathway_id":7,"question_text":"I am interested in interpreting lab results to help doctors diagnose various medical conditions.","question_number":19,"created_at":"2026-02-06T21:05:02.07338+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":31,"question_text":"I want to develop and validate laboratory tests for newly emerging viral pathogens.","pathway_id":7}
+Result: [{"id":123,"pathway_id":7,"question_text":"I want to develop and validate laboratory tests for newly emerging viral pathogens.","question_number":31,"created_at":"2026-02-06T21:05:02.480916+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":43,"question_text":"I am interested in blood banking and ensuring the safety and compatibility of transfusions.","pathway_id":7}
+Result: [{"id":124,"pathway_id":7,"question_text":"I am interested in blood banking and ensuring the safety and compatibility of transfusions.","question_number":43,"created_at":"2026-02-06T21:05:02.895248+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":55,"question_text":"I am driven to maintain strict quality control and assurance in high-volume medical labs.","pathway_id":7}
+Result: [{"id":125,"pathway_id":7,"question_text":"I am driven to maintain strict quality control and assurance in high-volume medical labs.","question_number":55,"created_at":"2026-02-06T21:05:03.304593+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":67,"question_text":"I want to use molecular diagnostics and PCR to identify genetic mutations and cancer.","pathway_id":7}
+Result: [{"id":126,"pathway_id":7,"question_text":"I want to use molecular diagnostics and PCR to identify genetic mutations and cancer.","question_number":67,"created_at":"2026-02-06T21:05:03.707647+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":79,"question_text":"I am interested in identifying clinical bacteria and determining their antibiotic resistance.","pathway_id":7}
+Result: [{"id":127,"pathway_id":7,"question_text":"I am interested in identifying clinical bacteria and determining their antibiotic resistance.","question_number":79,"created_at":"2026-02-06T21:05:04.115717+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":91,"question_text":"I want to perform toxicology screenings to measure therapeutic drug levels and poisons.","pathway_id":7}
+Result: [{"id":128,"pathway_id":7,"question_text":"I want to perform toxicology screenings to measure therapeutic drug levels and poisons.","question_number":91,"created_at":"2026-02-06T21:05:04.514654+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":103,"question_text":"I am interested in managing laboratory automation and ensuring efficient sample workflows.","pathway_id":7}
+Result: [{"id":129,"pathway_id":7,"question_text":"I am interested in managing laboratory automation and ensuring efficient sample workflows.","question_number":103,"created_at":"2026-02-06T21:05:04.921594+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":115,"question_text":"I want to examine tissue and cell samples under the microscope to detect cancer.","pathway_id":7}
+Result: [{"id":130,"pathway_id":7,"question_text":"I want to examine tissue and cell samples under the microscope to detect cancer.","question_number":115,"created_at":"2026-02-06T21:05:05.341543+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":127,"question_text":"I am interested in analyzing body fluids like spinal and pleural fluid for disease markers.","pathway_id":7}
+Result: [{"id":131,"pathway_id":7,"question_text":"I am interested in analyzing body fluids like spinal and pleural fluid for disease markers.","question_number":127,"created_at":"2026-02-06T21:05:05.733761+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":139,"question_text":"I want to specialize in endocrine testing and measuring metabolic hormone levels.","pathway_id":7}
+Result: [{"id":132,"pathway_id":7,"question_text":"I want to specialize in endocrine testing and measuring metabolic hormone levels.","question_number":139,"created_at":"2026-02-06T21:05:06.127692+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":151,"question_text":"I am fascinated by the morphology of blood cells and the science of clotting disorders.","pathway_id":7}
+Result: [{"id":133,"pathway_id":7,"question_text":"I am fascinated by the morphology of blood cells and the science of clotting disorders.","question_number":151,"created_at":"2026-02-06T21:05:06.541272+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":163,"question_text":"I want to evaluate new diagnostic platforms and automation technologies for efficiency.","pathway_id":7}
+Result: [{"id":134,"pathway_id":7,"question_text":"I want to evaluate new diagnostic platforms and automation technologies for efficiency.","question_number":163,"created_at":"2026-02-06T21:05:06.969436+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":175,"question_text":"I am interested in validating new lab equipment to meet federal CLIA standards.","pathway_id":7}
+Result: [{"id":135,"pathway_id":7,"question_text":"I am interested in validating new lab equipment to meet federal CLIA standards.","question_number":175,"created_at":"2026-02-06T21:05:07.409927+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":187,"question_text":"I want to research how the immune system reacts to diseases through serological testing.","pathway_id":7}
+Result: [{"id":136,"pathway_id":7,"question_text":"I want to research how the immune system reacts to diseases through serological testing.","question_number":187,"created_at":"2026-02-06T21:05:07.812124+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":199,"question_text":"I am interested in screening blood donations for infectious markers and safety.","pathway_id":7}
+Result: [{"id":137,"pathway_id":7,"question_text":"I am interested in screening blood donations for infectious markers and safety.","question_number":199,"created_at":"2026-02-06T21:05:08.222809+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":211,"question_text":"I want to manage Point-of-Care Testing (POCT) in remote clinics and ambulances.","pathway_id":7}
+Result: [{"id":138,"pathway_id":7,"question_text":"I want to manage Point-of-Care Testing (POCT) in remote clinics and ambulances.","question_number":211,"created_at":"2026-02-06T21:05:08.695724+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":223,"question_text":"I am interested in clinical parasitology and identifying parasites in medical specimens.","pathway_id":7}
+Result: [{"id":139,"pathway_id":7,"question_text":"I am interested in clinical parasitology and identifying parasites in medical specimens.","question_number":223,"created_at":"2026-02-06T21:05:09.174192+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":235,"question_text":"I am driven to maintain strict biosafety levels when handling hazardous infectious agents.","pathway_id":7}
+Result: [{"id":140,"pathway_id":7,"question_text":"I am driven to maintain strict biosafety levels when handling hazardous infectious agents.","question_number":235,"created_at":"2026-02-06T21:05:09.714755+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":8,"question_text":"I am interested in the discovery of new drug molecules and their effects on the body.","pathway_id":8}
+Result: [{"id":141,"pathway_id":8,"question_text":"I am interested in the discovery of new drug molecules and their effects on the body.","question_number":8,"created_at":"2026-02-06T21:05:10.265747+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":20,"question_text":"I want to work in a clinical setting to optimize drug therapy for individual patients.","pathway_id":8}
+Result: [{"id":142,"pathway_id":8,"question_text":"I want to work in a clinical setting to optimize drug therapy for individual patients.","question_number":20,"created_at":"2026-02-06T21:05:10.863623+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":32,"question_text":"I am driven to provide clear medication counseling to patients about side effects and use.","pathway_id":8}
+Result: [{"id":143,"pathway_id":8,"question_text":"I am driven to provide clear medication counseling to patients about side effects and use.","question_number":32,"created_at":"2026-02-06T21:05:11.378591+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":44,"question_text":"I am interested in industrial pharmacy and the large-scale manufacturing of capsules and tablets.","pathway_id":8}
+Result: [{"id":144,"pathway_id":8,"question_text":"I am interested in industrial pharmacy and the large-scale manufacturing of capsules and tablets.","question_number":44,"created_at":"2026-02-06T21:05:11.905083+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":56,"question_text":"I want to conduct pharmacoeconomic studies to determine the cost-benefit of new drugs.","pathway_id":8}
+Result: [{"id":145,"pathway_id":8,"question_text":"I want to conduct pharmacoeconomic studies to determine the cost-benefit of new drugs.","question_number":56,"created_at":"2026-02-06T21:05:12.351262+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":68,"question_text":"I am keen on monitoring drug-drug interactions and patient safety in a hospital pharmacy.","pathway_id":8}
+Result: [{"id":146,"pathway_id":8,"question_text":"I am keen on monitoring drug-drug interactions and patient safety in a hospital pharmacy.","question_number":68,"created_at":"2026-02-06T21:05:12.754436+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":80,"question_text":"I want to perform pharmaceutical compounding for patients with unique medication needs.","pathway_id":8}
+Result: [{"id":147,"pathway_id":8,"question_text":"I want to perform pharmaceutical compounding for patients with unique medication needs.","question_number":80,"created_at":"2026-02-06T21:05:13.151568+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":92,"question_text":"I am interested in pharmacovigilance and monitoring long-term drug safety in the public.","pathway_id":8}
+Result: [{"id":148,"pathway_id":8,"question_text":"I am interested in pharmacovigilance and monitoring long-term drug safety in the public.","question_number":92,"created_at":"2026-02-06T21:05:13.568976+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":104,"question_text":"I want to specialize in veterinary pharmacy to provide medications for various animal species.","pathway_id":8}
+Result: [{"id":149,"pathway_id":8,"question_text":"I want to specialize in veterinary pharmacy to provide medications for various animal species.","question_number":104,"created_at":"2026-02-06T21:05:13.998499+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":116,"question_text":"I am interested in managing a community pharmacy and leading public health initiatives.","pathway_id":8}
+Result: [{"id":150,"pathway_id":8,"question_text":"I am interested in managing a community pharmacy and leading public health initiatives.","question_number":116,"created_at":"2026-02-06T21:05:14.395264+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":128,"question_text":"I want to research pharmacogenomics to tailor medications to a person's genetic profile.","pathway_id":8}
+Result: [{"id":151,"pathway_id":8,"question_text":"I want to research pharmacogenomics to tailor medications to a person's genetic profile.","question_number":128,"created_at":"2026-02-06T21:05:14.800373+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":140,"question_text":"I am interested in developing innovative drug delivery systems like nanotech or patches.","pathway_id":8}
+Result: [{"id":152,"pathway_id":8,"question_text":"I am interested in developing innovative drug delivery systems like nanotech or patches.","question_number":140,"created_at":"2026-02-06T21:05:15.204923+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":152,"question_text":"I want to work in pharmaceutical regulatory affairs to ensure drugs meet national standards.","pathway_id":8}
+Result: [{"id":153,"pathway_id":8,"question_text":"I want to work in pharmaceutical regulatory affairs to ensure drugs meet national standards.","question_number":152,"created_at":"2026-02-06T21:05:15.607438+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":164,"question_text":"I am interested in pharmacy informatics to use technology for preventing medication errors.","pathway_id":8}
+Result: [{"id":154,"pathway_id":8,"question_text":"I am interested in pharmacy informatics to use technology for preventing medication errors.","question_number":164,"created_at":"2026-02-06T21:05:16.025506+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":176,"question_text":"I want to design and oversee clinical trials to test the safety of experimental medications.","pathway_id":8}
+Result: [{"id":155,"pathway_id":8,"question_text":"I want to design and oversee clinical trials to test the safety of experimental medications.","question_number":176,"created_at":"2026-02-06T21:05:16.450191+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":188,"question_text":"I am interested in geriatric pharmacy to manage polypharmacy in elderly patients.","pathway_id":8}
+Result: [{"id":156,"pathway_id":8,"question_text":"I am interested in geriatric pharmacy to manage polypharmacy in elderly patients.","question_number":188,"created_at":"2026-02-06T21:05:16.925945+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":200,"question_text":"I want to work in a poison control center to provide expert toxicity and overdose info.","pathway_id":8}
+Result: [{"id":157,"pathway_id":8,"question_text":"I want to work in a poison control center to provide expert toxicity and overdose info.","question_number":200,"created_at":"2026-02-06T21:05:17.384918+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":212,"question_text":"I am interested in nuclear pharmacy and the preparation of radioactive diagnostic agents.","pathway_id":8}
+Result: [{"id":158,"pathway_id":8,"question_text":"I am interested in nuclear pharmacy and the preparation of radioactive diagnostic agents.","question_number":212,"created_at":"2026-02-06T21:05:17.864025+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":224,"question_text":"I want to research pharmacognosy, the study of drugs derived from natural plant sources.","pathway_id":8}
+Result: [{"id":159,"pathway_id":8,"question_text":"I want to research pharmacognosy, the study of drugs derived from natural plant sources.","question_number":224,"created_at":"2026-02-06T21:05:18.27629+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":236,"question_text":"I am driven to educate physicians and nurses on proper medication reconciliation steps.","pathway_id":8}
+Result: [{"id":160,"pathway_id":8,"question_text":"I am driven to educate physicians and nurses on proper medication reconciliation steps.","question_number":236,"created_at":"2026-02-06T21:05:18.709869+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":9,"question_text":"I want to manipulate biological systems at the genetic level to develop GMOs for society.","pathway_id":9}
+Result: [{"id":161,"pathway_id":9,"question_text":"I want to manipulate biological systems at the genetic level to develop GMOs for society.","question_number":9,"created_at":"2026-02-06T21:05:19.280392+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":21,"question_text":"I am interested in studying diverse ecosystems and developing wildlife conservation plans.","pathway_id":9}
+Result: [{"id":162,"pathway_id":9,"question_text":"I am interested in studying diverse ecosystems and developing wildlife conservation plans.","question_number":21,"created_at":"2026-02-06T21:05:19.836188+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":33,"question_text":"I want to study human physiology and disease mechanisms to prepare for medical school.","pathway_id":9}
+Result: [{"id":163,"pathway_id":9,"question_text":"I want to study human physiology and disease mechanisms to prepare for medical school.","question_number":33,"created_at":"2026-02-06T21:05:20.275338+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":45,"question_text":"I am driven to conduct laboratory research on microbial genetics and biotechnology.","pathway_id":9}
+Result: [{"id":164,"pathway_id":9,"question_text":"I am driven to conduct laboratory research on microbial genetics and biotechnology.","question_number":45,"created_at":"2026-02-06T21:05:20.7951+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":57,"question_text":"I want to use DNA sequencing and genetic fingerprinting to solve criminal investigations.","pathway_id":9}
+Result: [{"id":165,"pathway_id":9,"question_text":"I want to use DNA sequencing and genetic fingerprinting to solve criminal investigations.","question_number":57,"created_at":"2026-02-06T21:05:21.255861+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":69,"question_text":"I am interested in marine biology and the impact of climate change on coral reefs.","pathway_id":9}
+Result: [{"id":166,"pathway_id":9,"question_text":"I am interested in marine biology and the impact of climate change on coral reefs.","question_number":69,"created_at":"2026-02-06T21:05:21.685031+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":81,"question_text":"I want to research molecular biology to understand cellular communication and organelles.","pathway_id":9}
+Result: [{"id":167,"pathway_id":9,"question_text":"I want to research molecular biology to understand cellular communication and organelles.","question_number":81,"created_at":"2026-02-06T21:05:22.102122+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":93,"question_text":"I am interested in epidemiology and studying how infectious diseases spread in populations.","pathway_id":9}
+Result: [{"id":168,"pathway_id":9,"question_text":"I am interested in epidemiology and studying how infectious diseases spread in populations.","question_number":93,"created_at":"2026-02-06T21:05:22.494837+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":105,"question_text":"I want to study plant biology to improve agricultural yields and food security.","pathway_id":9}
+Result: [{"id":169,"pathway_id":9,"question_text":"I want to study plant biology to improve agricultural yields and food security.","question_number":105,"created_at":"2026-02-06T21:05:22.893194+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":117,"question_text":"I am interested in ecological restoration and returning damaged lands to health.","pathway_id":9}
+Result: [{"id":170,"pathway_id":9,"question_text":"I am interested in ecological restoration and returning damaged lands to health.","question_number":117,"created_at":"2026-02-06T21:05:23.313689+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":129,"question_text":"I want to research the brain and neural mechanisms that lead to mental disorders.","pathway_id":9}
+Result: [{"id":171,"pathway_id":9,"question_text":"I want to research the brain and neural mechanisms that lead to mental disorders.","question_number":129,"created_at":"2026-02-06T21:05:23.726225+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":141,"question_text":"I am driven to develop sustainable biofuels using plant biology and genetic engineering.","pathway_id":9}
+Result: [{"id":172,"pathway_id":9,"question_text":"I am driven to develop sustainable biofuels using plant biology and genetic engineering.","question_number":141,"created_at":"2026-02-06T21:05:24.19261+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":153,"question_text":"I want to work in forensic labs analyzing biological evidence like blood and hair.","pathway_id":9}
+Result: [{"id":173,"pathway_id":9,"question_text":"I want to work in forensic labs analyzing biological evidence like blood and hair.","question_number":153,"created_at":"2026-02-06T21:05:24.585048+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":165,"question_text":"I am interested in learning detailed human anatomy through medical-grade dissection.","pathway_id":9}
+Result: [{"id":174,"pathway_id":9,"question_text":"I am interested in learning detailed human anatomy through medical-grade dissection.","question_number":165,"created_at":"2026-02-06T21:05:24.996639+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":177,"question_text":"I want to study paleontology and trace the evolutionary history of vertebrates through fossils.","pathway_id":9}
+Result: [{"id":175,"pathway_id":9,"question_text":"I want to study paleontology and trace the evolutionary history of vertebrates through fossils.","question_number":177,"created_at":"2026-02-06T21:05:25.386396+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":189,"question_text":"I am interested in environmental toxicology and how industrial chemicals affect life.","pathway_id":9}
+Result: [{"id":176,"pathway_id":9,"question_text":"I am interested in environmental toxicology and how industrial chemicals affect life.","question_number":189,"created_at":"2026-02-06T21:05:25.795739+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":201,"question_text":"I want to research animal behavior to improve conservation strategies for endangered species.","pathway_id":9}
+Result: [{"id":177,"pathway_id":9,"question_text":"I want to research animal behavior to improve conservation strategies for endangered species.","question_number":201,"created_at":"2026-02-06T21:05:26.198495+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":213,"question_text":"I am interested in using bioinformatics software to map and analyze the human genome.","pathway_id":9}
+Result: [{"id":178,"pathway_id":9,"question_text":"I am interested in using bioinformatics software to map and analyze the human genome.","question_number":213,"created_at":"2026-02-06T21:05:26.59107+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":225,"question_text":"I want to research developmental biology and how cells form complex living organisms.","pathway_id":9}
+Result: [{"id":179,"pathway_id":9,"question_text":"I want to research developmental biology and how cells form complex living organisms.","question_number":225,"created_at":"2026-02-06T21:05:27.020502+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":237,"question_text":"I am interested in researching the human gut microbiome and its impact on nutrition.","pathway_id":9}
+Result: [{"id":180,"pathway_id":9,"question_text":"I am interested in researching the human gut microbiome and its impact on nutrition.","question_number":237,"created_at":"2026-02-06T21:05:27.431308+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":10,"question_text":"I want to optimize chemical processes for the production of polymers and fuels.","pathway_id":10}
+Result: [{"id":181,"pathway_id":10,"question_text":"I want to optimize chemical processes for the production of polymers and fuels.","question_number":10,"created_at":"2026-02-06T21:05:27.834859+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":22,"question_text":"I am interested in using spectroscopy and chromatography for chemical quality control.","pathway_id":10}
+Result: [{"id":182,"pathway_id":10,"question_text":"I am interested in using spectroscopy and chromatography for chemical quality control.","question_number":22,"created_at":"2026-02-06T21:05:28.230352+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":34,"question_text":"I want to design and synthesize complex organic molecules for the drug industry.","pathway_id":10}
+Result: [{"id":183,"pathway_id":10,"question_text":"I want to design and synthesize complex organic molecules for the drug industry.","question_number":34,"created_at":"2026-02-06T21:05:28.696586+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":46,"question_text":"I am interested in environmental chemistry and monitoring water and soil pollution.","pathway_id":10}
+Result: [{"id":184,"pathway_id":10,"question_text":"I am interested in environmental chemistry and monitoring water and soil pollution.","question_number":46,"created_at":"2026-02-06T21:05:29.1572+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":58,"question_text":"I want to use chemical thermodynamics to improve the efficiency of industrial yields.","pathway_id":10}
+Result: [{"id":185,"pathway_id":10,"question_text":"I want to use chemical thermodynamics to improve the efficiency of industrial yields.","question_number":58,"created_at":"2026-02-06T21:05:29.564395+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":70,"question_text":"I am interested in chemical testing for food safety and nutritional certification.","pathway_id":10}
+Result: [{"id":186,"pathway_id":10,"question_text":"I am interested in chemical testing for food safety and nutritional certification.","question_number":70,"created_at":"2026-02-06T21:05:30.036203+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":82,"question_text":"I want to develop new chemical catalysts for cleaner energy-efficient manufacturing.","pathway_id":10}
+Result: [{"id":187,"pathway_id":10,"question_text":"I want to develop new chemical catalysts for cleaner energy-efficient manufacturing.","question_number":82,"created_at":"2026-02-06T21:05:30.529606+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":94,"question_text":"I am fascinated by polymer science and developing new durable plastics and fibers.","pathway_id":10}
+Result: [{"id":188,"pathway_id":10,"question_text":"I am fascinated by polymer science and developing new durable plastics and fibers.","question_number":94,"created_at":"2026-02-06T21:05:30.938456+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":106,"question_text":"I want to research inorganic chemistry to create next-generation battery materials.","pathway_id":10}
+Result: [{"id":189,"pathway_id":10,"question_text":"I want to research inorganic chemistry to create next-generation battery materials.","question_number":106,"created_at":"2026-02-06T21:05:31.399716+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":118,"question_text":"I am interested in forensic chemistry and identifying trace evidence from crime scenes.","pathway_id":10}
+Result: [{"id":190,"pathway_id":10,"question_text":"I am interested in forensic chemistry and identifying trace evidence from crime scenes.","question_number":118,"created_at":"2026-02-06T21:05:31.814742+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":130,"question_text":"I want to work in fragrance and flavor chemistry to formulate new consumer products.","pathway_id":10}
+Result: [{"id":191,"pathway_id":10,"question_text":"I want to work in fragrance and flavor chemistry to formulate new consumer products.","question_number":130,"created_at":"2026-02-06T21:05:32.233773+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":142,"question_text":"I am interested in astrochemistry and analyzing the molecular components of deep space.","pathway_id":10}
+Result: [{"id":192,"pathway_id":10,"question_text":"I am interested in astrochemistry and analyzing the molecular components of deep space.","question_number":142,"created_at":"2026-02-06T21:05:32.650695+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":154,"question_text":"I want to develop green chemistry methods that reduce hazardous waste in manufacturing.","pathway_id":10}
+Result: [{"id":193,"pathway_id":10,"question_text":"I want to develop green chemistry methods that reduce hazardous waste in manufacturing.","question_number":154,"created_at":"2026-02-06T21:05:33.06183+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":166,"question_text":"I am interested in managing industrial chemical safety and hazardous waste compliance.","pathway_id":10}
+Result: [{"id":194,"pathway_id":10,"question_text":"I am interested in managing industrial chemical safety and hazardous waste compliance.","question_number":166,"created_at":"2026-02-06T21:05:33.451882+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":178,"question_text":"I want to conduct quality control testing on the purity of pharmaceutical raw materials.","pathway_id":10}
+Result: [{"id":195,"pathway_id":10,"question_text":"I want to conduct quality control testing on the purity of pharmaceutical raw materials.","question_number":178,"created_at":"2026-02-06T21:05:33.863525+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":190,"question_text":"I am interested in atmospheric chemistry and studying the effects of gases on ozone.","pathway_id":10}
+Result: [{"id":196,"pathway_id":10,"question_text":"I am interested in atmospheric chemistry and studying the effects of gases on ozone.","question_number":190,"created_at":"2026-02-06T21:05:34.271571+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":202,"question_text":"I want to develop new surface coatings and industrial paints with heat-resistant properties.","pathway_id":10}
+Result: [{"id":197,"pathway_id":10,"question_text":"I want to develop new surface coatings and industrial paints with heat-resistant properties.","question_number":202,"created_at":"2026-02-06T21:05:34.668653+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":214,"question_text":"I am driven to improve the energy efficiency of chemical reactors in heavy industry.","pathway_id":10}
+Result: [{"id":198,"pathway_id":10,"question_text":"I am driven to improve the energy efficiency of chemical reactors in heavy industry.","question_number":214,"created_at":"2026-02-06T21:05:35.07917+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":226,"question_text":"I want to research electrochemistry for the development of clean hydrogen fuel cells.","pathway_id":10}
+Result: [{"id":199,"pathway_id":10,"question_text":"I want to research electrochemistry for the development of clean hydrogen fuel cells.","question_number":226,"created_at":"2026-02-06T21:05:35.473236+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":238,"question_text":"I am interested in formulating cosmetics and testing their safety and stability for skin.","pathway_id":10}
+Result: [{"id":200,"pathway_id":10,"question_text":"I am interested in formulating cosmetics and testing their safety and stability for skin.","question_number":238,"created_at":"2026-02-06T21:05:35.892943+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":11,"question_text":"I want to use statistical learning to find patterns in massive datasets.","pathway_id":11}
+Result: [{"id":201,"pathway_id":11,"question_text":"I want to use statistical learning to find patterns in massive datasets.","question_number":11,"created_at":"2026-02-06T21:05:36.319643+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":23,"question_text":"I am interested in applying probability to calculate financial risks for insurance.","pathway_id":11}
+Result: [{"id":202,"pathway_id":11,"question_text":"I am interested in applying probability to calculate financial risks for insurance.","question_number":23,"created_at":"2026-02-06T21:05:36.743661+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":35,"question_text":"I am passionate about math pedagogy and finding new ways to teach abstract concepts.","pathway_id":11}
+Result: [{"id":203,"pathway_id":11,"question_text":"I am passionate about math pedagogy and finding new ways to teach abstract concepts.","question_number":35,"created_at":"2026-02-06T21:05:37.158986+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":47,"question_text":"I want to develop quantitative models for analyzing stock markets and financial trends.","pathway_id":11}
+Result: [{"id":204,"pathway_id":11,"question_text":"I want to develop quantitative models for analyzing stock markets and financial trends.","question_number":47,"created_at":"2026-02-06T21:05:37.574369+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":59,"question_text":"I am interested in pure mathematics research, focusing on number theory or topology.","pathway_id":11}
+Result: [{"id":205,"pathway_id":11,"question_text":"I am interested in pure mathematics research, focusing on number theory or topology.","question_number":59,"created_at":"2026-02-06T21:05:37.978756+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":71,"question_text":"I want to specialize in Bayesian statistics to design more accurate scientific trials.","pathway_id":11}
+Result: [{"id":206,"pathway_id":11,"question_text":"I want to specialize in Bayesian statistics to design more accurate scientific trials.","question_number":71,"created_at":"2026-02-06T21:05:38.394115+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":83,"question_text":"I am driven to become a certified actuary to manage pension and insurance liabilities.","pathway_id":11}
+Result: [{"id":207,"pathway_id":11,"question_text":"I am driven to become a certified actuary to manage pension and insurance liabilities.","question_number":83,"created_at":"2026-02-06T21:05:38.870151+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":95,"question_text":"I want to use operations research to solve logistics and resource allocation problems.","pathway_id":11}
+Result: [{"id":208,"pathway_id":11,"question_text":"I want to use operations research to solve logistics and resource allocation problems.","question_number":95,"created_at":"2026-02-06T21:05:39.387774+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":107,"question_text":"I am interested in using differential equations to model physical and biological systems.","pathway_id":11}
+Result: [{"id":209,"pathway_id":11,"question_text":"I am interested in using differential equations to model physical and biological systems.","question_number":107,"created_at":"2026-02-06T21:05:39.804343+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":119,"question_text":"I want to develop and test algorithms for automated high-frequency trading.","pathway_id":11}
+Result: [{"id":210,"pathway_id":11,"question_text":"I want to develop and test algorithms for automated high-frequency trading.","question_number":119,"created_at":"2026-02-06T21:05:40.370421+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":131,"question_text":"I am fascinated by graph theory and its use in analyzing social and internet networks.","pathway_id":11}
+Result: [{"id":211,"pathway_id":11,"question_text":"I am fascinated by graph theory and its use in analyzing social and internet networks.","question_number":131,"created_at":"2026-02-06T21:05:40.825156+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":143,"question_text":"I want to work in biostatistics to design and analyze outcomes of medical trials.","pathway_id":11}
+Result: [{"id":212,"pathway_id":11,"question_text":"I want to work in biostatistics to design and analyze outcomes of medical trials.","question_number":143,"created_at":"2026-02-06T21:05:41.32801+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":155,"question_text":"I am interested in using computer simulations to help students visualize math concepts.","pathway_id":11}
+Result: [{"id":213,"pathway_id":11,"question_text":"I am interested in using computer simulations to help students visualize math concepts.","question_number":155,"created_at":"2026-02-06T21:05:41.742271+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":167,"question_text":"I want to apply game theory to analyze competition and decision-making in economics.","pathway_id":11}
+Result: [{"id":214,"pathway_id":11,"question_text":"I want to apply game theory to analyze competition and decision-making in economics.","question_number":167,"created_at":"2026-02-06T21:05:42.149038+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":179,"question_text":"I am interested in exploring the formal logic and set theory that underpin mathematics.","pathway_id":11}
+Result: [{"id":215,"pathway_id":11,"question_text":"I am interested in exploring the formal logic and set theory that underpin mathematics.","question_number":179,"created_at":"2026-02-06T21:05:42.541234+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":191,"question_text":"I want to use time-series analysis for forecasting climate changes or market trends.","pathway_id":11}
+Result: [{"id":216,"pathway_id":11,"question_text":"I want to use time-series analysis for forecasting climate changes or market trends.","question_number":191,"created_at":"2026-02-06T21:05:42.961355+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":203,"question_text":"I am driven to research abstract algebra and its applications in digital coding theory.","pathway_id":11}
+Result: [{"id":217,"pathway_id":11,"question_text":"I am driven to research abstract algebra and its applications in digital coding theory.","question_number":203,"created_at":"2026-02-06T21:05:43.548243+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":215,"question_text":"I want to apply linear algebra and numerical methods to solve large-scale engineering problems.","pathway_id":11}
+Result: [{"id":218,"pathway_id":11,"question_text":"I want to apply linear algebra and numerical methods to solve large-scale engineering problems.","question_number":215,"created_at":"2026-02-06T21:05:43.969403+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":227,"question_text":"I am interested in geometry and topology for designing smooth curves in CAD tools.","pathway_id":11}
+Result: [{"id":219,"pathway_id":11,"question_text":"I am interested in geometry and topology for designing smooth curves in CAD tools.","question_number":227,"created_at":"2026-02-06T21:05:44.370533+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":239,"question_text":"I am passionate about coaching students for high-level math and logic competitions.","pathway_id":11}
+Result: [{"id":220,"pathway_id":11,"question_text":"I am passionate about coaching students for high-level math and logic competitions.","question_number":239,"created_at":"2026-02-06T21:05:44.802373+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":12,"question_text":"I want to make complex scientific concepts accessible to high school students.","pathway_id":12}
+Result: [{"id":221,"pathway_id":12,"question_text":"I want to make complex scientific concepts accessible to high school students.","question_number":12,"created_at":"2026-02-06T21:05:45.20899+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":24,"question_text":"I am interested in designing interdisciplinary STEM curricula that integrate technology.","pathway_id":12}
+Result: [{"id":222,"pathway_id":12,"question_text":"I am interested in designing interdisciplinary STEM curricula that integrate technology.","question_number":24,"created_at":"2026-02-06T21:05:45.616254+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":36,"question_text":"I want to mentor science teachers and lead academic science departments in schools.","pathway_id":12}
+Result: [{"id":223,"pathway_id":12,"question_text":"I want to mentor science teachers and lead academic science departments in schools.","question_number":36,"created_at":"2026-02-06T21:05:46.029077+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":48,"question_text":"I am interested in using digital tools and interactive simulations for science learning.","pathway_id":12}
+Result: [{"id":224,"pathway_id":12,"question_text":"I am interested in using digital tools and interactive simulations for science learning.","question_number":48,"created_at":"2026-02-06T21:05:46.440687+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":60,"question_text":"I want to conduct educational research to measure the effectiveness of science teaching.","pathway_id":12}
+Result: [{"id":225,"pathway_id":12,"question_text":"I want to conduct educational research to measure the effectiveness of science teaching.","question_number":60,"created_at":"2026-02-06T21:05:46.857566+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":72,"question_text":"I am driven to develop inquiry-based science labs for hands-on student discovery.","pathway_id":12}
+Result: [{"id":226,"pathway_id":12,"question_text":"I am driven to develop inquiry-based science labs for hands-on student discovery.","question_number":72,"created_at":"2026-02-06T21:05:47.248713+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":84,"question_text":"I want to evaluate textbooks and lab equipment to ensure they meet modern standards.","pathway_id":12}
+Result: [{"id":227,"pathway_id":12,"question_text":"I want to evaluate textbooks and lab equipment to ensure they meet modern standards.","question_number":84,"created_at":"2026-02-06T21:05:47.646146+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":96,"question_text":"I am interested in reducing educational disparities in STEM for underserved students.","pathway_id":12}
+Result: [{"id":228,"pathway_id":12,"question_text":"I am interested in reducing educational disparities in STEM for underserved students.","question_number":96,"created_at":"2026-02-06T21:05:48.058991+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":108,"question_text":"I want to design science outreach programs for science centers and museums.","pathway_id":12}
+Result: [{"id":229,"pathway_id":12,"question_text":"I want to design science outreach programs for science centers and museums.","question_number":108,"created_at":"2026-02-06T21:05:48.482037+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":120,"question_text":"I am driven to facilitate professional development workshops for STEM educators.","pathway_id":12}
+Result: [{"id":230,"pathway_id":12,"question_text":"I am driven to facilitate professional development workshops for STEM educators.","question_number":120,"created_at":"2026-02-06T21:05:49.003087+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":132,"question_text":"I am interested in designing school projects that connect biology, chemistry, and engineering.","pathway_id":12}
+Result: [{"id":231,"pathway_id":12,"question_text":"I am interested in designing school projects that connect biology, chemistry, and engineering.","question_number":132,"created_at":"2026-02-06T21:05:49.516175+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":144,"question_text":"I want to serve as a school administrator to integrate STEM principles across all grades.","pathway_id":12}
+Result: [{"id":232,"pathway_id":12,"question_text":"I want to serve as a school administrator to integrate STEM principles across all grades.","question_number":144,"created_at":"2026-02-06T21:05:50.02214+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":156,"question_text":"I want to develop assessments that measure conceptual understanding, not just memory.","pathway_id":12}
+Result: [{"id":233,"pathway_id":12,"question_text":"I want to develop assessments that measure conceptual understanding, not just memory.","question_number":156,"created_at":"2026-02-06T21:05:50.461066+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":168,"question_text":"I am interested in coaching students for science fairs and robotics competitions.","pathway_id":12}
+Result: [{"id":234,"pathway_id":12,"question_text":"I am interested in coaching students for science fairs and robotics competitions.","question_number":168,"created_at":"2026-02-06T21:05:50.96505+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":180,"question_text":"I want to use educational neuroscience to improve student memory and retention in science.","pathway_id":12}
+Result: [{"id":235,"pathway_id":12,"question_text":"I want to use educational neuroscience to improve student memory and retention in science.","question_number":180,"created_at":"2026-02-06T21:05:51.452373+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":192,"question_text":"I want to partner with local industries to bring real-world science to the classroom.","pathway_id":12}
+Result: [{"id":236,"pathway_id":12,"question_text":"I want to partner with local industries to bring real-world science to the classroom.","question_number":192,"created_at":"2026-02-06T21:05:51.868866+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":204,"question_text":"I am driven to lead the creation of culturally relevant science curricula for diverse schools.","pathway_id":12}
+Result: [{"id":237,"pathway_id":12,"question_text":"I am driven to lead the creation of culturally relevant science curricula for diverse schools.","question_number":204,"created_at":"2026-02-06T21:05:52.285791+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":216,"question_text":"I am interested in researching the use of VR and AR tools for immersive science education.","pathway_id":12}
+Result: [{"id":238,"pathway_id":12,"question_text":"I am interested in researching the use of VR and AR tools for immersive science education.","question_number":216,"created_at":"2026-02-06T21:05:52.69502+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":228,"question_text":"I want to lead advocacy efforts to increase state funding for school science labs.","pathway_id":12}
+Result: [{"id":239,"pathway_id":12,"question_text":"I want to lead advocacy efforts to increase state funding for school science labs.","question_number":228,"created_at":"2026-02-06T21:05:53.121729+00:00"}]
+
+---
+Table: stem_questions
+Data: {"question_number":240,"question_text":"I am passionate about developing students' ability to communicate complex science clearly.","pathway_id":12}
+Result: [{"id":240,"pathway_id":12,"question_text":"I am passionate about developing students' ability to communicate complex science clearly.","question_number":240,"created_at":"2026-02-06T21:05:53.503651+00:00"}]
+
+---

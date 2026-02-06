@@ -51,6 +51,11 @@ if (!$student_data) {
                 </div>
                 <h5><?php echo $student_data['first_name'] . ' ' . $student_data['last_name']; ?></h5>
                 <p class="text-muted"><?php echo $student_data['email']; ?></p>
+                <div class="mb-3">
+                    <a href="profile.php" class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-edit me-1"></i> Edit Profile
+                    </a>
+                </div>
                 <hr>
                 <div class="text-start">
                     <p><strong>LRN:</strong> <?php echo $student_data['lrn']; ?></p>
@@ -61,55 +66,33 @@ if (!$student_data) {
         </div>
     </div>
 
-    <!-- Exam Status -->
+    <!-- Online Examination -->
     <div class="col-md-8 mb-4">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Exam Information</h6>
+        <div class="card shadow mb-4 border-left-primary">
+            <div class="card-header py-3 bg-white">
+                <h6 class="m-0 font-weight-bold text-primary">Online Examination</h6>
             </div>
             <div class="card-body">
-                <div class="alert alert-info">
-                    <i class="fas fa-info-circle me-2"></i> Your examination schedule is currently being processed. Please check back later.
+                <div class="text-center py-4">
+                    <div class="mb-4">
+                        <i class="fas fa-laptop-code fa-4x text-primary opacity-25"></i>
+                    </div>
+                    <h4>Cognitive Aptitude Test</h4>
+                    <p class="text-muted mb-4">You can now proceed to take your online entrance examination. Please ensure you have a stable internet connection before starting.</p>
+                    <a href="take_exam.php" class="btn btn-primary btn-lg px-5 shadow-sm">
+                        <i class="fas fa-play-circle me-2"></i> Start Exam Now
+                    </a>
                 </div>
-                <div class="row text-center mt-4">
-                    <div class="col-md-4">
-                        <div class="p-3 border rounded bg-light">
-                            <h6 class="text-muted">Status</h6>
-                            <p class="h5"><?php echo $student_data['exam_status']; ?></p>
+                <div class="mt-4 pt-3 border-top">
+                    <div class="row text-center">
+                        <div class="col-md-6 border-end">
+                            <h6 class="text-muted small text-uppercase">Duration</h6>
+                            <p class="fw-bold mb-0">60 Minutes</p>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="p-3 border rounded bg-light">
-                            <h6 class="text-muted">Exam Date</h6>
-                            <p class="h5">TBA</p>
+                        <div class="col-md-6">
+                            <h6 class="text-muted small text-uppercase">Status</h6>
+                            <p class="fw-bold mb-0 text-success">Available</p>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="p-3 border rounded bg-light">
-                            <h6 class="text-muted">Venue</h6>
-                            <p class="h5">TBA</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Quick Actions -->
-        <div class="card shadow">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Quick Actions</h6>
-            </div>
-            <div class="card-body">
-                <div class="row g-3">
-                    <div class="col-sm-6">
-                        <button class="btn btn-outline-primary w-100 disabled">
-                            <i class="fas fa-file-pdf me-2"></i> Download Permit (TBA)
-                        </button>
-                    </div>
-                    <div class="col-sm-6">
-                        <button class="btn btn-outline-secondary w-100">
-                            <i class="fas fa-book me-2"></i> Reviewer Materials
-                        </button>
                     </div>
                 </div>
             </div>

@@ -5,20 +5,20 @@ require_once __DIR__ . '/../config/connection.php';
 class StudentModel {
     private $table = 'profiles';
     
-    public function getAllStudents($useServiceRole = false) {
+    public function getAllStudents($useServiceRole = true) {
         global $php_fetch;
         return $php_fetch($this->table, '*', ['role' => 'student'], null, $useServiceRole);
     }
 
-    public function getStudentById($id, $useServiceRole = false) {
+    public function getStudentById($id, $useServiceRole = true) {
         global $php_fetch;
         $result = $php_fetch($this->table, '*', ['id' => $id], null, $useServiceRole);
         return !empty($result) && !isset($result['error']) ? $result[0] : null;
     }
 
-    public function getStudentByEmail($email, $useServiceRole = false) {
+    public function getStudentByEmail($email, $useServiceRole = true) {
         global $php_fetch;
-        $result = $php_fetch($this->table, '*', ['email' => $email], null, $useServiceRole);
+        $result = $php_fetch($this->table, '*', ['email' => "ilike.$email"], null, $useServiceRole);
         return !empty($result) && !isset($result['error']) ? $result[0] : null;
     }
 
