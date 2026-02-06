@@ -4,3 +4,697 @@
 2026-02-02 20:47:34 - cURL Error: Could not resolve host: quxjisgndltwjajsqrqi.supabase.co
 2026-02-02 20:47:39 - Supabase Response: HTTP Code=0, Error=Could not resolve host: quxjisgndltwjajsqrqi.supabase.co, Response=
 2026-02-02 20:47:39 - cURL Error: Could not resolve host: quxjisgndltwjajsqrqi.supabase.co
+2026-02-05 12:36:54 - Supabase Response: HTTP Code=0, Error=Could not resolve host: quxjisgndltwjajsqrqi.supabase.co, Response=
+2026-02-05 12:36:54 - cURL Error: Could not resolve host: quxjisgndltwjajsqrqi.supabase.co
+2026-02-05 12:37:16 - Supabase Response: HTTP Code=0, Error=Could not resolve host: quxjisgndltwjajsqrqi.supabase.co, Response=
+2026-02-05 12:37:16 - cURL Error: Could not resolve host: quxjisgndltwjajsqrqi.supabase.co
+2026-02-05 12:39:29 - Supabase Response: HTTP Code=0, Error=Could not resolve host: quxjisgndltwjajsqrqi.supabase.co, Response=
+2026-02-05 12:39:29 - cURL Error: Could not resolve host: quxjisgndltwjajsqrqi.supabase.co
+2026-02-05 12:40:29 - Supabase Response: HTTP Code=0, Error=Could not resolve host: quxjisgndltwjajsqrqi.supabase.co, Response=
+2026-02-05 12:40:29 - cURL Error: Could not resolve host: quxjisgndltwjajsqrqi.supabase.co
+2026-02-05 13:00:57 - Supabase Response: HTTP Code=0, Error=Could not resolve host: quxjisgndltwjajsqrqi.supabase.co, Response=
+2026-02-05 13:00:57 - cURL Error: Could not resolve host: quxjisgndltwjajsqrqi.supabase.co
+2026-02-05 13:01:26 - Supabase Response: HTTP Code=0, Error=Could not resolve host: quxjisgndltwjajsqrqi.supabase.co, Response=
+2026-02-05 13:01:26 - cURL Error: Could not resolve host: quxjisgndltwjajsqrqi.supabase.co
+2026-02-05 13:01:26 - Supabase Response: HTTP Code=0, Error=Could not resolve host: quxjisgndltwjajsqrqi.supabase.co, Response=
+2026-02-05 13:01:26 - cURL Error: Could not resolve host: quxjisgndltwjajsqrqi.supabase.co
+2026-02-05 13:03:58 - Supabase Response: HTTP Code=0, Error=Could not resolve host: quxjisgndltwjajsqrqi.supabase.co, Response=
+2026-02-05 13:03:58 - cURL Error: Could not resolve host: quxjisgndltwjajsqrqi.supabase.co
+2026-02-05 13:04:04 - Supabase Response: HTTP Code=0, Error=Could not resolve host: quxjisgndltwjajsqrqi.supabase.co, Response=
+2026-02-05 13:04:04 - cURL Error: Could not resolve host: quxjisgndltwjajsqrqi.supabase.co
+2026-02-05 13:05:02 - Supabase Response: HTTP Code=0, Error=Could not resolve host: quxjisgndltwjajsqrqi.supabase.co, Response=
+2026-02-05 13:05:02 - cURL Error: Could not resolve host: quxjisgndltwjajsqrqi.supabase.co
+2026-02-05 13:05:36 - Supabase Response: HTTP Code=0, Error=Could not resolve host: quxjisgndltwjajsqrqi.supabase.co, Response=
+2026-02-05 13:05:36 - cURL Error: Could not resolve host: quxjisgndltwjajsqrqi.supabase.co
+2026-02-05 13:05:39 - Supabase Response: HTTP Code=0, Error=Could not resolve host: quxjisgndltwjajsqrqi.supabase.co, Response=
+2026-02-05 13:05:39 - cURL Error: Could not resolve host: quxjisgndltwjajsqrqi.supabase.co
+2026-02-05 13:07:16 - Supabase Response: HTTP Code=404, Error=, Response={"code":"PGRST205","details":null,"hint":null,"message":"Could not find the table 'public.users' in the schema cache"}
+2026-02-05 13:07:16 - HTTP Error: 404, Response: {"code":"PGRST205","details":null,"hint":null,"message":"Could not find the table 'public.users' in the schema cache"}, Method: GET, Endpoint: users
+2026-02-05 13:07:17 - Supabase Response: HTTP Code=500, Error=, Response={"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}
+2026-02-05 13:07:17 - HTTP Error: 500, Response: {"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}, Method: GET, Endpoint: profiles
+2026-02-05 13:09:52 - Supabase Response: HTTP Code=500, Error=, Response={"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}
+2026-02-05 13:09:52 - HTTP Error: 500, Response: {"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}, Method: GET, Endpoint: profiles
+2026-02-05 13:09:53 - Supabase Response: HTTP Code=400, Error=, Response={"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'onboarding_completed' column of 'profiles' in the schema cache"}
+2026-02-05 13:09:53 - HTTP Error: 400, Response: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'onboarding_completed' column of 'profiles' in the schema cache"}, Method: POST, Endpoint: profiles
+2026-02-05 13:09:53 - Supabase Response: HTTP Code=500, Error=, Response={"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}
+2026-02-05 13:09:53 - HTTP Error: 500, Response: {"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}, Method: GET, Endpoint: profiles
+2026-02-05 13:09:54 - Supabase Response: HTTP Code=400, Error=, Response={"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'onboarding_completed' column of 'profiles' in the schema cache"}
+2026-02-05 13:09:54 - HTTP Error: 400, Response: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'onboarding_completed' column of 'profiles' in the schema cache"}, Method: POST, Endpoint: profiles
+2026-02-05 13:10:16 - Supabase Response: HTTP Code=400, Error=, Response={"code":"23502","details":"Failing row contains (null, null, null, null, test_columns@example.com, student, null, null, null, {}, 2026-02-05 12:10:19.164651+00, 2026-02-05 12:10:19.164651+00).","hint":null,"message":"null value in column \"id\" of relation \"profiles\" violates not-null constraint"}
+2026-02-05 13:10:16 - HTTP Error: 400, Response: {"code":"23502","details":"Failing row contains (null, null, null, null, test_columns@example.com, student, null, null, null, {}, 2026-02-05 12:10:19.164651+00, 2026-02-05 12:10:19.164651+00).","hint":null,"message":"null value in column \"id\" of relation \"profiles\" violates not-null constraint"}, Method: POST, Endpoint: profiles
+2026-02-05 13:10:32 - Supabase Response: HTTP Code=400, Error=, Response={"code":"42703","details":null,"hint":null,"message":"column profiles.non_existent_column does not exist"}
+2026-02-05 13:10:32 - HTTP Error: 400, Response: {"code":"42703","details":null,"hint":null,"message":"column profiles.non_existent_column does not exist"}, Method: GET, Endpoint: profiles
+2026-02-05 13:11:01 - Supabase Response: HTTP Code=409, Error=, Response={"code":"23503","details":"Key (id)=(84281daa-7a2e-4492-8497-d137024e725b) is not present in table \"users\".","hint":null,"message":"insert or update on table \"profiles\" violates foreign key constraint \"profiles_id_fkey\""}
+2026-02-05 13:11:01 - HTTP Error: 409, Response: {"code":"23503","details":"Key (id)=(84281daa-7a2e-4492-8497-d137024e725b) is not present in table \"users\".","hint":null,"message":"insert or update on table \"profiles\" violates foreign key constraint \"profiles_id_fkey\""}, Method: POST, Endpoint: profiles
+2026-02-05 13:12:12 - Supabase Response: HTTP Code=500, Error=, Response={"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}
+2026-02-05 13:12:12 - HTTP Error: 500, Response: {"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}, Method: GET, Endpoint: profiles
+2026-02-05 13:12:22 - Supabase Response: HTTP Code=500, Error=, Response={"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}
+2026-02-05 13:12:22 - HTTP Error: 500, Response: {"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}, Method: GET, Endpoint: profiles
+2026-02-05 13:12:23 - Supabase Response: HTTP Code=400, Error=, Response={"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'onboarding_completed' column of 'profiles' in the schema cache"}
+2026-02-05 13:12:23 - HTTP Error: 400, Response: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'onboarding_completed' column of 'profiles' in the schema cache"}, Method: POST, Endpoint: profiles
+2026-02-05 13:12:29 - Supabase Response: HTTP Code=500, Error=, Response={"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}
+2026-02-05 13:12:29 - HTTP Error: 500, Response: {"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}, Method: GET, Endpoint: profiles
+2026-02-05 13:12:31 - Supabase Response: HTTP Code=500, Error=, Response={"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}
+2026-02-05 13:12:31 - HTTP Error: 500, Response: {"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}, Method: GET, Endpoint: profiles
+2026-02-05 13:12:40 - Supabase Response: HTTP Code=500, Error=, Response={"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}
+2026-02-05 13:12:40 - HTTP Error: 500, Response: {"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}, Method: GET, Endpoint: profiles
+2026-02-05 13:12:40 - Supabase Response: HTTP Code=400, Error=, Response={"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'onboarding_completed' column of 'profiles' in the schema cache"}
+2026-02-05 13:12:40 - HTTP Error: 400, Response: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'onboarding_completed' column of 'profiles' in the schema cache"}, Method: POST, Endpoint: profiles
+2026-02-05 13:14:48 - Supabase Response: HTTP Code=404, Error=, Response={"code":"PGRST205","details":null,"hint":null,"message":"Could not find the table 'public.user' in the schema cache"}
+2026-02-05 13:14:48 - HTTP Error: 404, Response: {"code":"PGRST205","details":null,"hint":null,"message":"Could not find the table 'public.user' in the schema cache"}, Method: GET, Endpoint: user
+2026-02-05 13:14:48 - Supabase Response: HTTP Code=404, Error=, Response={"code":"PGRST205","details":null,"hint":null,"message":"Could not find the table 'public.accounts' in the schema cache"}
+2026-02-05 13:14:48 - HTTP Error: 404, Response: {"code":"PGRST205","details":null,"hint":null,"message":"Could not find the table 'public.accounts' in the schema cache"}, Method: GET, Endpoint: accounts
+2026-02-05 13:14:49 - Supabase Response: HTTP Code=404, Error=, Response={"code":"PGRST205","details":null,"hint":null,"message":"Could not find the table 'public.user_accounts' in the schema cache"}
+2026-02-05 13:14:49 - HTTP Error: 404, Response: {"code":"PGRST205","details":null,"hint":null,"message":"Could not find the table 'public.user_accounts' in the schema cache"}, Method: GET, Endpoint: user_accounts
+2026-02-05 13:14:49 - Supabase Response: HTTP Code=404, Error=, Response={"code":"PGRST205","details":null,"hint":null,"message":"Could not find the table 'public.students' in the schema cache"}
+2026-02-05 13:14:49 - HTTP Error: 404, Response: {"code":"PGRST205","details":null,"hint":null,"message":"Could not find the table 'public.students' in the schema cache"}, Method: GET, Endpoint: students
+2026-02-05 13:14:49 - Supabase Response: HTTP Code=404, Error=, Response={"code":"PGRST205","details":null,"hint":null,"message":"Could not find the table 'public.auth_users' in the schema cache"}
+2026-02-05 13:14:49 - HTTP Error: 404, Response: {"code":"PGRST205","details":null,"hint":null,"message":"Could not find the table 'public.auth_users' in the schema cache"}, Method: GET, Endpoint: auth_users
+2026-02-05 13:15:59 - Supabase Response: HTTP Code=400, Error=, Response={"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'password' column of 'profiles' in the schema cache"}
+2026-02-05 13:15:59 - HTTP Error: 400, Response: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'password' column of 'profiles' in the schema cache"}, Method: POST, Endpoint: profiles
+2026-02-05 13:16:00 - Supabase Response: HTTP Code=400, Error=, Response={"code":"23502","details":"Failing row contains (null, null, null, null, null, student, test, null, null, {}, 2026-02-05 12:16:02.772551+00, 2026-02-05 12:16:02.772551+00).","hint":null,"message":"null value in column \"id\" of relation \"profiles\" violates not-null constraint"}
+2026-02-05 13:16:00 - HTTP Error: 400, Response: {"code":"23502","details":"Failing row contains (null, null, null, null, null, student, test, null, null, {}, 2026-02-05 12:16:02.772551+00, 2026-02-05 12:16:02.772551+00).","hint":null,"message":"null value in column \"id\" of relation \"profiles\" violates not-null constraint"}, Method: POST, Endpoint: profiles
+2026-02-05 13:16:00 - Supabase Response: HTTP Code=400, Error=, Response={"code":"23502","details":"Failing row contains (null, null, null, null, null, student, null, test, null, {}, 2026-02-05 12:16:03.18806+00, 2026-02-05 12:16:03.18806+00).","hint":null,"message":"null value in column \"id\" of relation \"profiles\" violates not-null constraint"}
+2026-02-05 13:16:00 - HTTP Error: 400, Response: {"code":"23502","details":"Failing row contains (null, null, null, null, null, student, null, test, null, {}, 2026-02-05 12:16:03.18806+00, 2026-02-05 12:16:03.18806+00).","hint":null,"message":"null value in column \"id\" of relation \"profiles\" violates not-null constraint"}, Method: POST, Endpoint: profiles
+2026-02-05 13:16:00 - Supabase Response: HTTP Code=400, Error=, Response={"code":"23502","details":"Failing row contains (null, null, null, null, null, student, null, null, test, {}, 2026-02-05 12:16:03.615268+00, 2026-02-05 12:16:03.615268+00).","hint":null,"message":"null value in column \"id\" of relation \"profiles\" violates not-null constraint"}
+2026-02-05 13:16:00 - HTTP Error: 400, Response: {"code":"23502","details":"Failing row contains (null, null, null, null, null, student, null, null, test, {}, 2026-02-05 12:16:03.615268+00, 2026-02-05 12:16:03.615268+00).","hint":null,"message":"null value in column \"id\" of relation \"profiles\" violates not-null constraint"}, Method: POST, Endpoint: profiles
+2026-02-05 13:16:01 - Supabase Response: HTTP Code=400, Error=, Response={"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'onboarding_completed' column of 'profiles' in the schema cache"}
+2026-02-05 13:16:01 - HTTP Error: 400, Response: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'onboarding_completed' column of 'profiles' in the schema cache"}, Method: POST, Endpoint: profiles
+2026-02-05 13:42:00 - Supabase Response: HTTP Code=500, Error=, Response={"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}
+2026-02-05 13:42:00 - HTTP Error: 500, Response: {"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}, Method: GET, Endpoint: profiles
+2026-02-05 13:42:01 - Supabase Response: HTTP Code=201, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"alviso","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$rSyMbvY3yWEDhpprtDK8s.yo9m8Fs77e0jfRa2ZJt05V6uww6Xw3q"},"created_at":"2026-02-05T13:42:01+00:00","updated_at":"2026-02-05T12:42:04.470908+00:00"}]
+2026-02-05 14:01:48 - Supabase Response: HTTP Code=500, Error=, Response={"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}
+2026-02-05 14:01:48 - HTTP Error: 500, Response: {"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}, Method: GET, Endpoint: profiles
+2026-02-05 14:01:50 - Supabase Response: HTTP Code=201, Error=, Response=[{"id":"4e3b5070-1870-4bc7-a6e5-940d5388fcbb","first_name":"carlos john","middle_name":"","last_name":"barretto","email":"cjbarretto@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$V0xBaVzw12UqWvamyzVd9OeGttX2aoGQf4meS8d3pHUM..K5VoeVO"},"created_at":"2026-02-05T14:01:49+00:00","updated_at":"2026-02-05T13:01:53.207172+00:00"}]
+2026-02-05 14:03:40 - Supabase Response: HTTP Code=500, Error=, Response={"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}
+2026-02-05 14:03:40 - HTTP Error: 500, Response: {"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}, Method: GET, Endpoint: profiles
+2026-02-05 14:05:34 - Supabase Response: HTTP Code=500, Error=, Response={"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}
+2026-02-05 14:05:34 - HTTP Error: 500, Response: {"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}, Method: GET, Endpoint: profiles
+2026-02-05 14:05:35 - Supabase Response: HTTP Code=500, Error=, Response={"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}
+2026-02-05 14:05:35 - HTTP Error: 500, Response: {"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}, Method: GET, Endpoint: profiles
+2026-02-05 14:05:35 - Supabase Response: HTTP Code=500, Error=, Response={"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}
+2026-02-05 14:05:35 - HTTP Error: 500, Response: {"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}, Method: GET, Endpoint: profiles
+2026-02-05 14:10:39 - Supabase Response: HTTP Code=500, Error=, Response={"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}
+2026-02-05 14:10:39 - HTTP Error: 500, Response: {"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}, Method: GET, Endpoint: profiles
+2026-02-05 14:11:01 - Supabase Response: HTTP Code=500, Error=, Response={"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}
+2026-02-05 14:11:01 - HTTP Error: 500, Response: {"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}, Method: GET, Endpoint: profiles
+2026-02-05 14:11:08 - Supabase Response: HTTP Code=500, Error=, Response={"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}
+2026-02-05 14:11:08 - HTTP Error: 500, Response: {"code":"42P17","details":null,"hint":null,"message":"infinite recursion detected in policy for relation \"profiles\""}, Method: GET, Endpoint: profiles
+2026-02-05 14:16:50 - Supabase Response: HTTP Code=200, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"alviso","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$rSyMbvY3yWEDhpprtDK8s.yo9m8Fs77e0jfRa2ZJt05V6uww6Xw3q"},"created_at":"2026-02-05T13:42:01+00:00","updated_at":"2026-02-05T12:42:04.470908+00:00"}, 
+ {"id":"4e3b5070-1870-4bc7-a6e5-940d5388fcbb","first_name":"carlos john","middle_name":"","last_name":"barretto","email":"cjbarretto@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$V0xBaVzw12UqWvamyzVd9OeGttX2aoGQf4meS8d3pHUM..K5VoeVO"},"created_at":"2026-02-05T14:01:49+00:00","updated_at":"2026-02-05T13:01:53.207172+00:00"}]
+2026-02-05 14:17:38 - Supabase Response: HTTP Code=200, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"alviso","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$rSyMbvY3yWEDhpprtDK8s.yo9m8Fs77e0jfRa2ZJt05V6uww6Xw3q"},"created_at":"2026-02-05T13:42:01+00:00","updated_at":"2026-02-05T12:42:04.470908+00:00"}]
+2026-02-05 14:17:50 - Supabase Response: HTTP Code=200, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"alviso","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$rSyMbvY3yWEDhpprtDK8s.yo9m8Fs77e0jfRa2ZJt05V6uww6Xw3q"},"created_at":"2026-02-05T13:42:01+00:00","updated_at":"2026-02-05T12:42:04.470908+00:00"}, 
+ {"id":"4e3b5070-1870-4bc7-a6e5-940d5388fcbb","first_name":"carlos john","middle_name":"","last_name":"barretto","email":"cjbarretto@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$V0xBaVzw12UqWvamyzVd9OeGttX2aoGQf4meS8d3pHUM..K5VoeVO"},"created_at":"2026-02-05T14:01:49+00:00","updated_at":"2026-02-05T13:01:53.207172+00:00"}]
+2026-02-05 14:21:46 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 14:21:52 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 14:25:29 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 14:25:30 - Supabase Auth: POST https://jrzonxiqbgsunwtxcpwb.supabase.co/auth/v1/admin/users, Code=422, Error=, Response={"code":422,"error_code":"email_exists","msg":"A user with this email address has already been registered"}
+2026-02-05 14:25:34 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 14:25:39 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 14:25:40 - Supabase Auth: POST https://jrzonxiqbgsunwtxcpwb.supabase.co/auth/v1/admin/users, Code=422, Error=, Response={"code":422,"error_code":"email_exists","msg":"A user with this email address has already been registered"}
+2026-02-05 14:28:43 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 14:28:49 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 14:28:49 - Supabase Auth: POST https://jrzonxiqbgsunwtxcpwb.supabase.co/auth/v1/admin/users, Code=422, Error=, Response={"code":422,"error_code":"email_exists","msg":"A user with this email address has already been registered"}
+2026-02-05 14:28:50 - Supabase Auth: GET https://jrzonxiqbgsunwtxcpwb.supabase.co/auth/v1/admin/users, Code=200, Error=, Response={"users":[{"id":"4e3b5070-1870-4bc7-a6e5-940d5388fcbb","aud":"authenticated","role":"authenticated","email":"cjbarretto@gmail.com","email_confirmed_at":"2026-02-05T13:01:52.610997Z","phone":"","confirmed_at":"2026-02-05T13:01:52.610997Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email_verified":true,"first_name":"carlos john","last_name":"barretto"},"identities":null,"created_at":"2026-02-05T13:01:52.577423Z","updated_at":"2026-02-05T13:01:52.612157Z","is_anonymous":false},{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","aud":"authenticated","role":"authenticated","email":"jamespatrickurquiza@gmail.com","email_confirmed_at":"2026-02-05T12:42:03.850487Z","phone":"","confirmed_at":"2026-02-05T12:42:03.850487Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email_verified":true,"first_name":"james patrick","last_name":"urquiza"},"identities":null,"created_at":"2026-02-05T12:42:03.785383Z","updated_at":"2026-02-05T12:42:03.855619Z","is_anonymous":false}],"aud":"authenticated"}
+2026-02-05 14:28:50 - Supabase Response: HTTP Code=201, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$l0YyM/Wbj81BTr9NMrw7sOeGmHYbo9ysIxEfhZv.chVqjP.9mYiwy"},"created_at":"2026-02-05T14:28:50+00:00","updated_at":"2026-02-05T13:28:53.520171+00:00"}]
+2026-02-05 14:28:53 - Supabase Response: HTTP Code=200, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$l0YyM/Wbj81BTr9NMrw7sOeGmHYbo9ysIxEfhZv.chVqjP.9mYiwy"},"created_at":"2026-02-05T14:28:50+00:00","updated_at":"2026-02-05T13:28:53.520171+00:00"}]
+2026-02-05 14:33:11 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 14:33:18 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 14:33:18 - Supabase Auth: POST https://jrzonxiqbgsunwtxcpwb.supabase.co/auth/v1/admin/users, Code=422, Error=, Response={"code":422,"error_code":"email_exists","msg":"A user with this email address has already been registered"}
+2026-02-05 14:33:19 - Supabase Auth: GET https://jrzonxiqbgsunwtxcpwb.supabase.co/auth/v1/admin/users, Code=200, Error=, Response={"users":[{"id":"4e3b5070-1870-4bc7-a6e5-940d5388fcbb","aud":"authenticated","role":"authenticated","email":"cjbarretto@gmail.com","email_confirmed_at":"2026-02-05T13:01:52.610997Z","phone":"","confirmed_at":"2026-02-05T13:01:52.610997Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email_verified":true,"first_name":"carlos john","last_name":"barretto"},"identities":null,"created_at":"2026-02-05T13:01:52.577423Z","updated_at":"2026-02-05T13:01:52.612157Z","is_anonymous":false},{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","aud":"authenticated","role":"authenticated","email":"jamespatrickurquiza@gmail.com","email_confirmed_at":"2026-02-05T12:42:03.850487Z","phone":"","confirmed_at":"2026-02-05T12:42:03.850487Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email_verified":true,"first_name":"james patrick","last_name":"urquiza"},"identities":null,"created_at":"2026-02-05T12:42:03.785383Z","updated_at":"2026-02-05T12:42:03.855619Z","is_anonymous":false}],"aud":"authenticated"}
+2026-02-05 14:33:19 - Supabase Response: HTTP Code=201, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$HqbFpUJ.IAE5j.Si2Gjspua1nZvQf1djx7QT/qN42k6vRxBVq4TS6"},"created_at":"2026-02-05T14:33:19+00:00","updated_at":"2026-02-05T13:33:22.433133+00:00"}]
+2026-02-05 14:33:22 - PHPMailer Error: SMTP Error: Could not authenticate.
+2026-02-05 14:33:23 - Supabase Response: HTTP Code=200, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$HqbFpUJ.IAE5j.Si2Gjspua1nZvQf1djx7QT/qN42k6vRxBVq4TS6"},"created_at":"2026-02-05T14:33:19+00:00","updated_at":"2026-02-05T13:33:22.433133+00:00"}]
+2026-02-05 14:40:44 - Supabase Response: HTTP Code=200, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$HqbFpUJ.IAE5j.Si2Gjspua1nZvQf1djx7QT/qN42k6vRxBVq4TS6"},"created_at":"2026-02-05T14:33:19+00:00","updated_at":"2026-02-05T13:33:22.433133+00:00"}]
+2026-02-05 14:40:53 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 14:40:59 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 14:40:59 - Supabase Auth: POST https://jrzonxiqbgsunwtxcpwb.supabase.co/auth/v1/admin/users, Code=422, Error=, Response={"code":422,"error_code":"email_exists","msg":"A user with this email address has already been registered"}
+2026-02-05 14:40:59 - Supabase Auth: GET https://jrzonxiqbgsunwtxcpwb.supabase.co/auth/v1/admin/users, Code=200, Error=, Response={"users":[{"id":"4e3b5070-1870-4bc7-a6e5-940d5388fcbb","aud":"authenticated","role":"authenticated","email":"cjbarretto@gmail.com","email_confirmed_at":"2026-02-05T13:01:52.610997Z","phone":"","confirmed_at":"2026-02-05T13:01:52.610997Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email_verified":true,"first_name":"carlos john","last_name":"barretto"},"identities":null,"created_at":"2026-02-05T13:01:52.577423Z","updated_at":"2026-02-05T13:01:52.612157Z","is_anonymous":false},{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","aud":"authenticated","role":"authenticated","email":"jamespatrickurquiza@gmail.com","email_confirmed_at":"2026-02-05T12:42:03.850487Z","phone":"","confirmed_at":"2026-02-05T12:42:03.850487Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email_verified":true,"first_name":"james patrick","last_name":"urquiza"},"identities":null,"created_at":"2026-02-05T12:42:03.785383Z","updated_at":"2026-02-05T12:42:03.855619Z","is_anonymous":false}],"aud":"authenticated"}
+2026-02-05 14:41:00 - Supabase Response: HTTP Code=201, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$ZkznFhnHC0i8vNGkVETNweOKFyje3sehKpbeEcTofKCoQmB6rhBVi"},"created_at":"2026-02-05T14:40:59+00:00","updated_at":"2026-02-05T13:41:03.327613+00:00"}]
+2026-02-05 14:41:03 - PHPMailer Error: SMTP Error: Could not authenticate.
+2026-02-05 14:41:03 - Supabase Response: HTTP Code=200, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$ZkznFhnHC0i8vNGkVETNweOKFyje3sehKpbeEcTofKCoQmB6rhBVi"},"created_at":"2026-02-05T14:40:59+00:00","updated_at":"2026-02-05T13:41:03.327613+00:00"}]
+2026-02-05 14:57:37 - Supabase Response: HTTP Code=200, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$ZkznFhnHC0i8vNGkVETNweOKFyje3sehKpbeEcTofKCoQmB6rhBVi"},"created_at":"2026-02-05T14:40:59+00:00","updated_at":"2026-02-05T13:41:03.327613+00:00"}]
+2026-02-05 14:57:56 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 14:58:03 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 14:58:04 - Supabase Auth: POST https://jrzonxiqbgsunwtxcpwb.supabase.co/auth/v1/admin/users, Code=422, Error=, Response={"code":422,"error_code":"email_exists","msg":"A user with this email address has already been registered"}
+2026-02-05 14:58:04 - Supabase Auth: GET https://jrzonxiqbgsunwtxcpwb.supabase.co/auth/v1/admin/users, Code=200, Error=, Response={"users":[{"id":"4e3b5070-1870-4bc7-a6e5-940d5388fcbb","aud":"authenticated","role":"authenticated","email":"cjbarretto@gmail.com","email_confirmed_at":"2026-02-05T13:01:52.610997Z","phone":"","confirmed_at":"2026-02-05T13:01:52.610997Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email_verified":true,"first_name":"carlos john","last_name":"barretto"},"identities":null,"created_at":"2026-02-05T13:01:52.577423Z","updated_at":"2026-02-05T13:01:52.612157Z","is_anonymous":false},{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","aud":"authenticated","role":"authenticated","email":"jamespatrickurquiza@gmail.com","email_confirmed_at":"2026-02-05T12:42:03.850487Z","phone":"","confirmed_at":"2026-02-05T12:42:03.850487Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email_verified":true,"first_name":"james patrick","last_name":"urquiza"},"identities":null,"created_at":"2026-02-05T12:42:03.785383Z","updated_at":"2026-02-05T12:42:03.855619Z","is_anonymous":false}],"aud":"authenticated"}
+2026-02-05 14:58:05 - Supabase Response: HTTP Code=201, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$nCZ9rjeA3m998otAtmcQYuAoX7wTEPcUhvwLPbBxlhSlYtTbkElKy"},"created_at":"2026-02-05T14:58:04+00:00","updated_at":"2026-02-05T13:58:08.026159+00:00"}]
+2026-02-05 14:58:07 - PHPMailer Error: SMTP Error: Could not authenticate.
+2026-02-05 14:58:07 - Supabase Response: HTTP Code=200, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$nCZ9rjeA3m998otAtmcQYuAoX7wTEPcUhvwLPbBxlhSlYtTbkElKy"},"created_at":"2026-02-05T14:58:04+00:00","updated_at":"2026-02-05T13:58:08.026159+00:00"}]
+2026-02-05 14:59:10 - Supabase Response: HTTP Code=200, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$nCZ9rjeA3m998otAtmcQYuAoX7wTEPcUhvwLPbBxlhSlYtTbkElKy"},"created_at":"2026-02-05T14:58:04+00:00","updated_at":"2026-02-05T13:58:08.026159+00:00"}]
+2026-02-05 15:03:59 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 15:04:05 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 15:04:06 - Supabase Auth: POST https://jrzonxiqbgsunwtxcpwb.supabase.co/auth/v1/admin/users, Code=422, Error=, Response={"code":422,"error_code":"email_exists","msg":"A user with this email address has already been registered"}
+2026-02-05 15:04:07 - Supabase Auth: GET https://jrzonxiqbgsunwtxcpwb.supabase.co/auth/v1/admin/users, Code=200, Error=, Response={"users":[{"id":"4e3b5070-1870-4bc7-a6e5-940d5388fcbb","aud":"authenticated","role":"authenticated","email":"cjbarretto@gmail.com","email_confirmed_at":"2026-02-05T13:01:52.610997Z","phone":"","confirmed_at":"2026-02-05T13:01:52.610997Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email_verified":true,"first_name":"carlos john","last_name":"barretto"},"identities":null,"created_at":"2026-02-05T13:01:52.577423Z","updated_at":"2026-02-05T13:01:52.612157Z","is_anonymous":false},{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","aud":"authenticated","role":"authenticated","email":"jamespatrickurquiza@gmail.com","email_confirmed_at":"2026-02-05T12:42:03.850487Z","phone":"","confirmed_at":"2026-02-05T12:42:03.850487Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email_verified":true,"first_name":"james patrick","last_name":"urquiza"},"identities":null,"created_at":"2026-02-05T12:42:03.785383Z","updated_at":"2026-02-05T12:42:03.855619Z","is_anonymous":false}],"aud":"authenticated"}
+2026-02-05 15:04:07 - Supabase Response: HTTP Code=201, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$QJtKBJX.j644MUWh1CHbTe/RM0N.Qias5GEjeRL5DlNwc7fjEviwe"},"created_at":"2026-02-05T15:04:07+00:00","updated_at":"2026-02-05T14:04:10.357865+00:00"}]
+2026-02-05 15:04:10 - PHPMailer Error: SMTP Error: Could not authenticate.
+2026-02-05 15:04:10 - Supabase Response: HTTP Code=200, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$QJtKBJX.j644MUWh1CHbTe/RM0N.Qias5GEjeRL5DlNwc7fjEviwe"},"created_at":"2026-02-05T15:04:07+00:00","updated_at":"2026-02-05T14:04:10.357865+00:00"}]
+2026-02-05 15:13:10 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 15:13:12 - Supabase Response: HTTP Code=200, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$QJtKBJX.j644MUWh1CHbTe/RM0N.Qias5GEjeRL5DlNwc7fjEviwe"},"created_at":"2026-02-05T15:04:07+00:00","updated_at":"2026-02-05T14:04:10.357865+00:00"}]
+2026-02-05 15:13:36 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 15:13:42 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-05 15:13:43 - Supabase Auth: POST https://jrzonxiqbgsunwtxcpwb.supabase.co/auth/v1/admin/users, Code=422, Error=, Response={"code":422,"error_code":"email_exists","msg":"A user with this email address has already been registered"}
+2026-02-05 15:13:43 - Supabase Auth: GET https://jrzonxiqbgsunwtxcpwb.supabase.co/auth/v1/admin/users, Code=200, Error=, Response={"users":[{"id":"4e3b5070-1870-4bc7-a6e5-940d5388fcbb","aud":"authenticated","role":"authenticated","email":"cjbarretto@gmail.com","email_confirmed_at":"2026-02-05T13:01:52.610997Z","phone":"","confirmed_at":"2026-02-05T13:01:52.610997Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email_verified":true,"first_name":"carlos john","last_name":"barretto"},"identities":null,"created_at":"2026-02-05T13:01:52.577423Z","updated_at":"2026-02-05T13:01:52.612157Z","is_anonymous":false},{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","aud":"authenticated","role":"authenticated","email":"jamespatrickurquiza@gmail.com","email_confirmed_at":"2026-02-05T12:42:03.850487Z","phone":"","confirmed_at":"2026-02-05T12:42:03.850487Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email_verified":true,"first_name":"james patrick","last_name":"urquiza"},"identities":null,"created_at":"2026-02-05T12:42:03.785383Z","updated_at":"2026-02-05T12:42:03.855619Z","is_anonymous":false}],"aud":"authenticated"}
+2026-02-05 15:13:44 - Supabase Response: HTTP Code=201, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$kIxPo8GM5JK/C8RgZwgk0enDbuFwj.gJWVaNEAR8c1RmNY6o47r0e"},"created_at":"2026-02-05T15:13:43+00:00","updated_at":"2026-02-05T14:13:47.223442+00:00"}]
+2026-02-05 15:13:46 - PHPMailer Error: SMTP Error: Could not authenticate.
+2026-02-05 15:13:46 - Supabase Response: HTTP Code=200, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$kIxPo8GM5JK/C8RgZwgk0enDbuFwj.gJWVaNEAR8c1RmNY6o47r0e"},"created_at":"2026-02-05T15:13:43+00:00","updated_at":"2026-02-05T14:13:47.223442+00:00"}]
+2026-02-05 15:14:03 - Supabase Response: HTTP Code=200, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$kIxPo8GM5JK/C8RgZwgk0enDbuFwj.gJWVaNEAR8c1RmNY6o47r0e"},"created_at":"2026-02-05T15:13:43+00:00","updated_at":"2026-02-05T14:13:47.223442+00:00"}]
+2026-02-05 15:14:04 - Supabase Response: HTTP Code=200, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$kIxPo8GM5JK/C8RgZwgk0enDbuFwj.gJWVaNEAR8c1RmNY6o47r0e"},"created_at":"2026-02-05T15:13:43+00:00","updated_at":"2026-02-05T14:13:47.223442+00:00"}]
+2026-02-06 19:37:29 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-06 19:37:30 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-06 19:37:35 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-06 19:37:37 - Supabase Response: HTTP Code=200, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$kIxPo8GM5JK/C8RgZwgk0enDbuFwj.gJWVaNEAR8c1RmNY6o47r0e"},"created_at":"2026-02-05T15:13:43+00:00","updated_at":"2026-02-05T14:13:47.223442+00:00"}]
+2026-02-06 19:38:11 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-06 19:38:17 - Supabase Response: HTTP Code=200, Error=, Response=[]
+2026-02-06 19:38:18 - Supabase Auth: POST https://jrzonxiqbgsunwtxcpwb.supabase.co/auth/v1/admin/users, Code=422, Error=, Response={"code":422,"error_code":"email_exists","msg":"A user with this email address has already been registered"}
+2026-02-06 19:38:18 - Supabase Auth: GET https://jrzonxiqbgsunwtxcpwb.supabase.co/auth/v1/admin/users, Code=200, Error=, Response={"users":[{"id":"4e3b5070-1870-4bc7-a6e5-940d5388fcbb","aud":"authenticated","role":"authenticated","email":"cjbarretto@gmail.com","email_confirmed_at":"2026-02-05T13:01:52.610997Z","phone":"","confirmed_at":"2026-02-05T13:01:52.610997Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email_verified":true,"first_name":"carlos john","last_name":"barretto"},"identities":null,"created_at":"2026-02-05T13:01:52.577423Z","updated_at":"2026-02-05T13:01:52.612157Z","is_anonymous":false},{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","aud":"authenticated","role":"authenticated","email":"jamespatrickurquiza@gmail.com","email_confirmed_at":"2026-02-05T12:42:03.850487Z","phone":"","confirmed_at":"2026-02-05T12:42:03.850487Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email_verified":true,"first_name":"james patrick","last_name":"urquiza"},"identities":null,"created_at":"2026-02-05T12:42:03.785383Z","updated_at":"2026-02-05T12:42:03.855619Z","is_anonymous":false}],"aud":"authenticated"}
+2026-02-06 19:38:19 - Supabase Response: HTTP Code=201, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$CIMd8pgY7n28pZ9Gz0kqtuKmZiWeofGPOdUE4sfw/TYgqpwUTrrTu"},"created_at":"2026-02-06T19:38:18+00:00","updated_at":"2026-02-06T18:38:23.994739+00:00"}]
+2026-02-06 19:38:22 - PHPMailer Error: SMTP Error: Could not authenticate.
+2026-02-06 19:38:22 - Supabase Response: HTTP Code=200, Error=, Response=[{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password": "$2y$10$CIMd8pgY7n28pZ9Gz0kqtuKmZiWeofGPOdUE4sfw/TYgqpwUTrrTu"},"created_at":"2026-02-06T19:38:18+00:00","updated_at":"2026-02-06T18:38:23.994739+00:00"}]
+2026-02-06 19:43:06 - SMTP: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP d9443c01a7336-2a9521eb375sm30448715ad.70 - gsmtp
+
+2026-02-06 19:43:06 - SMTP: CLIENT -> SERVER: EHLO DESKTOP-TUQOOIG
+
+2026-02-06 19:43:06 - SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [223.25.8.93]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2026-02-06 19:43:06 - SMTP: CLIENT -> SERVER: STARTTLS
+
+2026-02-06 19:43:06 - SMTP: SERVER -> CLIENT: 220 2.0.0 Ready to start TLS
+
+2026-02-06 19:43:07 - SMTP: CLIENT -> SERVER: EHLO DESKTOP-TUQOOIG
+
+2026-02-06 19:43:07 - SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [223.25.8.93]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2026-02-06 19:43:07 - SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+2026-02-06 19:43:07 - SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+2026-02-06 19:43:07 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:43:07 - SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+2026-02-06 19:43:07 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:43:07 - SMTP: SERVER -> CLIENT: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a9521eb375sm30448715ad.70 - gsmtp
+
+2026-02-06 19:43:07 - SMTP: SMTP ERROR: Password command failed: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a9521eb375sm30448715ad.70 - gsmtp
+
+2026-02-06 19:43:07 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:43:07 - SMTP: CLIENT -> SERVER: QUIT
+
+2026-02-06 19:43:08 - SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection d9443c01a7336-2a9521eb375sm30448715ad.70 - gsmtp
+
+2026-02-06 19:43:08 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:43:08 - PHPMailer Error: SMTP Error: Could not authenticate.
+2026-02-06 19:43:33 - SMTP: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP d2e1a72fcca58-82441884b80sm2966280b3a.44 - gsmtp
+
+2026-02-06 19:43:33 - SMTP: CLIENT -> SERVER: EHLO DESKTOP-TUQOOIG
+
+2026-02-06 19:43:34 - SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [223.25.8.93]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2026-02-06 19:43:34 - SMTP: CLIENT -> SERVER: STARTTLS
+
+2026-02-06 19:43:34 - SMTP: SERVER -> CLIENT: 220 2.0.0 Ready to start TLS
+
+2026-02-06 19:43:34 - SMTP: CLIENT -> SERVER: EHLO DESKTOP-TUQOOIG
+
+2026-02-06 19:43:34 - SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [223.25.8.93]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2026-02-06 19:43:34 - SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+2026-02-06 19:43:34 - SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+2026-02-06 19:43:34 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:43:35 - SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+2026-02-06 19:43:35 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:43:35 - SMTP: SERVER -> CLIENT: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-82441884b80sm2966280b3a.44 - gsmtp
+
+2026-02-06 19:43:35 - SMTP: SMTP ERROR: Password command failed: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-82441884b80sm2966280b3a.44 - gsmtp
+
+2026-02-06 19:43:35 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:43:35 - SMTP: CLIENT -> SERVER: QUIT
+
+2026-02-06 19:43:35 - SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection d2e1a72fcca58-82441884b80sm2966280b3a.44 - gsmtp
+
+2026-02-06 19:43:35 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:43:35 - PHPMailer Error: SMTP Error: Could not authenticate.
+2026-02-06 19:44:00 - SMTP: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP d9443c01a7336-2a951a638a1sm29794555ad.17 - gsmtp
+
+2026-02-06 19:44:00 - SMTP: CLIENT -> SERVER: EHLO DESKTOP-TUQOOIG
+
+2026-02-06 19:44:00 - SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [223.25.8.93]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2026-02-06 19:44:00 - SMTP: CLIENT -> SERVER: STARTTLS
+
+2026-02-06 19:44:01 - SMTP: SERVER -> CLIENT: 220 2.0.0 Ready to start TLS
+
+2026-02-06 19:44:01 - SMTP: CLIENT -> SERVER: EHLO DESKTOP-TUQOOIG
+
+2026-02-06 19:44:01 - SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [223.25.8.93]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2026-02-06 19:44:01 - SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+2026-02-06 19:44:01 - SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+2026-02-06 19:44:01 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:44:01 - SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+2026-02-06 19:44:01 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:44:02 - SMTP: SERVER -> CLIENT: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a951a638a1sm29794555ad.17 - gsmtp
+
+2026-02-06 19:44:02 - SMTP: SMTP ERROR: Password command failed: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a951a638a1sm29794555ad.17 - gsmtp
+
+2026-02-06 19:44:02 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:44:02 - SMTP: CLIENT -> SERVER: QUIT
+
+2026-02-06 19:44:02 - SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection d9443c01a7336-2a951a638a1sm29794555ad.17 - gsmtp
+
+2026-02-06 19:44:02 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:44:02 - PHPMailer Error: SMTP Error: Could not authenticate.
+2026-02-06 19:44:29 - SMTP: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP d9443c01a7336-2a951c7a342sm28896955ad.26 - gsmtp
+
+2026-02-06 19:44:29 - SMTP: CLIENT -> SERVER: EHLO DESKTOP-TUQOOIG
+
+2026-02-06 19:44:30 - SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [223.25.8.93]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2026-02-06 19:44:30 - SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+2026-02-06 19:44:30 - SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+2026-02-06 19:44:30 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:44:30 - SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+2026-02-06 19:44:30 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:44:30 - SMTP: SERVER -> CLIENT: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a951c7a342sm28896955ad.26 - gsmtp
+
+2026-02-06 19:44:30 - SMTP: SMTP ERROR: Password command failed: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a951c7a342sm28896955ad.26 - gsmtp
+
+2026-02-06 19:44:30 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:44:30 - SMTP: CLIENT -> SERVER: QUIT
+
+2026-02-06 19:44:31 - SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection d9443c01a7336-2a951c7a342sm28896955ad.26 - gsmtp
+
+2026-02-06 19:44:31 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:44:31 - PHPMailer Error: SMTP Error: Could not authenticate.
+2026-02-06 19:45:31 - SMTP: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP d9443c01a7336-2a9521b998esm27672755ad.62 - gsmtp
+
+2026-02-06 19:45:31 - SMTP: CLIENT -> SERVER: EHLO DESKTOP-TUQOOIG
+
+2026-02-06 19:45:32 - SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [223.25.8.93]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2026-02-06 19:45:32 - SMTP: CLIENT -> SERVER: STARTTLS
+
+2026-02-06 19:45:32 - SMTP: SERVER -> CLIENT: 220 2.0.0 Ready to start TLS
+
+2026-02-06 19:45:32 - SMTP: CLIENT -> SERVER: EHLO DESKTOP-TUQOOIG
+
+2026-02-06 19:45:32 - SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [223.25.8.93]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2026-02-06 19:45:32 - SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+2026-02-06 19:45:32 - SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+2026-02-06 19:45:32 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:45:33 - SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+2026-02-06 19:45:33 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:45:33 - SMTP: SERVER -> CLIENT: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a9521b998esm27672755ad.62 - gsmtp
+
+2026-02-06 19:45:33 - SMTP: SMTP ERROR: Password command failed: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a9521b998esm27672755ad.62 - gsmtp
+
+2026-02-06 19:45:33 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:45:33 - SMTP: CLIENT -> SERVER: QUIT
+
+2026-02-06 19:45:33 - SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection d9443c01a7336-2a9521b998esm27672755ad.62 - gsmtp
+
+2026-02-06 19:45:33 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:45:33 - PHPMailer Error: SMTP Error: Could not authenticate.
+2026-02-06 19:46:10 - SMTP: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP d2e1a72fcca58-824416cb967sm2816618b3a.30 - gsmtp
+
+2026-02-06 19:46:10 - SMTP: CLIENT -> SERVER: EHLO DESKTOP-TUQOOIG
+
+2026-02-06 19:46:10 - SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [223.25.8.93]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2026-02-06 19:46:10 - SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+2026-02-06 19:46:11 - SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+2026-02-06 19:46:11 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:46:11 - SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+2026-02-06 19:46:11 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:46:11 - SMTP: SERVER -> CLIENT: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-824416cb967sm2816618b3a.30 - gsmtp
+
+2026-02-06 19:46:11 - SMTP: SMTP ERROR: Password command failed: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-824416cb967sm2816618b3a.30 - gsmtp
+
+2026-02-06 19:46:11 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:46:11 - SMTP: CLIENT -> SERVER: QUIT
+
+2026-02-06 19:46:11 - SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection d2e1a72fcca58-824416cb967sm2816618b3a.30 - gsmtp
+
+2026-02-06 19:46:11 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:46:11 - PHPMailer Error: SMTP Error: Could not authenticate.
+2026-02-06 19:46:33 - SMTP: SERVER -> CLIENT: 220 smtp.googlemail.com ESMTP 98e67ed59e1d1-354b1f49191sm3363721a91.7 - gsmtp
+
+2026-02-06 19:46:33 - SMTP: CLIENT -> SERVER: EHLO DESKTOP-TUQOOIG
+
+2026-02-06 19:46:33 - SMTP: SERVER -> CLIENT: 250-smtp.googlemail.com at your service, [223.25.8.93]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2026-02-06 19:46:33 - SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+2026-02-06 19:46:33 - SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+2026-02-06 19:46:33 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:46:33 - SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+2026-02-06 19:46:33 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:46:34 - SMTP: SERVER -> CLIENT: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 98e67ed59e1d1-354b1f49191sm3363721a91.7 - gsmtp
+
+2026-02-06 19:46:34 - SMTP: SMTP ERROR: Password command failed: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 98e67ed59e1d1-354b1f49191sm3363721a91.7 - gsmtp
+
+2026-02-06 19:46:34 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:46:34 - SMTP: CLIENT -> SERVER: QUIT
+
+2026-02-06 19:46:34 - SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection 98e67ed59e1d1-354b1f49191sm3363721a91.7 - gsmtp
+
+2026-02-06 19:46:34 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:46:34 - PHPMailer Error: SMTP Error: Could not authenticate.
+2026-02-06 19:47:39 - SMTP: SERVER -> CLIENT: 220 smtp.googlemail.com ESMTP d9443c01a7336-2a952221b4csm30552645ad.89 - gsmtp
+
+2026-02-06 19:47:39 - SMTP: CLIENT -> SERVER: EHLO DESKTOP-TUQOOIG
+
+2026-02-06 19:47:39 - SMTP: SERVER -> CLIENT: 250-smtp.googlemail.com at your service, [223.25.8.93]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2026-02-06 19:47:39 - SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+2026-02-06 19:47:39 - SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+2026-02-06 19:47:39 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:47:39 - SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+2026-02-06 19:47:39 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:47:39 - SMTP: SERVER -> CLIENT: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a952221b4csm30552645ad.89 - gsmtp
+
+2026-02-06 19:47:39 - SMTP: SMTP ERROR: Password command failed: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a952221b4csm30552645ad.89 - gsmtp
+
+2026-02-06 19:47:39 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:47:39 - SMTP: CLIENT -> SERVER: QUIT
+
+2026-02-06 19:47:40 - SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection d9443c01a7336-2a952221b4csm30552645ad.89 - gsmtp
+
+2026-02-06 19:47:40 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:47:40 - PHPMailer Error: SMTP Error: Could not authenticate.
+2026-02-06 19:55:55 - SMTP: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP 98e67ed59e1d1-354bfa7b293sm542728a91.3 - gsmtp
+
+2026-02-06 19:55:55 - SMTP: CLIENT -> SERVER: EHLO DESKTOP-TUQOOIG
+
+2026-02-06 19:55:55 - SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [223.25.8.93]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2026-02-06 19:55:55 - SMTP: CLIENT -> SERVER: STARTTLS
+
+2026-02-06 19:55:55 - SMTP: SERVER -> CLIENT: 220 2.0.0 Ready to start TLS
+
+2026-02-06 19:55:55 - SMTP: CLIENT -> SERVER: EHLO DESKTOP-TUQOOIG
+
+2026-02-06 19:55:56 - SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [223.25.8.93]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2026-02-06 19:55:56 - SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+2026-02-06 19:55:56 - SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+2026-02-06 19:55:56 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:55:56 - SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+2026-02-06 19:55:56 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:55:56 - SMTP: SERVER -> CLIENT: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 98e67ed59e1d1-354bfa7b293sm542728a91.3 - gsmtp
+
+2026-02-06 19:55:56 - SMTP: SMTP ERROR: Password command failed: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 98e67ed59e1d1-354bfa7b293sm542728a91.3 - gsmtp
+
+2026-02-06 19:55:56 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:55:56 - SMTP: CLIENT -> SERVER: QUIT
+
+2026-02-06 19:55:56 - SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection 98e67ed59e1d1-354bfa7b293sm542728a91.3 - gsmtp
+
+2026-02-06 19:55:56 - SMTP: SMTP Error: Could not authenticate.
+2026-02-06 19:55:56 - PHPMailer Error: SMTP Error: Could not authenticate.
+2026-02-06 19:57:12 - SMTP: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP d2e1a72fcca58-8244166f3edsm3378391b3a.3 - gsmtp
+
+2026-02-06 19:57:12 - SMTP: CLIENT -> SERVER: EHLO DESKTOP-TUQOOIG
+
+2026-02-06 19:57:12 - SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [223.25.8.93]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2026-02-06 19:57:12 - SMTP: CLIENT -> SERVER: STARTTLS
+
+2026-02-06 19:57:12 - SMTP: SERVER -> CLIENT: 220 2.0.0 Ready to start TLS
+
+2026-02-06 19:57:12 - SMTP: CLIENT -> SERVER: EHLO DESKTOP-TUQOOIG
+
+2026-02-06 19:57:13 - SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [223.25.8.93]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2026-02-06 19:57:13 - SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+2026-02-06 19:57:13 - SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+2026-02-06 19:57:13 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:57:13 - SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+2026-02-06 19:57:13 - SMTP: CLIENT -> SERVER: [credentials hidden]
+2026-02-06 19:57:13 - SMTP: SERVER -> CLIENT: 235 2.7.0 Accepted
+
+2026-02-06 19:57:13 - SMTP: CLIENT -> SERVER: MAIL FROM:<studentslsu3@gmail.com>
+
+2026-02-06 19:57:14 - SMTP: SERVER -> CLIENT: 250 2.1.0 OK d2e1a72fcca58-8244166f3edsm3378391b3a.3 - gsmtp
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: RCPT TO:<studentslsu3@gmail.com>
+
+2026-02-06 19:57:14 - SMTP: SERVER -> CLIENT: 250 2.1.5 OK d2e1a72fcca58-8244166f3edsm3378391b3a.3 - gsmtp
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: DATA
+
+2026-02-06 19:57:14 - SMTP: SERVER -> CLIENT: 354 Go ahead d2e1a72fcca58-8244166f3edsm3378391b3a.3 - gsmtp
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: Date: Fri, 6 Feb 2026 19:57:11 +0100
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: To: Tester <studentslsu3@gmail.com>
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: From: SLSU Entrance Exam Portal <studentslsu3@gmail.com>
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: Subject: Your Student Account - Temporary Password
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: Message-ID: <pXbQNvXUD6zRM0srQohltQ3RObrUlT1j8SR2hyTRfc@DESKTOP-TUQOOIG>
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: X-Mailer: PHPMailer 7.0.2 (https://github.com/PHPMailer/PHPMailer)
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: MIME-Version: 1.0
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: Content-Type: multipart/alternative;
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER:  boundary="b1=_pXbQNvXUD6zRM0srQohltQ3RObrUlT1j8SR2hyTRfc"
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: Content-Transfer-Encoding: 8bit
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: 
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: --b1=_pXbQNvXUD6zRM0srQohltQ3RObrUlT1j8SR2hyTRfc
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: Content-Type: text/plain; charset=us-ascii
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: 
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: Hello Tester,
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: 
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: Your student account has been created.
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: Email: studentslsu3@gmail.com
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: Temporary Password: TEST123456
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: 
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: Please log in to complete your profile.
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: 
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: Best Regards,
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: SLSU Administration
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: 
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: --b1=_pXbQNvXUD6zRM0srQohltQ3RObrUlT1j8SR2hyTRfc
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: Content-Type: text/html; charset=us-ascii
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: 
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: 
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER:                 <h3>Welcome to SLSU Entrance Exam Portal, Tester!</h3>
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER:                 <p>Your student account has been successfully created by the administrator.</p>
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER:                 <p><b>Login Details:</b></p>
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER:                 <ul>
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER:                     <li><b>Email:</b> studentslsu3@gmail.com</li>
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER:                     <li><b>Temporary Password:</b> TEST123456</li>
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER:                 </ul>
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER:                 <p>Please log in and complete your profile onboarding to proceed.</p>
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER:                 <br>
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER:                 <p>Best Regards,<br>SLSU Administration</p>
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER:             
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: 
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: 
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: --b1=_pXbQNvXUD6zRM0srQohltQ3RObrUlT1j8SR2hyTRfc--
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: 
+
+2026-02-06 19:57:14 - SMTP: CLIENT -> SERVER: .
+
+2026-02-06 19:57:15 - SMTP: SERVER -> CLIENT: 250 2.0.0 OK  1770404239 d2e1a72fcca58-8244166f3edsm3378391b3a.3 - gsmtp
+
+2026-02-06 19:57:15 - SMTP: CLIENT -> SERVER: QUIT
+
+2026-02-06 19:57:15 - SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection d2e1a72fcca58-8244166f3edsm3378391b3a.3 - gsmtp
+

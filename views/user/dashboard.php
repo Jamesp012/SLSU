@@ -6,19 +6,32 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'student') {
     exit();
 }
 
-require_once '../includes/header.php';
+// Redirect to onboarding if not completed
+if (!isset($_SESSION['onboarding_completed']) || !$_SESSION['onboarding_completed']) {
+    header("Location: onboarding.php");
+    exit();
+}
 
-// Simulate fetching student data based on session
-$student_data = [
-    'first_name' => $_SESSION['first_name'] ?? 'John',
-    'last_name' => $_SESSION['last_name'] ?? 'Doe',
-    'middle_name' => 'Michael',
-    'email' => $_SESSION['email'] ?? 'student@example.com',
-    'lrn' => '123456789012',
-    'recent_school' => 'Sample High School',
-    'preferred_track' => 'STEM',
-    'exam_status' => 'Pending Assignment'
-];
+require_once '../includes/header.php';
+require_once __DIR__ . '/../../models/StudentModel.php';
+
+$studentModel = new StudentModel();
+$student_data = $studentModel->getStudentByEmail($_SESSION['email']);
+
+if (!$student_data) {
+    // Fallback if profile not found
+    $student_data = [
+        'first_name' => $_SESSION['first_name'] ?? 'Student',
+        'last_name' => $_SESSION['last_name'] ?? '',
+        'email' => $_SESSION['email'],
+        'lrn' => 'N/A',
+        'recent_school' => 'N/A',
+        'preferred_track' => 'N/A',
+        'exam_status' => 'Pending'
+    ];
+} else {
+    $student_data['exam_status'] = $student_data['exam_status'] ?? 'Pending Assignment';
+}
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">

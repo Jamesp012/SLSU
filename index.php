@@ -50,11 +50,11 @@
             </div>
             <div class="mb-3 text-start">
                 <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" autocomplete="email" required>
             </div>
             <div class="mb-3 text-start">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" autocomplete="current-password" required>
             </div>
             <button type="submit" class="btn btn-primary w-100 py-2">Sign In</button>
         </form>

@@ -1,0 +1,105 @@
+Table: users
+Data: {"email":"jamespatrickurquiza@gmail.com","password":"$2y$10$UR2WRL4cCECYw2sApiVcmev4iTZyZhDN0EUYq1OZEQBjg4.pq4NDi","role":"student","created_at":"2026-02-05 13:01:26"}
+Result: {"error":"cURL Error: Could not resolve host: quxjisgndltwjajsqrqi.supabase.co"}
+
+---
+Table: profiles
+Data: {"first_name":"System","last_name":"Administrator","email":"admin@slsu.edu.ph","password":"$2y$10$rXsxTmPS3ZhRRrTh\/SNmJOQblK4boSex2a.MnycD9sIdaZd84t1.C","role":"admin","onboarding_completed":true,"created_at":"2026-02-05 13:09:52"}
+Result: {"error":"HTTP Error: 400","response":"{\"code\":\"PGRST204\",\"details\":null,\"hint\":null,\"message\":\"Could not find the 'onboarding_completed' column of 'profiles' in the schema cache\"}","method":"POST","endpoint":"profiles"}
+
+---
+Table: profiles
+Data: {"first_name":"Test","last_name":"Student","email":"student@example.com","password":"$2y$10$2SrtpjRJ5lFYNR04Trl..e2QyxjWY8jL6kd69G06wWVTjMmnpoECm","role":"student","onboarding_completed":false,"created_at":"2026-02-05 13:09:52"}
+Result: {"error":"HTTP Error: 400","response":"{\"code\":\"PGRST204\",\"details\":null,\"hint\":null,\"message\":\"Could not find the 'onboarding_completed' column of 'profiles' in the schema cache\"}","method":"POST","endpoint":"profiles"}
+
+---
+Table: profiles
+Data: {"email":"test_columns@example.com"}
+Result: {"error":"HTTP Error: 400","response":"{\"code\":\"23502\",\"details\":\"Failing row contains (null, null, null, null, test_columns@example.com, student, null, null, null, {}, 2026-02-05 12:10:19.164651+00, 2026-02-05 12:10:19.164651+00).\",\"hint\":null,\"message\":\"null value in column \\\"id\\\" of relation \\\"profiles\\\" violates not-null constraint\"}","method":"POST","endpoint":"profiles"}
+
+---
+Table: profiles
+Data: {"id":"84281daa-7a2e-4492-8497-d137024e725b","first_name":"Test","last_name":"User","email":"test_uuid@example.com","role":"student","created_at":"2026-02-05 13:11:01"}
+Result: {"error":"HTTP Error: 409","response":"{\"code\":\"23503\",\"details\":\"Key (id)=(84281daa-7a2e-4492-8497-d137024e725b) is not present in table \\\"users\\\".\",\"hint\":null,\"message\":\"insert or update on table \\\"profiles\\\" violates foreign key constraint \\\"profiles_id_fkey\\\"\"}","method":"POST","endpoint":"profiles"}
+
+---
+Table: profiles
+Data: {"first_name":"james patrick","middle_name":"alviso","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","password":"$2y$10$pfSv8oY7uwthMDAMPeBCE.eVAkgQAGSPbG63N.\/bDHp8Xdb6A.rvS","role":"student","onboarding_completed":false,"created_at":"2026-02-05 13:12:22"}
+Result: {"error":"HTTP Error: 400","response":"{\"code\":\"PGRST204\",\"details\":null,\"hint\":null,\"message\":\"Could not find the 'onboarding_completed' column of 'profiles' in the schema cache\"}","method":"POST","endpoint":"profiles"}
+
+---
+Table: profiles
+Data: {"first_name":"james patrick","middle_name":"alviso","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","password":"$2y$10$h3HP9MCH9oEm\/QFwZ41gN.n2kKc04sd.OmBGkxPqfGX7AYj8siMPK","role":"student","onboarding_completed":false,"created_at":"2026-02-05 13:12:40"}
+Result: {"error":"HTTP Error: 400","response":"{\"code\":\"PGRST204\",\"details\":null,\"hint\":null,\"message\":\"Could not find the 'onboarding_completed' column of 'profiles' in the schema cache\"}","method":"POST","endpoint":"profiles"}
+
+---
+Table: profiles
+Data: {"password":"test"}
+Result: {"error":"HTTP Error: 400","response":"{\"code\":\"PGRST204\",\"details\":null,\"hint\":null,\"message\":\"Could not find the 'password' column of 'profiles' in the schema cache\"}","method":"POST","endpoint":"profiles"}
+
+---
+Table: profiles
+Data: {"lrn":"test"}
+Result: {"error":"HTTP Error: 400","response":"{\"code\":\"23502\",\"details\":\"Failing row contains (null, null, null, null, null, student, test, null, null, {}, 2026-02-05 12:16:02.772551+00, 2026-02-05 12:16:02.772551+00).\",\"hint\":null,\"message\":\"null value in column \\\"id\\\" of relation \\\"profiles\\\" violates not-null constraint\"}","method":"POST","endpoint":"profiles"}
+
+---
+Table: profiles
+Data: {"recent_school":"test"}
+Result: {"error":"HTTP Error: 400","response":"{\"code\":\"23502\",\"details\":\"Failing row contains (null, null, null, null, null, student, null, test, null, {}, 2026-02-05 12:16:03.18806+00, 2026-02-05 12:16:03.18806+00).\",\"hint\":null,\"message\":\"null value in column \\\"id\\\" of relation \\\"profiles\\\" violates not-null constraint\"}","method":"POST","endpoint":"profiles"}
+
+---
+Table: profiles
+Data: {"preferred_track":"test"}
+Result: {"error":"HTTP Error: 400","response":"{\"code\":\"23502\",\"details\":\"Failing row contains (null, null, null, null, null, student, null, null, test, {}, 2026-02-05 12:16:03.615268+00, 2026-02-05 12:16:03.615268+00).\",\"hint\":null,\"message\":\"null value in column \\\"id\\\" of relation \\\"profiles\\\" violates not-null constraint\"}","method":"POST","endpoint":"profiles"}
+
+---
+Table: profiles
+Data: {"onboarding_completed":"test"}
+Result: {"error":"HTTP Error: 400","response":"{\"code\":\"PGRST204\",\"details\":null,\"hint\":null,\"message\":\"Could not find the 'onboarding_completed' column of 'profiles' in the schema cache\"}","method":"POST","endpoint":"profiles"}
+
+---
+Table: profiles
+Data: {"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"alviso","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","metadata":{"password":"$2y$10$rSyMbvY3yWEDhpprtDK8s.yo9m8Fs77e0jfRa2ZJt05V6uww6Xw3q"},"created_at":"2026-02-05 13:42:01"}
+Result: [{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"alviso","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password":"$2y$10$rSyMbvY3yWEDhpprtDK8s.yo9m8Fs77e0jfRa2ZJt05V6uww6Xw3q"},"created_at":"2026-02-05T13:42:01+00:00","updated_at":"2026-02-05T12:42:04.470908+00:00"}]
+
+---
+Table: profiles
+Data: {"id":"4e3b5070-1870-4bc7-a6e5-940d5388fcbb","first_name":"carlos john","middle_name":"","last_name":"barretto","email":"cjbarretto@gmail.com","role":"student","metadata":{"password":"$2y$10$V0xBaVzw12UqWvamyzVd9OeGttX2aoGQf4meS8d3pHUM..K5VoeVO"},"created_at":"2026-02-05 14:01:49"}
+Result: [{"id":"4e3b5070-1870-4bc7-a6e5-940d5388fcbb","first_name":"carlos john","middle_name":"","last_name":"barretto","email":"cjbarretto@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password":"$2y$10$V0xBaVzw12UqWvamyzVd9OeGttX2aoGQf4meS8d3pHUM..K5VoeVO"},"created_at":"2026-02-05T14:01:49+00:00","updated_at":"2026-02-05T13:01:53.207172+00:00"}]
+
+---
+Table: profiles
+Data: {"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","metadata":{"password":"$2y$10$l0YyM\/Wbj81BTr9NMrw7sOeGmHYbo9ysIxEfhZv.chVqjP.9mYiwy"},"created_at":"2026-02-05 14:28:50"}
+Result: [{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password":"$2y$10$l0YyM\/Wbj81BTr9NMrw7sOeGmHYbo9ysIxEfhZv.chVqjP.9mYiwy"},"created_at":"2026-02-05T14:28:50+00:00","updated_at":"2026-02-05T13:28:53.520171+00:00"}]
+
+---
+Table: profiles
+Data: {"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","metadata":{"password":"$2y$10$HqbFpUJ.IAE5j.Si2Gjspua1nZvQf1djx7QT\/qN42k6vRxBVq4TS6"},"created_at":"2026-02-05 14:33:19"}
+Result: [{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password":"$2y$10$HqbFpUJ.IAE5j.Si2Gjspua1nZvQf1djx7QT\/qN42k6vRxBVq4TS6"},"created_at":"2026-02-05T14:33:19+00:00","updated_at":"2026-02-05T13:33:22.433133+00:00"}]
+
+---
+Table: profiles
+Data: {"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","metadata":{"password":"$2y$10$ZkznFhnHC0i8vNGkVETNweOKFyje3sehKpbeEcTofKCoQmB6rhBVi"},"created_at":"2026-02-05 14:40:59"}
+Result: [{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password":"$2y$10$ZkznFhnHC0i8vNGkVETNweOKFyje3sehKpbeEcTofKCoQmB6rhBVi"},"created_at":"2026-02-05T14:40:59+00:00","updated_at":"2026-02-05T13:41:03.327613+00:00"}]
+
+---
+Table: profiles
+Data: {"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","metadata":{"password":"$2y$10$nCZ9rjeA3m998otAtmcQYuAoX7wTEPcUhvwLPbBxlhSlYtTbkElKy"},"created_at":"2026-02-05 14:58:04"}
+Result: [{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password":"$2y$10$nCZ9rjeA3m998otAtmcQYuAoX7wTEPcUhvwLPbBxlhSlYtTbkElKy"},"created_at":"2026-02-05T14:58:04+00:00","updated_at":"2026-02-05T13:58:08.026159+00:00"}]
+
+---
+Table: profiles
+Data: {"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","metadata":{"password":"$2y$10$QJtKBJX.j644MUWh1CHbTe\/RM0N.Qias5GEjeRL5DlNwc7fjEviwe"},"created_at":"2026-02-05 15:04:07"}
+Result: [{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password":"$2y$10$QJtKBJX.j644MUWh1CHbTe\/RM0N.Qias5GEjeRL5DlNwc7fjEviwe"},"created_at":"2026-02-05T15:04:07+00:00","updated_at":"2026-02-05T14:04:10.357865+00:00"}]
+
+---
+Table: profiles
+Data: {"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","metadata":{"password":"$2y$10$kIxPo8GM5JK\/C8RgZwgk0enDbuFwj.gJWVaNEAR8c1RmNY6o47r0e"},"created_at":"2026-02-05 15:13:43"}
+Result: [{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password":"$2y$10$kIxPo8GM5JK\/C8RgZwgk0enDbuFwj.gJWVaNEAR8c1RmNY6o47r0e"},"created_at":"2026-02-05T15:13:43+00:00","updated_at":"2026-02-05T14:13:47.223442+00:00"}]
+
+---
+Table: profiles
+Data: {"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","metadata":{"password":"$2y$10$CIMd8pgY7n28pZ9Gz0kqtuKmZiWeofGPOdUE4sfw\/TYgqpwUTrrTu"},"created_at":"2026-02-06 19:38:18"}
+Result: [{"id":"271cb042-f13b-44f7-bb74-d41771943ea9","first_name":"james patrick","middle_name":"","last_name":"urquiza","email":"jamespatrickurquiza@gmail.com","role":"student","lrn":null,"recent_school":null,"preferred_track":null,"metadata":{"password":"$2y$10$CIMd8pgY7n28pZ9Gz0kqtuKmZiWeofGPOdUE4sfw\/TYgqpwUTrrTu"},"created_at":"2026-02-06T19:38:18+00:00","updated_at":"2026-02-06T18:38:23.994739+00:00"}]
+
+---

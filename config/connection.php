@@ -3,7 +3,7 @@
 require_once __DIR__ . '/credentials.php';
 
 // Shared function to call Supabase API
-function supabaseRequest($method, $endpoint, $data = null)
+function supabaseRequest($method, $endpoint, $data = null, $useServiceRole = false)
 {
     global $baseUrl, $apiKey, $serviceRoleKey;
     $url = "$baseUrl/$endpoint";
@@ -12,8 +12,8 @@ function supabaseRequest($method, $endpoint, $data = null)
     // $logMessage = date('Y-m-d H:i:s') . " - Supabase Request: Method=$method, Endpoint=$endpoint\n";
     // file_put_contents(__DIR__ . '/../logs/debug.log', $logMessage, FILE_APPEND);
 
-    // Use service role key for POST/PATCH operations (writes), anon key for GET
-    $authKey = ($method === 'POST' || $method === 'PATCH' || $method === 'DELETE') ? $serviceRoleKey : $apiKey;
+    // Use service role key if explicitly requested or for write operations
+    $authKey = ($useServiceRole || $method === 'POST' || $method === 'PATCH' || $method === 'DELETE') ? $serviceRoleKey : $apiKey;
 
     $headers = [
         "apikey: $authKey",
@@ -93,6 +93,47 @@ function supabaseRequest($method, $endpoint, $data = null)
     return $decodedResponse;
 }
 
+// Shared function to call Supabase Auth API
+function supabaseAuthRequest($method, $endpoint, $data = null)
+{
+    global $projectUrl, $serviceRoleKey;
+    $url = "$projectUrl/auth/v1/$endpoint";
+
+    $headers = [
+        "apikey: $serviceRoleKey",
+        "Authorization: Bearer $serviceRoleKey",
+        "Content-Type: application/json"
+    ];
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+    if ($method === 'POST' || $method === 'PUT' || $method === 'PATCH') {
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+        if ($data) {
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        }
+    }
+
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $curlError = curl_error($ch);
+    curl_close($ch);
+
+    // Log Auth Request/Response
+    $logsDir = __DIR__ . '/../logs';
+    $authLogMessage = date('Y-m-d H:i:s') . " - Supabase Auth: $method $url, Code=$httpCode, Error=$curlError, Response=$response\n";
+    @file_put_contents($logsDir . '/debug.log', $authLogMessage, FILE_APPEND);
+
+    $decoded = json_decode($response, true);
+    if ($httpCode >= 400) {
+        return ['error' => "Auth Error $httpCode", 'details' => $decoded];
+    }
+
+    return $decoded;
+}
+
 // Raw SQL query execution via Supabase REST API
 $php_raw_sql = function ($query) {
     global $baseUrl, $apiKey;
@@ -149,7 +190,7 @@ $php_raw_sql = function ($query) {
 };
 
 // Fetch (GET)
-$php_fetch = function ($table, $select = '*', $filters = [], $order = null) {
+$php_fetch = function ($table, $select = '*', $filters = [], $order = null, $useServiceRole = false) {
     // Special case: UPDATE
     if ($select === 'UPDATE') {
         $query = [];
@@ -157,7 +198,7 @@ $php_fetch = function ($table, $select = '*', $filters = [], $order = null) {
             $query[] = "$key=eq.$value";
         }
         $endpoint = "$table?" . implode('&', $query);
-        return supabaseRequest('PATCH', $endpoint, $filters);
+        return supabaseRequest('PATCH', $endpoint, $filters, $useServiceRole);
     }
 
     // Special case: COUNT
@@ -187,7 +228,7 @@ $php_fetch = function ($table, $select = '*', $filters = [], $order = null) {
             }
         }
 
-        $result = supabaseRequest('GET', $table, $query);
+        $result = supabaseRequest('GET', $table, $query, $useServiceRole);
         if (isset($result['error'])) {
             return $result;
         }
@@ -232,14 +273,14 @@ $php_fetch = function ($table, $select = '*', $filters = [], $order = null) {
         }
     }
 
-    return supabaseRequest('GET', $table, $query);
+    return supabaseRequest('GET', $table, $query, $useServiceRole);
 };
 
 
 
 // Insert (POST)
-$php_insert = function ($table, $data) {
-    $result = supabaseRequest('POST', $table, $data);
+$php_insert = function ($table, $data, $useServiceRole = true) {
+    $result = supabaseRequest('POST', $table, $data, $useServiceRole);
     $debugMsg = "Table: $table\nData: " . json_encode($data) . "\nResult: " . json_encode($result) . "\n";
     @file_put_contents(__DIR__ . '/../logs/debug_insert.log', $debugMsg . "\n---\n", FILE_APPEND);
     error_log('[php_insert] ' . $debugMsg);
@@ -247,17 +288,17 @@ $php_insert = function ($table, $data) {
 };
 
 // Update (PATCH)
-$php_update = function ($table, $data, $filters = []) {
+$php_update = function ($table, $data, $filters = [], $useServiceRole = true) {
     $query = [];
     foreach ($filters as $key => $value) {
         $query[] = "$key=eq.$value";
     }
     $endpoint = "$table?" . implode('&', $query);
-    return supabaseRequest('PATCH', $endpoint, $data);
+    return supabaseRequest('PATCH', $endpoint, $data, $useServiceRole);
 };
 
 // Delete (DELETE)
-$php_delete = function ($table, $filters = []) {
+$php_delete = function ($table, $filters = [], $useServiceRole = true) {
     // If filters is not an array (old format), convert it
     if (!is_array($filters)) {
         $filters = ['id' => $filters];
@@ -268,7 +309,7 @@ $php_delete = function ($table, $filters = []) {
         $query[] = "$key=eq.$value";
     }
     $endpoint = "$table?" . implode('&', $query);
-    return supabaseRequest('DELETE', $endpoint);
+    return supabaseRequest('DELETE', $endpoint, $useServiceRole);
 };
 
 // Generate booking detail ID by calling generate_booking_id() function

@@ -77,41 +77,22 @@ require_once '../includes/header.php';
                     <div class="row">
                         <div class="col-md-4 mb-3">
                             <label for="first_name" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="first_name" name="first_name" required>
+                            <input type="text" class="form-control" id="first_name" name="first_name" autocomplete="given-name" required>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="middle_name" class="form-label">Middle Name</label>
-                            <input type="text" class="form-control" id="middle_name" name="middle_name">
+                            <input type="text" class="form-control" id="middle_name" name="middle_name" autocomplete="additional-name">
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="last_name" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="last_name" name="last_name" required>
+                            <input type="text" class="form-control" id="last_name" name="last_name" autocomplete="family-name" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="email" class="form-label">Email Address</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input type="email" class="form-control" id="email" name="email" autocomplete="email" required>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="lrn" class="form-label">LRN (Learner Reference Number)</label>
-                            <input type="text" class="form-control" id="lrn" name="lrn" required>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="recent_school" class="form-label">Recent School Attended</label>
-                        <input type="text" class="form-control" id="recent_school" name="recent_school" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="preferred_track" class="form-label">Preferred Academic Track</label>
-                        <select class="form-select" id="preferred_track" name="preferred_track" required>
-                            <option value="">Choose...</option>
-                            <option value="STEM">STEM (Science, Technology, Engineering, and Mathematics)</option>
-                            <option value="ABM">ABM (Accountancy, Business, and Management)</option>
-                            <option value="HUMSS">HUMSS (Humanities and Social Sciences)</option>
-                            <option value="GAS">GAS (General Academic Strand)</option>
-                            <option value="TVL">TVL (Technical-Vocational-Livelihood)</option>
-                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
