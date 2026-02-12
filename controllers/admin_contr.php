@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../models/StudentModel.php';
 require_once __DIR__ . '/../models/UserModel.php';
 require_once __DIR__ . '/../models/STEMQuestionModel.php';
+require_once __DIR__ . '/../models/AchievementQuestionModel.php';
 require_once __DIR__ . '/../helpers/EmailHelper.php';
 session_start();
 
@@ -15,6 +16,7 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
 $studentModel = new StudentModel();
 $userModel = new UserModel();
 $questionModel = new STEMQuestionModel();
+$achievementQuestionModel = new AchievementQuestionModel();
 
 function generateTempPassword($length = 10) {
     return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
@@ -22,6 +24,106 @@ function generateTempPassword($length = 10) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
+
+    if ($action === 'change_password') {
+        $current = $_POST['current_password'] ?? '';
+        $new = $_POST['new_password'] ?? '';
+        $confirm = $_POST['confirm_password'] ?? '';
+        $email = $_SESSION['email'];
+
+        if (empty($current) || empty($new) || empty($confirm)) {
+            echo json_encode(['status' => 'error', 'message' => 'All fields are required']);
+            exit();
+        }
+
+        if ($new !== $confirm) {
+            echo json_encode(['status' => 'error', 'message' => 'New passwords do not match']);
+            exit();
+        }
+
+        $user = $userModel->login($email, $current, true);
+        if (!$user) {
+            echo json_encode(['status' => 'error', 'message' => 'Incorrect current password']);
+            exit();
+        }
+
+        $hashed = password_hash($new, PASSWORD_DEFAULT);
+        $metadata = is_string($user['metadata']) ? json_decode($user['metadata'], true) : ($user['metadata'] ?? []);
+        $metadata['password'] = $hashed;
+
+        $result = $userModel->updateUser($user['id'], ['metadata' => $metadata], true);
+
+        if (isset($result['error'])) {
+            echo json_encode(['status' => 'error', 'message' => 'Failed to update password: ' . $result['error']]);
+        } else {
+            supabaseAuthRequest('PUT', 'user', ['password' => $new]);
+            echo json_encode(['status' => 'success', 'message' => 'Password updated successfully']);
+        }
+        exit();
+    }
+
+    if ($action === 'add_admin') {
+        $first_name = $_POST['first_name'] ?? '';
+        $last_name = $_POST['last_name'] ?? '';
+        $email = $_POST['email'] ?? '';
+        $password = $_POST['password'] ?? '';
+
+        if (empty($first_name) || empty($last_name) || empty($email) || empty($password)) {
+            echo json_encode(['status' => 'error', 'message' => 'All fields are required']);
+            exit();
+        }
+
+        // Check if user already exists
+        $existingUser = $userModel->getUserByEmail($email, true);
+        if ($existingUser) {
+            echo json_encode(['status' => 'error', 'message' => 'A user with this email already exists']);
+            exit();
+        }
+
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        // 1. Create User in Supabase Auth
+        $authData = [
+            'email' => $email,
+            'password' => $password,
+            'email_confirm' => true,
+            'user_metadata' => [
+                'first_name' => $first_name,
+                'last_name' => $last_name
+            ]
+        ];
+
+        $authResult = supabaseAuthRequest('POST', 'admin/users', $authData);
+        $userId = $authResult['id'] ?? null;
+
+        if (!$userId && isset($authResult['error'])) {
+            echo json_encode(['status' => 'error', 'message' => 'Failed to create Auth account: ' . ($authResult['details']['msg'] ?? $authResult['error'])]);
+            exit();
+        }
+
+        // 2. Create Admin Profile
+        $profileData = [
+            'id' => $userId,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'email' => $email,
+            'role' => 'admin',
+            'metadata' => [
+                'password' => $hashed_password
+            ],
+            'created_at' => date('Y-m-d H:i:s')
+        ];
+
+        $profileResult = $userModel->addUser($profileData);
+
+        if (isset($profileResult['error'])) {
+            echo json_encode(['status' => 'error', 'message' => 'Failed to create admin profile: ' . $profileResult['error']]);
+            exit();
+        }
+
+        echo json_encode(['status' => 'success', 'message' => 'New admin account created successfully']);
+        exit();
+    }
 
     if ($action === 'add_student') {
         $first_name = $_POST['first_name'] ?? '';
@@ -165,6 +267,77 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         exit();
     }
+
+    if ($action === 'add_achievement_question') {
+        $data = [
+            'question_number' => (int)$_POST['question_number'],
+            'category' => $_POST['category'],
+            'question_text' => $_POST['question_text'],
+            'option_a' => $_POST['option_a'],
+            'option_b' => $_POST['option_b'],
+            'option_c' => $_POST['option_c'],
+            'option_d' => $_POST['option_d'],
+            'correct_answer' => $_POST['correct_answer']
+        ];
+        $result = $achievementQuestionModel->addQuestion($data);
+        if (isset($result['error'])) {
+            echo json_encode(['status' => 'error', 'message' => $result['error']]);
+        } else {
+            echo json_encode(['status' => 'success', 'message' => 'Scholastic Ability question added successfully']);
+        }
+        exit();
+    }
+
+    if ($action === 'update_achievement_question') {
+        $id = $_POST['question_id'];
+        $data = [
+            'question_number' => (int)$_POST['question_number'],
+            'category' => $_POST['category'],
+            'question_text' => $_POST['question_text'],
+            'option_a' => $_POST['option_a'],
+            'option_b' => $_POST['option_b'],
+            'option_c' => $_POST['option_c'],
+            'option_d' => $_POST['option_d'],
+            'correct_answer' => $_POST['correct_answer']
+        ];
+        $result = $achievementQuestionModel->updateQuestion($id, $data);
+        if (isset($result['error'])) {
+            echo json_encode(['status' => 'error', 'message' => $result['error']]);
+        } else {
+            echo json_encode(['status' => 'success', 'message' => 'Scholastic Ability question updated successfully']);
+        }
+        exit();
+    }
+
+    if ($action === 'delete_achievement_question') {
+        $id = $_POST['id'];
+        $result = $achievementQuestionModel->deleteQuestion($id);
+        if (isset($result['error'])) {
+            echo json_encode(['status' => 'error', 'message' => $result['error']]);
+        } else {
+            echo json_encode(['status' => 'success', 'message' => 'Scholastic Ability question deleted successfully']);
+        }
+        exit();
+    }
+
+    if ($action === 'delete_student') {
+        $id = $_POST['id'] ?? '';
+        if (empty($id)) {
+            echo json_encode(['status' => 'error', 'message' => 'Student ID is required']);
+            exit();
+        }
+
+        // Optional: Also delete from Supabase Auth if needed
+        // supabaseAuthRequest('DELETE', 'admin/users/' . $id);
+
+        $result = $studentModel->deleteStudent($id);
+        if (isset($result['error'])) {
+            echo json_encode(['status' => 'error', 'message' => 'Failed to delete student: ' . $result['error']]);
+        } else {
+            echo json_encode(['status' => 'success', 'message' => 'Student deleted successfully']);
+        }
+        exit();
+    }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -182,6 +355,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $questions = $questionModel->getQuestionsByPathway($pathway_id);
         } else {
             $questions = $questionModel->getAllQuestions();
+        }
+        echo json_encode(['data' => $questions]);
+        exit();
+    }
+
+    if ($action === 'fetch_achievement_questions') {
+        $category = $_GET['category'] ?? null;
+        if ($category) {
+            $questions = $achievementQuestionModel->getQuestionsByCategory($category);
+        } else {
+            $questions = $achievementQuestionModel->getAllQuestions();
         }
         echo json_encode(['data' => $questions]);
         exit();

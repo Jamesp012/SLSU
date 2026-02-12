@@ -1,6 +1,7 @@
 <?php
 // controllers/user_contr.php
 require_once __DIR__ . '/../models/StudentModel.php';
+require_once __DIR__ . '/../models/UserModel.php';
 session_start();
 
 // Check if user is logged in
@@ -10,9 +11,48 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'student') {
 }
 
 $studentModel = new StudentModel();
+$userModel = new UserModel();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
+
+    if ($action === 'change_password') {
+        $current = $_POST['current_password'] ?? '';
+        $new = $_POST['new_password'] ?? '';
+        $confirm = $_POST['confirm_password'] ?? '';
+        $email = $_SESSION['email'];
+
+        if (empty($current) || empty($new) || empty($confirm)) {
+            echo json_encode(['status' => 'error', 'message' => 'All fields are required']);
+            exit();
+        }
+
+        if ($new !== $confirm) {
+            echo json_encode(['status' => 'error', 'message' => 'New passwords do not match']);
+            exit();
+        }
+
+        $user = $userModel->login($email, $current, true);
+        if (!$user) {
+            echo json_encode(['status' => 'error', 'message' => 'Incorrect current password']);
+            exit();
+        }
+
+        $hashed = password_hash($new, PASSWORD_DEFAULT);
+        $metadata = is_string($user['metadata']) ? json_decode($user['metadata'], true) : ($user['metadata'] ?? []);
+        $metadata['password'] = $hashed;
+
+        $result = $userModel->updateUser($user['id'], ['metadata' => $metadata], true);
+
+        if (isset($result['error'])) {
+            echo json_encode(['status' => 'error', 'message' => 'Failed to update password: ' . $result['error']]);
+        } else {
+            // Also update Supabase Auth password for consistency
+            supabaseAuthRequest('PUT', 'user', ['password' => $new]);
+            echo json_encode(['status' => 'success', 'message' => 'Password updated successfully']);
+        }
+        exit();
+    }
 
     if ($action === 'complete_onboarding') {
         $lrn = $_POST['lrn'] ?? '';

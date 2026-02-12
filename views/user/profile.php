@@ -8,9 +8,16 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'student') {
 
 require_once '../includes/header.php';
 require_once __DIR__ . '/../../models/StudentModel.php';
+require_once __DIR__ . '/../../models/AchievementScoreModel.php';
 
 $studentModel = new StudentModel();
+$scoreModel = new AchievementScoreModel();
 $student_data = $studentModel->getStudentByEmail($_SESSION['email']);
+
+$achievement_score = null;
+if ($student_data) {
+    $achievement_score = $scoreModel->getScoreByStudentId($student_data['id']);
+}
 
 if (!$student_data) {
     echo "<div class='alert alert-danger'>Profile not found.</div>";
@@ -127,13 +134,23 @@ if (!$student_data) {
                     
                     <div class="mb-0">
                         <label for="preferred_track" class="form-label small fw-bold text-muted">PREFERRED ACADEMIC TRACK</label>
-                        <select class="form-select form-select-lg bg-light border-0" id="preferred_track" name="preferred_track" required>
-                            <option value="STEM" <?php echo $student_data['preferred_track'] == 'STEM' ? 'selected' : ''; ?>>STEM</option>
-                            <option value="ABM" <?php echo $student_data['preferred_track'] == 'ABM' ? 'selected' : ''; ?>>ABM</option>
-                            <option value="HUMSS" <?php echo $student_data['preferred_track'] == 'HUMSS' ? 'selected' : ''; ?>>HUMSS</option>
-                            <option value="GAS" <?php echo $student_data['preferred_track'] == 'GAS' ? 'selected' : ''; ?>>GAS</option>
-                            <option value="TVL" <?php echo $student_data['preferred_track'] == 'TVL' ? 'selected' : ''; ?>>TVL</option>
+                        <select class="form-select form-select-lg bg-light border-0" id="preferred_track" name="preferred_track" required <?php echo ($achievement_score && !$achievement_score['is_passed']) ? 'disabled' : ''; ?>>
+                            <?php if ($achievement_score && !$achievement_score['is_passed']): ?>
+                                <option value="TVL" selected>TVL (Technical-Vocational-Livelihood)</option>
+                            <?php else: ?>
+                                <option value="STEM" <?php echo $student_data['preferred_track'] == 'STEM' ? 'selected' : ''; ?>>STEM</option>
+                                <option value="ABM" <?php echo $student_data['preferred_track'] == 'ABM' ? 'selected' : ''; ?>>ABM</option>
+                                <option value="HUMSS" <?php echo $student_data['preferred_track'] == 'HUMSS' ? 'selected' : ''; ?>>HUMSS</option>
+                                <option value="GAS" <?php echo $student_data['preferred_track'] == 'GAS' ? 'selected' : ''; ?>>GAS</option>
+                                <option value="TVL" <?php echo $student_data['preferred_track'] == 'TVL' ? 'selected' : ''; ?>>TVL</option>
+                            <?php endif; ?>
                         </select>
+                        <?php if ($achievement_score && !$achievement_score['is_passed']): ?>
+                            <input type="hidden" name="preferred_track" value="TVL">
+                            <div class="form-text text-danger mt-2">
+                                <i class="fas fa-info-circle me-1"></i> Track selection is restricted to TVL due to Scholastic Ability Test results.
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="modal-footer border-0 pt-0 p-4">

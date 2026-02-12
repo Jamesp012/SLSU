@@ -5,7 +5,9 @@ $active_dashboard = ($current_page == 'dashboard.php') ? 'active' : '';
 $active_profile = ($current_page == 'profile.php') ? 'active' : '';
 $active_students = ($current_page == 'students.php') ? 'active' : '';
 $active_questions = ($current_page == 'questions.php') ? 'active' : '';
+$active_achievement = ($current_page == 'achievement_questions.php') ? 'active' : '';
 $active_reports = ($current_page == 'reports.php') ? 'active' : '';
+$active_settings = ($current_page == 'settings.php') ? 'active' : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -208,7 +210,12 @@ $active_reports = ($current_page == 'reports.php') ? 'active' : '';
             </li>
             <li class="nav-item">
                 <a class="nav-link <?php echo $active_questions; ?>" href="questions.php">
-                    <i class="fas fa-question-circle me-3"></i> STEM Questions
+                    <i class="fas fa-brain me-3"></i> Interest-Based Assessment
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?php echo $active_achievement; ?>" href="achievement_questions.php">
+                    <i class="fas fa-list-check me-3"></i> Scholastic Ability Test
                 </a>
             </li>
             <li class="nav-item">
@@ -223,6 +230,11 @@ $active_reports = ($current_page == 'reports.php') ? 'active' : '';
                 </a>
             </li>
             <?php endif; ?>
+            <li class="nav-item">
+                <a class="nav-link <?php echo $active_settings; ?>" href="settings.php">
+                    <i class="fas fa-cog me-3"></i> Settings
+                </a>
+            </li>
             <li class="nav-item mt-auto">
                 <a class="nav-link text-danger mt-4" href="../../logout.php">
                     <i class="fas fa-sign-out-alt me-3"></i> Logout
