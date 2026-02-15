@@ -13,13 +13,25 @@ if (!isset($_SESSION['onboarding_completed']) || !$_SESSION['onboarding_complete
 }
 
 require_once '../includes/header.php';
+?>
+<style>
+    .transition { transition: all 0.3s ease; }
+    .hover-shadow:hover { 
+        transform: translateY(-3px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+    .bg-primary-subtle { background-color: rgba(13, 110, 253, 0.1); }
+</style>
+<?php
 require_once __DIR__ . '/../../models/StudentModel.php';
 require_once __DIR__ . '/../../models/AchievementScoreModel.php';
 require_once __DIR__ . '/../../models/STEMScoreModel.php';
+require_once __DIR__ . '/../../models/STEMQuestionModel.php';
 
 $studentModel = new StudentModel();
 $scoreModel = new AchievementScoreModel();
 $stemScoreModel = new STEMScoreModel();
+$stemQuestionModel = new STEMQuestionModel();
 $student_data = $studentModel->getStudentByEmail($_SESSION['email']);
 
 $achievement_score = null;
@@ -177,17 +189,19 @@ if (!$student_data) {
                                             $recommendationData = CareerHelper::getRecommendations('Science Technology, Engineering and Mathematics');
                                             $courses = $recommendationData[0]['courses'] ?? [];
                                         ?>
-                                        <p class="small text-muted mb-3">Complete the Interest-Based Assessment to see your personalized course recommendation. Here are some courses under this strand:</p>
+                                        <p class="small text-muted mb-4">Complete the Interest-Based Assessment/Inventory to determine the recommended STEM career pathway for you. Here are the available STEM career pathways:</p>
+                                        
                                         <div class="row">
                                             <?php 
-                                                $half = ceil(count($courses) / 2);
-                                                $chunks = array_chunk($courses, $half);
+                                                $allPathways = $stemQuestionModel->getAllPathways();
+                                                $half = ceil(count($allPathways) / 2);
+                                                $chunks = array_chunk($allPathways, $half);
                                                 foreach ($chunks as $chunk):
                                             ?>
                                             <div class="col-md-6">
                                                 <ul class="list-group list-group-flush small">
-                                                    <?php foreach ($chunk as $course): ?>
-                                                    <li class="list-group-item py-1"><i class="fas fa-check-circle me-2 text-success"></i> <?php echo htmlspecialchars($course); ?></li>
+                                                    <?php foreach ($chunk as $pathway): ?>
+                                                    <li class="list-group-item py-1 bg-transparent border-0"><i class="fas fa-check-circle me-2 text-success"></i> <?php echo htmlspecialchars($pathway['name']); ?></li>
                                                     <?php endforeach; ?>
                                                 </ul>
                                             </div>

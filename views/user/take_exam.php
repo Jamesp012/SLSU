@@ -114,9 +114,6 @@ if (isset($questions['error'])) {
                                 <div class="mb-5 p-4 border rounded bg-light">
                                     <p class="fw-bold mb-3">
                                         <?php echo ($index + 1); ?>. <?php echo htmlspecialchars($q['question_text']); ?>
-                                        <?php if(isset($q['stem_pathways']['name'])): ?>
-                                            <span class="badge bg-secondary float-end"><?php echo htmlspecialchars($q['stem_pathways']['name']); ?></span>
-                                        <?php endif; ?>
                                     </p>
                                     
                                     <div class="ms-3">

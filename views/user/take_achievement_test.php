@@ -65,7 +65,7 @@ foreach ($questions as $q) {
                                 <?php foreach ($catQuestions as $q): ?>
                                     <div class="mb-5 p-4 border rounded bg-light">
                                         <p class="fw-bold mb-3">
-                                            <?php echo $q['question_number']; ?>. <?php echo htmlspecialchars($q['question_text']); ?>
+                                            <?php echo $q['question_number']; ?>. <?php echo nl2br(htmlspecialchars($q['question_text'])); ?>
                                         </p>
                                         
                                         <div class="ms-3">

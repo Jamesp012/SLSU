@@ -60,7 +60,12 @@ for ($i = 0; $i < count($lines); $i++) {
 
     if (preg_match('/^(\d+)\.\s+(.*)/', $line, $m)) {
         $q_num = $m[1];
-        $q_text = $m[2];
+        $q_text = trim($m[2]);
+        
+        // Append context to specific questions
+        if (in_array((int)$q_num, [21, 22, 23])) {
+            $q_text .= "\n\n\"While social media connects people globally, studies suggest that excessive use leads to a decline in face-to-face social skills. Users often prioritize digital validation over genuine connection, creating a 'filter bubble' that limits exposure to diverse viewpoints.\"";
+        }
         
         $choice_a = $lines[++$i] ?? '';
         $choice_b = $lines[++$i] ?? '';
