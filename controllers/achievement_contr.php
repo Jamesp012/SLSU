@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($action === 'submit_test') {
         $answers = $_POST['answers'] ?? [];
-        $debug = $_POST['debug_status'] ?? '';
         $email = $_SESSION['email'];
         
         $student = $studentModel->getStudentByEmail($email);
@@ -39,38 +38,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $categoryScores = [];
         $categoryCounts = [];
 
-        if ($debug === 'pass') {
-            $correctCount = 45;
-            $overallPercentage = 75;
-        } elseif ($debug === 'fail') {
-            $correctCount = 20;
-            $overallPercentage = 30;
-        } else {
-            foreach ($questions as $q) {
-                $cat = $q['category'];
-                if (!isset($categoryScores[$cat])) {
-                    $categoryScores[$cat] = 0;
-                    $categoryCounts[$cat] = 0;
-                }
-                $categoryCounts[$cat]++;
-
-                $qId = $q['id'];
-                if (isset($answers[$qId]) && strtolower($answers[$qId]) === strtolower($q['correct_answer'])) {
-                    $categoryScores[$cat]++;
-                    $correctCount++;
-                }
+        foreach ($questions as $q) {
+            $cat = $q['category'];
+            if (!isset($categoryScores[$cat])) {
+                $categoryScores[$cat] = 0;
+                $categoryCounts[$cat] = 0;
             }
+            $categoryCounts[$cat]++;
 
-            $totalCategoryPercentage = 0;
-            $numCategories = count($categoryCounts);
-
-            foreach ($categoryScores as $cat => $score) {
-                $catPercentage = ($categoryCounts[$cat] > 0) ? ($score / $categoryCounts[$cat]) * 100 : 0;
-                $totalCategoryPercentage += $catPercentage;
+            $qId = $q['id'];
+            if (isset($answers[$qId]) && strtolower($answers[$qId]) === strtolower($q['correct_answer'])) {
+                $categoryScores[$cat]++;
+                $correctCount++;
             }
-
-            $overallPercentage = ($numCategories > 0) ? ($totalCategoryPercentage / $numCategories) : 0;
         }
+
+        $totalCategoryPercentage = 0;
+        $numCategories = count($categoryCounts);
+
+        foreach ($categoryScores as $cat => $score) {
+            $catPercentage = ($categoryCounts[$cat] > 0) ? ($score / $categoryCounts[$cat]) * 100 : 0;
+            $totalCategoryPercentage += $catPercentage;
+        }
+
+        $overallPercentage = ($numCategories > 0) ? ($totalCategoryPercentage / $numCategories) : 0;
+        
         
         // Stanine mapping logic
         $stanine = 1;
@@ -104,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $studentModel->updateStudent($student['id'], ['achievement_stanine' => $stanine]);
 
             require_once __DIR__ . '/../helpers/CareerHelper.php';
-            $recommendations = CareerHelper::getRecommendations($isPassed ? 'STEM' : 'HE');
+            $recommendations = CareerHelper::getRecommendations($isPassed ? 'Science Technology, Engineering and Mathematics' : 'Field Experience');
             
             echo json_encode([
                 'status' => 'success', 

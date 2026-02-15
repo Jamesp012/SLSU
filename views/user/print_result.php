@@ -26,7 +26,7 @@ $stemScore = $stemScoreModel->getScoreByStudentId($student['id']);
 
 // Get recommendations and electives
 $pathwayScores = $stemScore ? json_decode($stemScore['all_scores'], true) : null;
-$recommendations = CareerHelper::getRecommendations($student['preferred_track'] ?? 'HE', $pathwayScores);
+$recommendations = CareerHelper::getRecommendations($student['preferred_track'] ?? 'Field Experience', $pathwayScores);
 
 // If STEM score exists, we might have multiple recommendations, but for the general cluster/electives 
 // we'll focus on the top one for the summary sections if needed, or show per top 3.
@@ -232,7 +232,7 @@ $recommendations = CareerHelper::getRecommendations($student['preferred_track'] 
     <?php endif; ?>
 
     <!-- Summary of Science Inclined Careers -->
-    <?php if ($student['preferred_track'] === 'STEM'): ?>
+    <?php if ($student['preferred_track'] === 'Science Technology, Engineering and Mathematics'): ?>
     <div class="section-title">Science Inclined Career Pathways Summary</div>
     <div class="p-3 border rounded bg-light">
         <p class="small mb-3">Your aptitude for the STEM strand has been evaluated. Below is the summary of your focus areas based on your interest results:</p>

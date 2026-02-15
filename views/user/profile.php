@@ -136,19 +136,19 @@ if (!$student_data) {
                         <label for="preferred_track" class="form-label small fw-bold text-muted">PREFERRED ACADEMIC TRACK</label>
                         <select class="form-select form-select-lg bg-light border-0" id="preferred_track" name="preferred_track" required <?php echo ($achievement_score && !$achievement_score['is_passed']) ? 'disabled' : ''; ?>>
                             <?php if ($achievement_score && !$achievement_score['is_passed']): ?>
-                                <option value="TVL" selected>TVL (Technical-Vocational-Livelihood)</option>
+                                <option value="Field Experience" selected>Field Experience</option>
                             <?php else: ?>
-                                <option value="STEM" <?php echo $student_data['preferred_track'] == 'STEM' ? 'selected' : ''; ?>>STEM</option>
-                                <option value="ABM" <?php echo $student_data['preferred_track'] == 'ABM' ? 'selected' : ''; ?>>ABM</option>
-                                <option value="HUMSS" <?php echo $student_data['preferred_track'] == 'HUMSS' ? 'selected' : ''; ?>>HUMSS</option>
-                                <option value="GAS" <?php echo $student_data['preferred_track'] == 'GAS' ? 'selected' : ''; ?>>GAS</option>
-                                <option value="TVL" <?php echo $student_data['preferred_track'] == 'TVL' ? 'selected' : ''; ?>>TVL</option>
+                                <option value="Arts, social sciences and Humanities" <?php echo $student_data['preferred_track'] == 'Arts, social sciences and Humanities' ? 'selected' : ''; ?>>Arts, social sciences and Humanities</option>
+                                <option value="Science Technology, Engineering and Mathematics" <?php echo $student_data['preferred_track'] == 'Science Technology, Engineering and Mathematics' ? 'selected' : ''; ?>>Science Technology, Engineering and Mathematics</option>
+                                <option value="Sports, health and Wellness" <?php echo $student_data['preferred_track'] == 'Sports, health and Wellness' ? 'selected' : ''; ?>>Sports, health and Wellness</option>
+                                <option value="Business and Entrepreneurship" <?php echo $student_data['preferred_track'] == 'Business and Entrepreneurship' ? 'selected' : ''; ?>>Business and Entrepreneurship</option>
+                                <option value="Field Experience" <?php echo $student_data['preferred_track'] == 'Field Experience' ? 'selected' : ''; ?>>Field Experience</option>
                             <?php endif; ?>
                         </select>
                         <?php if ($achievement_score && !$achievement_score['is_passed']): ?>
-                            <input type="hidden" name="preferred_track" value="TVL">
+                            <input type="hidden" name="preferred_track" value="Field Experience">
                             <div class="form-text text-danger mt-2">
-                                <i class="fas fa-info-circle me-1"></i> Track selection is restricted to TVL due to Scholastic Ability Test results.
+                                <i class="fas fa-info-circle me-1"></i> Track selection is restricted to Field Experience due to Scholastic Ability Test results.
                             </div>
                         <?php endif; ?>
                     </div>

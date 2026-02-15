@@ -13,7 +13,7 @@ $studentModel = new StudentModel();
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Manage Students</h1>
+    <h1 class="h2">Students & Reports</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStudentModal">
             <i class="fas fa-plus me-2"></i> Add New Student

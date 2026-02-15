@@ -156,7 +156,7 @@ if (!$student_data) {
                                 <div class="card-body">
                                     <?php 
                                         require_once __DIR__ . '/../../helpers/CareerHelper.php';
-                                        $recommendations = CareerHelper::getRecommendations($student_data['preferred_track'] ?? 'HE');
+                                        $recommendations = CareerHelper::getRecommendations($student_data['preferred_track'] ?? 'Field Experience');
                                     ?>
                                     <ul class="list-group list-group-flush">
                                         <?php foreach ($recommendations[0]['courses'] as $course): ?>
@@ -169,15 +169,15 @@ if (!$student_data) {
                             <?php if (!$stem_score): ?>
                                 <div class="card mb-4 shadow-sm">
                                     <div class="card-header bg-success text-white">
-                                        <h6 class="m-0 font-weight-bold">Related STEM Courses</h6>
+                                        <h6 class="m-0 font-weight-bold">Related Courses</h6>
                                     </div>
                                     <div class="card-body">
                                         <?php 
                                             require_once __DIR__ . '/../../helpers/CareerHelper.php';
-                                            $recommendationData = CareerHelper::getRecommendations('STEM');
+                                            $recommendationData = CareerHelper::getRecommendations('Science Technology, Engineering and Mathematics');
                                             $courses = $recommendationData[0]['courses'] ?? [];
                                         ?>
-                                        <p class="small text-muted mb-3">Complete the Interest-Based Assessment to see your personalized course recommendation. Here are some courses under the STEM strand:</p>
+                                        <p class="small text-muted mb-3">Complete the Interest-Based Assessment to see your personalized course recommendation. Here are some courses under this strand:</p>
                                         <div class="row">
                                             <?php 
                                                 $half = ceil(count($courses) / 2);
@@ -209,7 +209,7 @@ if (!$student_data) {
                                         <?php 
                                             require_once __DIR__ . '/../../helpers/CareerHelper.php';
                                             $pathwayScores = json_decode($stem_score['all_scores'], true);
-                                            $recommendations = CareerHelper::getRecommendations('STEM', $pathwayScores);
+                                            $recommendations = CareerHelper::getRecommendations('Science Technology, Engineering and Mathematics', $pathwayScores);
                                             
                                             foreach ($recommendations as $index => $res):
                                                 $pathway = $res['pathway'];

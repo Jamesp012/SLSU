@@ -188,11 +188,11 @@ require_once '../includes/header.php'; ?>
                         <label for="preferred_track" class="form-label">Preferred Academic Track</label>
                         <select class="form-select form-select-lg form-control-custom" id="preferred_track" name="preferred_track" required>
                             <option value="">Choose your track...</option>
-                            <option value="STEM">STEM (Science, Technology, Engineering, and Mathematics)</option>
-                            <option value="ABM">ABM (Accountancy, Business, and Management)</option>
-                            <option value="HUMSS">HUMSS (Humanities and Social Sciences)</option>
-                            <option value="GAS">GAS (General Academic Strand)</option>
-                            <option value="TVL">TVL (Technical-Vocational-Livelihood)</option>
+                            <option value="Arts, social sciences and Humanities">Arts, social sciences and Humanities</option>
+                            <option value="Science Technology, Engineering and Mathematics">Science Technology, Engineering and Mathematics</option>
+                            <option value="Sports, health and Wellness">Sports, health and Wellness</option>
+                            <option value="Business and Entrepreneurship">Business and Entrepreneurship</option>
+                            <option value="Field Experience">Field Experience</option>
                         </select>
                     </div>
                     

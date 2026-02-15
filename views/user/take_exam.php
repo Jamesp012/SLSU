@@ -105,9 +105,6 @@ if (isset($questions['error'])) {
                             <div>
                                 <i class="fas fa-info-circle me-2"></i> This test will help determine your aptitude for various STEM pathways.
                             </div>
-                            <button type="button" id="debugRandomFill" class="btn btn-sm btn-outline-warning">
-                                <i class="fas fa-vial me-1"></i> Debug: Random Fill
-                            </button>
                         </div>
 
                         <form id="stemTestForm">
@@ -180,32 +177,7 @@ $(document).ready(function() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
     });
 
-    $('#debugRandomFill').on('click', function() {
-        const choices = ['like', 'neutral', 'dislike'];
-        // Get all unique question names
-        const names = {};
-        $('input[type="radio"]').each(function() {
-            names[$(this).attr('name')] = true;
-        });
 
-        const answers = {};
-        // For each question, pick a random radio and check it
-        Object.keys(names).forEach(name => {
-            const randomChoice = choices[Math.floor(Math.random() * choices.length)];
-            $(`input[name="${name}"][value="${randomChoice}"]`).prop('checked', true);
-            answers[name] = randomChoice;
-        });
-        
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
-
-        Swal.fire({
-            icon: 'info',
-            title: 'Debug',
-            text: 'All questions have been randomly filled.',
-            timer: 1500,
-            showConfirmButton: false
-        });
-    });
 
     $('#stemTestForm').on('submit', function(e) {
         e.preventDefault();
@@ -297,41 +269,36 @@ $(document).ready(function() {
                 </div>
                 <!-- Desktop View -->
                 <div class="d-none d-md-grid gap-3" style="grid-template-columns: repeat(2, 1fr);">
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="STEM">
+                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Arts, social sciences and Humanities">
+                        <i class="fas fa-book-reader mb-2 fa-2x"></i>
+                        <span>Arts, social sciences and Humanities</span>
+                    </button>
+                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Science Technology, Engineering and Mathematics">
                         <i class="fas fa-atom mb-2 fa-2x"></i>
-                        <span>STEM</span>
+                        <span>Science Technology, Engineering and Mathematics</span>
                     </button>
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="ICT">
-                        <i class="fas fa-laptop-code mb-2 fa-2x"></i>
-                        <span>ICT</span>
+                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Sports, health and Wellness">
+                        <i class="fas fa-heartbeat mb-2 fa-2x"></i>
+                        <span>Sports, health and Wellness</span>
                     </button>
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="HE">
-                        <i class="fas fa-utensils mb-2 fa-2x"></i>
-                        <span>HE</span>
+                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Business and Entrepreneurship">
+                        <i class="fas fa-briefcase mb-2 fa-2x"></i>
+                        <span>Business and Entrepreneurship</span>
                     </button>
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="ARTS AND DESIGN">
-                        <i class="fas fa-palette mb-2 fa-2x"></i>
-                        <span>Arts & Design</span>
-                    </button>
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="ABM">
-                        <i class="fas fa-calculator mb-2 fa-2x"></i>
-                        <span>ABM</span>
-                    </button>
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="HUMSS">
-                        <i class="fas fa-users mb-2 fa-2x"></i>
-                        <span>HUMSS</span>
+                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Field Experience" style="grid-column: span 2;">
+                        <i class="fas fa-map-marked-alt mb-2 fa-2x"></i>
+                        <span>Field Experience</span>
                     </button>
                 </div>
                 <!-- Mobile View -->
                 <div class="d-md-none">
                     <select id="mobileTrackSelect" class="form-select form-select-lg py-3">
                         <option value="">Choose a track...</option>
-                        <option value="STEM">STEM</option>
-                        <option value="ICT">ICT</option>
-                        <option value="HE">HE</option>
-                        <option value="ARTS AND DESIGN">Arts and Design</option>
-                        <option value="ABM">ABM</option>
-                        <option value="HUMSS">HUMSS</option>
+                        <option value="Arts, social sciences and Humanities">Arts, social sciences and Humanities</option>
+                        <option value="Science Technology, Engineering and Mathematics">Science Technology, Engineering and Mathematics</option>
+                        <option value="Sports, health and Wellness">Sports, health and Wellness</option>
+                        <option value="Business and Entrepreneurship">Business and Entrepreneurship</option>
+                        <option value="Field Experience">Field Experience</option>
                     </select>
                 </div>
             `,

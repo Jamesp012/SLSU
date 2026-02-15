@@ -46,14 +46,7 @@ foreach ($questions as $q) {
                     <p class="mb-0 mt-2">Please answer all questions carefully. Passing criteria: Stanine 4 or greater.</p>
                 </div>
                 <div class="card-body p-5">
-                    <!-- Debug Buttons -->
-                    <div class="alert alert-warning mb-4 d-flex justify-content-between align-items-center">
-                        <div><i class="fas fa-bug me-2"></i> <strong>Debug Mode:</strong> Use these buttons to test the result modal.</div>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-success" id="debugPass">Test Pass (STEM)</button>
-                            <button type="button" class="btn btn-sm btn-danger" id="debugFail">Test Fail (TVL)</button>
-                        </div>
-                    </div>
+
 
                     <?php if (isset($error)): ?>
                         <div class="alert alert-danger text-center">
@@ -185,42 +178,7 @@ $(document).ready(function() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
     });
 
-    // Debug Pass Button
-    $('#debugPass').on('click', function() {
-        submitWithDebug('pass');
-    });
 
-    // Debug Fail Button
-    $('#debugFail').on('click', function() {
-        submitWithDebug('fail');
-    });
-
-    function submitWithDebug(status) {
-        Swal.fire({
-            title: 'Submitting Test (DEBUG)',
-            text: 'Simulating ' + status + ' result...',
-            allowOutsideClick: false,
-            didOpen: () => {
-                Swal.showLoading();
-            }
-        });
-
-        $.ajax({
-            url: '../../controllers/achievement_contr.php',
-            type: 'POST',
-            data: {
-                action: 'submit_test',
-                debug_status: status
-            },
-            dataType: 'json',
-            success: function(response) {
-                handleTestResponse(response);
-            },
-            error: function() {
-                Swal.fire('Error!', 'Could not connect to the server.', 'error');
-            }
-        });
-    }
 
     function handleTestResponse(response) {
         if (response.status === 'success') {
@@ -337,36 +295,36 @@ $(document).ready(function() {
                 </div>
                 <!-- Desktop View: Grid of Buttons -->
                 <div class="d-none d-md-grid gap-3" style="grid-template-columns: repeat(2, 1fr);">
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="ICT">
-                        <i class="fas fa-laptop-code mb-2 fa-2x"></i>
-                        <span>ICT</span>
+                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Arts, social sciences and Humanities">
+                        <i class="fas fa-book-reader mb-2 fa-2x"></i>
+                        <span>Arts, social sciences and Humanities</span>
                     </button>
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="HE">
-                        <i class="fas fa-utensils mb-2 fa-2x"></i>
-                        <span>HE</span>
+                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Science Technology, Engineering and Mathematics">
+                        <i class="fas fa-atom mb-2 fa-2x"></i>
+                        <span>Science Technology, Engineering and Mathematics</span>
                     </button>
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="ARTS AND DESIGN">
-                        <i class="fas fa-palette mb-2 fa-2x"></i>
-                        <span>Arts & Design</span>
+                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Sports, health and Wellness">
+                        <i class="fas fa-heartbeat mb-2 fa-2x"></i>
+                        <span>Sports, health and Wellness</span>
                     </button>
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="ABM">
-                        <i class="fas fa-calculator mb-2 fa-2x"></i>
-                        <span>ABM</span>
+                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Business and Entrepreneurship">
+                        <i class="fas fa-briefcase mb-2 fa-2x"></i>
+                        <span>Business and Entrepreneurship</span>
                     </button>
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="HUMSS" style="grid-column: span 2;">
-                        <i class="fas fa-users mb-2 fa-2x"></i>
-                        <span>HUMSS</span>
+                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Field Experience" style="grid-column: span 2;">
+                        <i class="fas fa-map-marked-alt mb-2 fa-2x"></i>
+                        <span>Field Experience</span>
                     </button>
                 </div>
                 <!-- Mobile View: Dropdown -->
                 <div class="d-md-none">
                     <select id="mobileTrackSelect" class="form-select form-select-lg py-3">
                         <option value="">Choose a track...</option>
-                        <option value="ICT">ICT</option>
-                        <option value="HE">HE</option>
-                        <option value="ARTS AND DESIGN">Arts and Design</option>
-                        <option value="ABM">ABM</option>
-                        <option value="HUMSS">HUMSS</option>
+                        <option value="Arts, social sciences and Humanities">Arts, social sciences and Humanities</option>
+                        <option value="Science Technology, Engineering and Mathematics">Science Technology, Engineering and Mathematics</option>
+                        <option value="Sports, health and Wellness">Sports, health and Wellness</option>
+                        <option value="Business and Entrepreneurship">Business and Entrepreneurship</option>
+                        <option value="Field Experience">Field Experience</option>
                     </select>
                 </div>
             `,

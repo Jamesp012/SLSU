@@ -6,7 +6,6 @@ $active_profile = ($current_page == 'profile.php') ? 'active' : '';
 $active_students = ($current_page == 'students.php') ? 'active' : '';
 $active_questions = ($current_page == 'questions.php') ? 'active' : '';
 $active_achievement = ($current_page == 'achievement_questions.php') ? 'active' : '';
-$active_reports = ($current_page == 'reports.php') ? 'active' : '';
 $active_settings = ($current_page == 'settings.php') ? 'active' : '';
 ?>
 <!DOCTYPE html>
@@ -205,7 +204,7 @@ $active_settings = ($current_page == 'settings.php') ? 'active' : '';
             <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin'): ?>
             <li class="nav-item">
                 <a class="nav-link <?php echo $active_students; ?>" href="students.php">
-                    <i class="fas fa-users me-3"></i> Students
+                    <i class="fas fa-users me-3"></i> Students & Reports
                 </a>
             </li>
             <li class="nav-item">
@@ -218,11 +217,7 @@ $active_settings = ($current_page == 'settings.php') ? 'active' : '';
                     <i class="fas fa-list-check me-3"></i> Scholastic Ability Test
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link <?php echo $active_reports; ?>" href="reports.php">
-                    <i class="fas fa-chart-line me-3"></i> Reports
-                </a>
-            </li>
+
             <?php else: ?>
             <li class="nav-item">
                 <a class="nav-link <?php echo $active_profile; ?>" href="profile.php">

@@ -31,7 +31,7 @@ class CareerHelper {
             return $recommendations;
         }
 
-        if ($track === 'STEM') {
+        if ($track === 'Science Technology, Engineering and Mathematics') {
             $electives = self::getElectivesByPathway('General STEM');
             return [
                 [
@@ -164,16 +164,16 @@ class CareerHelper {
 
     private static function getGeneralCoursesByTrack($track) {
         switch ($track) {
-            case 'ICT':
-                return ['BS Information Technology', 'BS Computer Science', 'BS Information Systems'];
-            case 'HE':
+            case 'Science Technology, Engineering and Mathematics':
+                return ['BS Information Technology', 'BS Computer Science', 'BS Civil Engineering', 'BS Mechanical Engineering'];
+            case 'Field Experience':
                 return ['BS Hospitality Management', 'BS Nutrition and Dietetics', 'BS Tourism Management'];
-            case 'ARTS AND DESIGN':
-                return ['BFA Visual Arts', 'BS Architecture', 'AB Multimedia Arts'];
-            case 'ABM':
+            case 'Arts, social sciences and Humanities':
+                return ['AB Psychology', 'AB Political Science', 'BS Criminology', 'BS Social Work', 'BFA Visual Arts'];
+            case 'Business and Entrepreneurship':
                 return ['BS Accountancy', 'BS Business Administration', 'BS Entrepreneurship'];
-            case 'HUMSS':
-                return ['AB Psychology', 'AB Political Science', 'BS Criminology', 'BS Social Work'];
+            case 'Sports, health and Wellness':
+                return ['BS Nursing', 'BS Sports Science', 'BS Exercise Science', 'BS Physical Therapy'];
             default:
                 return ['General Academic Courses'];
         }

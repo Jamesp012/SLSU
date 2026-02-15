@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Trigger CareerHelper if both tests are done
         require_once __DIR__ . '/../helpers/CareerHelper.php';
-        $recommendations = CareerHelper::getRecommendations('STEM', $pathwayScores);
+        $recommendations = CareerHelper::getRecommendations('Science Technology, Engineering and Mathematics', $pathwayScores);
 
         echo json_encode([
             'status' => 'success', 
