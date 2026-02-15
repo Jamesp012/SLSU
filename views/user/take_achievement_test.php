@@ -229,23 +229,19 @@ $(document).ready(function() {
                 `,
                 width: '600px',
                 padding: '1rem',
-                confirmButtonText: isPassed ? 'Go to Dashboard' : 'Proceed to Track Selection',
+                confirmButtonText: 'Go to Dashboard',
                 confirmButtonColor: '#184226',
                 allowOutsideClick: false
             }).then((result) => {
                 if (result.isConfirmed) {
-                    if (isPassed) {
-                        window.location.href = 'dashboard.php';
-                    } else {
-                        showTrackSelection();
-                    }
+                    window.location.href = 'dashboard.php';
                 }
             });
         } else {
             Swal.fire('Error!', response.message, 'error');
         }
     }
-
+    
     $('#achievementTestForm').on('submit', function(e) {
         e.preventDefault();
         
@@ -285,109 +281,5 @@ $(document).ready(function() {
             }
         });
     });
-
-    function showTrackSelection() {
-        Swal.fire({
-            title: 'Preferred Track Selection',
-            html: `
-                <div class="text-center mb-4">
-                    <p class="text-muted">Please select your desired specialization track:</p>
-                </div>
-                <!-- Desktop View: Grid of Buttons -->
-                <div class="d-none d-md-grid gap-3" style="grid-template-columns: repeat(2, 1fr);">
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Arts, social sciences and Humanities">
-                        <i class="fas fa-book-reader mb-2 fa-2x"></i>
-                        <span>Arts, social sciences and Humanities</span>
-                    </button>
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Science Technology, Engineering and Mathematics">
-                        <i class="fas fa-atom mb-2 fa-2x"></i>
-                        <span>Science Technology, Engineering and Mathematics</span>
-                    </button>
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Sports, health and Wellness">
-                        <i class="fas fa-heartbeat mb-2 fa-2x"></i>
-                        <span>Sports, health and Wellness</span>
-                    </button>
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Business and Entrepreneurship">
-                        <i class="fas fa-briefcase mb-2 fa-2x"></i>
-                        <span>Business and Entrepreneurship</span>
-                    </button>
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Field Experience" style="grid-column: span 2;">
-                        <i class="fas fa-map-marked-alt mb-2 fa-2x"></i>
-                        <span>Field Experience</span>
-                    </button>
-                </div>
-                <!-- Mobile View: Dropdown -->
-                <div class="d-md-none">
-                    <select id="mobileTrackSelect" class="form-select form-select-lg py-3">
-                        <option value="">Choose a track...</option>
-                        <option value="Arts, social sciences and Humanities">Arts, social sciences and Humanities</option>
-                        <option value="Science Technology, Engineering and Mathematics">Science Technology, Engineering and Mathematics</option>
-                        <option value="Sports, health and Wellness">Sports, health and Wellness</option>
-                        <option value="Business and Entrepreneurship">Business and Entrepreneurship</option>
-                        <option value="Field Experience">Field Experience</option>
-                    </select>
-                </div>
-            `,
-            showConfirmButton: true,
-            confirmButtonText: 'Save Selection',
-            confirmButtonColor: '#184226',
-            width: '600px',
-            allowOutsideClick: false,
-            preConfirm: () => {
-                let selected = '';
-                if (window.innerWidth >= 768) {
-                    selected = $('.track-btn.active').data('value');
-                } else {
-                    selected = $('#mobileTrackSelect').val();
-                }
-                
-                if (!selected) {
-                    Swal.showValidationMessage('Please select a track before proceeding');
-                    return false;
-                }
-                return selected;
-            },
-            didOpen: () => {
-                $('.track-btn').on('click', function() {
-                    $('.track-btn').removeClass('active');
-                    $(this).addClass('active');
-                });
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const selectedTrack = result.value;
-                
-                Swal.fire({
-                    title: 'Saving Selection',
-                    allowOutsideClick: false,
-                    didOpen: () => { Swal.showLoading(); }
-                });
-
-                $.ajax({
-                    url: '../../controllers/achievement_contr.php',
-                    type: 'POST',
-                    data: {
-                        action: 'update_track',
-                        track: selectedTrack
-                    },
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.status === 'success') {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Success!',
-                                text: 'Your preferred track has been saved.',
-                                confirmButtonColor: '#184226'
-                            }).then(() => {
-                                window.location.href = 'dashboard.php';
-                            });
-                        } else {
-                            Swal.fire('Error!', 'Failed to save track selection.', 'error');
-                        }
-                    }
-                });
-            }
-        });
-    }
 });
 </script>

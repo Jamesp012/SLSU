@@ -233,16 +233,16 @@ $(document).ready(function() {
                                         <h5 class="fw-bold">Your STEM Interest Profile</h5>
                                         ${recommendationsHtml}
                                         <hr class="my-2">
-                                        <p class="small">Your results have been saved. You can now proceed to select your track.</p>
+                                        <p class="small">Your results have been saved. You may now return to your dashboard.</p>
                                     </div>
                                 `,
                                 width: '550px',
-                                confirmButtonText: 'Proceed to Track Selection',
+                                confirmButtonText: 'Back to Dashboard',
                                 confirmButtonColor: '#184226',
                                 allowOutsideClick: false
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    showTrackSelection();
+                                    window.location.href = 'dashboard.php';
                                 }
                             });
                         } else {
@@ -256,114 +256,5 @@ $(document).ready(function() {
             }
         });
     });
-
-    function showTrackSelection() {
-        Swal.fire({
-            title: 'Final Track Selection',
-            html: `
-                <div class="text-center mb-4">
-                    <p class="text-muted">Based on your interest assessment results, please confirm your final specialization track:</p>
-                </div>
-                <!-- Desktop View -->
-                <div class="d-none d-md-grid gap-3" style="grid-template-columns: repeat(2, 1fr);">
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Arts, social sciences and Humanities">
-                        <i class="fas fa-book-reader mb-2 fa-2x"></i>
-                        <span>Arts, social sciences and Humanities</span>
-                    </button>
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Science Technology, Engineering and Mathematics">
-                        <i class="fas fa-atom mb-2 fa-2x"></i>
-                        <span>Science Technology, Engineering and Mathematics</span>
-                    </button>
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Sports, health and Wellness">
-                        <i class="fas fa-heartbeat mb-2 fa-2x"></i>
-                        <span>Sports, health and Wellness</span>
-                    </button>
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Business and Entrepreneurship">
-                        <i class="fas fa-briefcase mb-2 fa-2x"></i>
-                        <span>Business and Entrepreneurship</span>
-                    </button>
-                    <button class="btn btn-outline-primary p-3 track-btn" data-value="Field Experience" style="grid-column: span 2;">
-                        <i class="fas fa-map-marked-alt mb-2 fa-2x"></i>
-                        <span>Field Experience</span>
-                    </button>
-                </div>
-                <!-- Mobile View -->
-                <div class="d-md-none">
-                    <select id="mobileTrackSelect" class="form-select form-select-lg py-3">
-                        <option value="">Choose a track...</option>
-                        <option value="Arts, social sciences and Humanities">Arts, social sciences and Humanities</option>
-                        <option value="Science Technology, Engineering and Mathematics">Science Technology, Engineering and Mathematics</option>
-                        <option value="Sports, health and Wellness">Sports, health and Wellness</option>
-                        <option value="Business and Entrepreneurship">Business and Entrepreneurship</option>
-                        <option value="Field Experience">Field Experience</option>
-                    </select>
-                </div>
-            `,
-            showConfirmButton: true,
-            confirmButtonText: 'Confirm Selection',
-            confirmButtonColor: '#198754',
-            width: '600px',
-            allowOutsideClick: false,
-            preConfirm: () => {
-                let selected = '';
-                if (window.innerWidth >= 768) {
-                    selected = $('.track-btn.active').data('value');
-                } else {
-                    selected = $('#mobileTrackSelect').val();
-                }
-                
-                if (!selected) {
-                    Swal.showValidationMessage('Please select a track before proceeding');
-                    return false;
-                }
-                return selected;
-            },
-            didOpen: () => {
-                $('.track-btn').on('click', function() {
-                    $('.track-btn').removeClass('active');
-                    $(this).addClass('active');
-                });
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const track = result.value;
-                
-                Swal.fire({
-                    title: 'Saving Selection',
-                    allowOutsideClick: false,
-                    didOpen: () => {
-                        Swal.showLoading();
-                    }
-                });
-
-                $.ajax({
-                    url: '../../controllers/achievement_contr.php', // Using existing update_track logic
-                    type: 'POST',
-                    data: {
-                        action: 'update_track',
-                        track: track
-                    },
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.status === 'success') {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Success!',
-                                text: 'Your specialization track has been saved.',
-                                confirmButtonColor: '#198754'
-                            }).then(() => {
-                                window.location.href = 'dashboard.php';
-                            });
-                        } else {
-                            Swal.fire('Error!', response.message, 'error');
-                        }
-                    },
-                    error: function() {
-                        Swal.fire('Error!', 'Could not connect to the server.', 'error');
-                    }
-                });
-            }
-        });
-    }
 });
 </script>
