@@ -109,7 +109,7 @@ function supabaseAuthRequest($method, $endpoint, $data = null)
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
-    if ($method === 'POST' || $method === 'PUT' || $method === 'PATCH') {
+    if ($method !== 'GET') {
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
         if ($data) {
             curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));

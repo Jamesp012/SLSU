@@ -44,6 +44,12 @@ foreach ($questions as $q) {
                 <div class="card-header bg-primary text-white text-center py-4">
                     <h2 class="mb-0">Scholastic Ability Test</h2>
                     <p class="mb-0 mt-2">Please answer all questions carefully. Passing criteria: Stanine 4 or greater.</p>
+                    
+                    <!-- DEBUG BUTTONS -->
+                    <div class="mt-3 no-print">
+                        <button type="button" id="debugPass" class="btn btn-sm btn-success border-white me-2">Debug: Pass (High Score)</button>
+                        <button type="button" id="debugFail" class="btn btn-sm btn-danger border-white">Debug: Fail (Low Score)</button>
+                    </div>
                 </div>
                 <div class="card-body p-5">
 
@@ -59,13 +65,16 @@ foreach ($questions as $q) {
                         <form id="achievementTestForm">
                             <input type="hidden" name="action" value="submit_test">
                             
-                            <?php foreach ($categories as $categoryName => $catQuestions): ?>
+                            <?php 
+                            $globalCounter = 1;
+                            foreach ($categories as $categoryName => $catQuestions): 
+                            ?>
                                 <h4 class="text-primary border-bottom pb-2 mb-4 mt-5"><?php echo $categoryName; ?></h4>
                                 
                                 <?php foreach ($catQuestions as $q): ?>
                                     <div class="mb-5 p-4 border rounded bg-light">
                                         <p class="fw-bold mb-3">
-                                            <?php echo $q['question_number']; ?>. <?php echo nl2br(htmlspecialchars($q['question_text'])); ?>
+                                            <?php echo $globalCounter++; ?>. <?php echo nl2br(htmlspecialchars($q['question_text'])); ?>
                                         </p>
                                         
                                         <div class="ms-3">
@@ -169,6 +178,37 @@ $(document).ready(function() {
     }
 
     restoreAnswers();
+
+    // DEBUG LOGIC
+    const correctAnswers = <?php 
+        $ansMap = [];
+        foreach ($questions as $q) {
+            $ansMap[$q['id']] = strtolower($q['correct_answer']);
+        }
+        echo json_encode($ansMap); 
+    ?>;
+
+    $('#debugPass').on('click', function() {
+        $('input[type="radio"]').prop('checked', false);
+        Object.keys(correctAnswers).forEach(qId => {
+            const val = correctAnswers[qId].trim().toLowerCase();
+            $(`input[name="answers[${qId}]"][value="${val}"]`).prop('checked', true);
+        });
+        // Scroll to top and submit
+        window.scrollTo(0, 0);
+        $('#achievementTestForm').submit();
+    });
+
+    $('#debugFail').on('click', function() {
+        $('input[type="radio"]').prop('checked', false);
+        Object.keys(correctAnswers).forEach(qId => {
+            const correctVal = correctAnswers[qId].trim().toLowerCase();
+            const wrongVal = (correctVal === 'a') ? 'b' : 'a';
+            $(`input[name="answers[${qId}]"][value="${wrongVal}"]`).prop('checked', true);
+        });
+        window.scrollTo(0, 0);
+        $('#achievementTestForm').submit();
+    });
 
     // Save answer to localStorage on change
     $('input[type="radio"]').on('change', function() {

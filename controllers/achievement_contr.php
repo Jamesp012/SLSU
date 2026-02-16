@@ -33,6 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
+        // DEBUG: Log received answers
+        error_log("[DEBUG Scholastic] User: $email, Answers: " . json_encode($answers));
+
         $correctCount = 0;
         $totalQuestions = count($questions);
         $categoryScores = [
@@ -67,7 +70,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $categoryCounts[$cat]++;
 
             $qId = $q['id'];
-            if (isset($answers[$qId]) && strtolower($answers[$qId]) === strtolower($q['correct_answer'])) {
+            $userAns = isset($answers[$qId]) ? trim(strtolower($answers[$qId])) : '';
+            $correctAns = trim(strtolower($q['correct_answer']));
+
+            if ($userAns === $correctAns) {
                 $categoryScores[$cat]++;
                 $correctCount++;
             }
@@ -120,13 +126,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $isPassed = ($stanine >= 4);
 
+        // DEBUG: Log calculated results
+        error_log("[DEBUG Scholastic] Results - Total: $correctCount/$totalQuestions, Stanine: $stanine, Breakdown: " . json_encode($catResults));
+
         $scoreData = [
             'student_id' => $student['id'],
             'score' => $correctCount,
             'total_questions' => $totalQuestions,
             'percentage' => round($overallPercentage, 2),
             'stanine' => $stanine,
-            'category_scores' => json_encode($catResults),
+            // 'category_scores' => json_encode($catResults), // Skip until column is added to DB
             'is_passed' => $isPassed
         ];
 
@@ -135,8 +144,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($result['error'])) {
             echo json_encode(['status' => 'error', 'message' => 'Failed to save score: ' . $result['error']]);
         } else {
-            // Update profile with scholastic ability stanine
-            $studentModel->updateStudent($student['id'], ['achievement_stanine' => $stanine]);
+            // Merge breakdown into cognitive_stanines to avoid overwriting STEM scores
+            $existingStanines = [];
+            if (isset($student['cognitive_stanines']) && !empty($student['cognitive_stanines'])) {
+                $decoded = json_decode($student['cognitive_stanines'], true);
+                if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+                    $existingStanines = $decoded;
+                }
+            }
+            $mergedStanines = array_merge($existingStanines, $catResults);
+
+            // Update profile with scholastic ability stanine and store category breakdown in cognitive_stanines
+            $studentModel->updateStudent($student['id'], [
+                'achievement_stanine' => $stanine,
+                'cognitive_stanines' => json_encode($mergedStanines)
+            ]);
 
             require_once __DIR__ . '/../helpers/CareerHelper.php';
             $recommendations = CareerHelper::getRecommendations($isPassed ? 'Science Technology, Engineering and Mathematics' : 'Field Experience');

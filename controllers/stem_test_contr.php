@@ -33,6 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
+        // DEBUG: Log received answers
+        error_log("[DEBUG Interest] User: $email, Answers: " . json_encode($userAnswers));
+
         // Initialize pathway scores
         $pathwayScores = [];
         $pathways = $questionModel->getAllPathways();
@@ -89,6 +92,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
+        // DEBUG: Log calculated interest results
+        error_log("[DEBUG Interest] Results - Top: $topPathway, Scores: " . json_encode($pathwayScores));
+
         // Prepare data for storage
         $scoreData = [
             'student_id' => $student['id'],
@@ -104,8 +110,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             error_log("Failed to save STEM score: " . json_encode($result));
         }
         
+        // Merge breakdown into cognitive_stanines to avoid overwriting S.A. scores
+        $existingStanines = [];
+        if (isset($student['cognitive_stanines']) && !empty($student['cognitive_stanines'])) {
+            $decoded = json_decode($student['cognitive_stanines'], true);
+            if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+                $existingStanines = $decoded;
+            }
+        }
+        $mergedStanines = array_merge($existingStanines, $pathwayScores);
+
         // Update profile with STEM stanines (store all as JSON in cognitive_stanines column)
-        $studentModel->updateStudent($student['id'], ['cognitive_stanines' => json_encode($pathwayScores)]);
+        $studentModel->updateStudent($student['id'], ['cognitive_stanines' => json_encode($mergedStanines)]);
 
         // Clear existing pathway stanines first to avoid unique constraint violation on retake
         $scoreModel->deletePathwayStanines($student['id']);

@@ -92,7 +92,7 @@ $studentModel = new StudentModel();
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">STEM Interest Stanines</h5>
+                <h5 class="modal-title" id="modalTitle">Stanines Breakdown</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -124,22 +124,41 @@ $(document).ready(function() {
             },
             { 
                 "data": "achievement_stanine",
-                "render": function(data) {
-                    return data ? `<div class="text-center fw-bold fs-5">${data}</div>` : '<div class="text-center text-muted">-</div>';
+                "render": function(data, type, row) {
+                    if (!data) {
+                        return `<div class="text-center"><button class="btn btn-sm btn-secondary disabled" title="No test data">View Stanines</button></div>`;
+                    }
+                    return `<div class="text-center"><button class="btn btn-sm btn-success view-sa-btn" data-json='${row.cognitive_stanines}'>View Stanines</button></div>`;
                 }
             },
             { 
                 "data": "cognitive_stanines",
                 "render": function(data) {
-                    if (!data) return '<div class="text-center text-muted">No Data</div>';
-                    return `<button class="btn btn-sm btn-outline-info view-stem-btn" data-json='${data}'>View Stanines</button>`;
+                    let hasStem = false;
+                    if (data) {
+                        try {
+                            const scores = typeof data === 'string' ? JSON.parse(data) : data;
+                            hasStem = Object.keys(scores).some(key => !isNaN(key));
+                        } catch(e) { console.error("STEM check error", e); }
+                    }
+
+                    if (!hasStem) {
+                        return `<div class="text-center"><button class="btn btn-sm btn-secondary disabled" title="No STEM interest data">View Stanines</button></div>`;
+                    }
+                    
+                    return `<div class="text-center"><button class="btn btn-sm btn-success view-stem-btn" data-json='${data}'>View Stanines</button></div>`;
                 }
             },
             {
                 "data": null,
                 "render": function(data) {
+                    let printBtn = '';
+                    if (data.achievement_stanine) {
+                        printBtn = `<a href="../user/print_result.php?student_id=${data.id}" target="_blank" class="btn btn-sm btn-info me-1" title="Print Result"><i class="fas fa-print"></i></a>`;
+                    }
                     return `
-                        <button class="btn btn-sm btn-danger delete-btn" data-id="${data.id}"><i class="fas fa-trash"></i></button>
+                        ${printBtn}
+                        <button class="btn btn-sm btn-danger delete-btn" data-id="${data.id}" title="Delete Student"><i class="fas fa-trash"></i></button>
                     `;
                 }
             }
@@ -147,27 +166,134 @@ $(document).ready(function() {
         "order": [[0, "asc"]]
     });
 
+    const getStanineInfo = (stanine) => {
+        const map = {
+            1: { range: '1 – 3', interpretation: 'Very Low' },
+            2: { range: '4 – 10', interpretation: 'Low' },
+            3: { range: '11 – 22', interpretation: 'Below Average' },
+            4: { range: '23 – 39', interpretation: 'Slightly Below Average' },
+            5: { range: '40 – 59', interpretation: 'Average' },
+            6: { range: '60 – 76', interpretation: 'Slightly Above Average' },
+            7: { range: '77 – 88', interpretation: 'Above Average' },
+            8: { range: '89 – 95', interpretation: 'High' },
+            9: { range: '96 – 99', interpretation: 'Very High' }
+        };
+        return map[stanine] || { range: 'N/A', interpretation: 'N/A' };
+    };
+
     // Handle viewing STEM stanines
     $(document).on('click', '.view-stem-btn', function() {
         const scores = $(this).data('json');
         let html = '<div class="row">';
         
-        // Convert object to array for sorting
-        const scoresArray = Object.values(scores);
-        scoresArray.sort((a, b) => b.stanine - a.stanine);
-
-        scoresArray.forEach(score => {
-            const colorClass = score.stanine >= 7 ? 'text-success' : (score.stanine >= 4 ? 'text-warning' : 'text-danger');
-            html += `
-                <div class="col-md-6 mb-3">
-                    <div class="d-flex justify-content-between border-bottom pb-1">
-                        <span>${score.name}</span>
-                        <span class="fw-bold ${colorClass}">Stanine: ${score.stanine}</span>
+        // Convert object to array for sorting and filter for STEM (numeric keys)
+        const stemScores = [];
+        for (let key in scores) {
+            if (!isNaN(key)) {
+                stemScores.push(scores[key]);
+            }
+        }
+        
+        if (stemScores.length === 0) {
+            html += '<div class="col-12 text-center py-4 text-muted">No STEM Interest data found.</div>';
+        } else {
+            stemScores.sort((a, b) => b.stanine - a.stanine);
+            stemScores.forEach(score => {
+                const stanine = score.stanine || 0;
+                const info = getStanineInfo(stanine);
+                const colorClass = stanine >= 7 ? 'bg-success' : (stanine >= 4 ? 'bg-warning' : 'bg-danger');
+                const displayName = score.name.replace(/^STEM PATHWAY \d+\.\s*/i, '');
+                
+                html += `
+                    <div class="col-md-6 mb-3">
+                        <div class="card bg-light h-100">
+                            <div class="card-body py-2">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h6 class="mb-0 fw-bold small text-truncate" style="max-width: 180px;">${displayName}</h6>
+                                    <div class="text-end">
+                                        <span class="badge ${colorClass} text-white">Stanine: ${stanine}</span>
+                                        <div class="text-muted" style="font-size: 0.65rem;">${info.interpretation}</div>
+                                    </div>
+                                </div>
+                                <div class="progress mt-2" style="height: 6px;">
+                                    <div class="progress-bar ${colorClass}" role="progressbar" style="width: ${stanine * 11}%"></div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <small class="text-muted" style="font-size: 0.7rem;">Score: ${score.raw_score}/40</small>
+                                    <small class="text-muted" style="font-size: 0.7rem;">Range: ${info.range}%</small>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                `;
+            });
+        }
+        html += '</div>';
+        $('#modalTitle').html('<i class="fas fa-microscope me-2"></i> STEM Interest Stanines');
+        $('#stemStaninesContent').html(html);
+        $('#stemStaninesModal').modal('show');
+    });
+
+    // Handle viewing S.A. Breakdown
+    $(document).on('click', '.view-sa-btn', function() {
+        let scores = $(this).data('json');
+        
+        // Handle double encoding if necessary
+        if (typeof scores === 'string') {
+            try {
+                scores = JSON.parse(scores);
+            } catch(e) { console.error("Parse error", e); }
+        }
+
+        let html = '<div class="row">';
+        const saCategories = ['Scientific Ability', 'Verbal Comprehension', 'Numerical Ability'];
+        let found = false;
+        
+        saCategories.forEach(cat => {
+            if (scores && scores[cat]) {
+                found = true;
+                const score = scores[cat];
+                const stanine = score.stanine || 0;
+                const info = getStanineInfo(stanine);
+                const colorClass = stanine >= 7 ? 'bg-success' : (stanine >= 4 ? 'bg-warning' : 'bg-danger');
+                
+                html += `
+                    <div class="col-md-12 mb-3">
+                        <div class="card border-left-primary shadow-sm">
+                            <div class="card-body py-3">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="mb-0 fw-bold text-primary">${cat}</h6>
+                                    <div class="text-end">
+                                        <span class="badge ${colorClass} text-white fs-6">Stanine: ${stanine}</span>
+                                        <div class="text-muted small">${info.interpretation}</div>
+                                    </div>
+                                </div>
+                                <div class="progress mb-2" style="height: 12px;">
+                                    <div class="progress-bar ${colorClass}" 
+                                         role="progressbar" style="width: ${stanine * 11}%"></div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span class="small text-muted font-weight-bold">Raw Score: ${score.score}/${score.total}</span>
+                                    <span class="small text-muted">Percentile Range: ${info.range}%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+        
+        if (!found) {
+            html += `
+                <div class="col-12 text-center py-4">
+                    <i class="fas fa-exclamation-circle fa-3x text-warning mb-3 opacity-25"></i>
+                    <p class="text-muted">No breakdown data found for this student. <br><small>The student may need to retake the test to save categorized scores.</small></p>
                 </div>
             `;
-        });
+        }
+        
         html += '</div>';
+        $('#modalTitle').html('<i class="fas fa-brain me-2"></i> Scholastic Ability Breakdown');
         $('#stemStaninesContent').html(html);
         $('#stemStaninesModal').modal('show');
     });

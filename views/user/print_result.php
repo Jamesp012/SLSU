@@ -1,6 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'student') {
+// Allow both student (for their own) and admin (for any student)
+if (!isset($_SESSION['user_role'])) {
     header("Location: ../../index.php");
     exit();
 }
@@ -14,8 +15,21 @@ $studentModel = new StudentModel();
 $achievementScoreModel = new AchievementScoreModel();
 $stemScoreModel = new STEMScoreModel();
 
+// Determine which student to show
+$studentId = $_GET['student_id'] ?? null;
 $email = $_SESSION['email'];
-$student = $studentModel->getStudentByEmail($email);
+
+if ($_SESSION['user_role'] === 'admin' && $studentId) {
+    // Admin viewing a specific student
+    $student = $studentModel->getStudentById($studentId);
+    $isAdminCopy = true;
+} else if ($_SESSION['user_role'] === 'student') {
+    // Student viewing their own
+    $student = $studentModel->getStudentByEmail($email);
+    $isAdminCopy = false;
+} else {
+    die("Unauthorized access or missing student ID.");
+}
 
 if (!$student) {
     die("Student profile not found.");
@@ -134,7 +148,12 @@ $recommendations = CareerHelper::getRecommendations($student['preferred_track'] 
 
 <div class="print-container shadow-sm mb-5">
     <!-- Header -->
-    <div class="header-section text-center">
+    <div class="header-section text-center position-relative">
+        <?php if (isset($isAdminCopy) && $isAdminCopy): ?>
+            <div class="position-absolute top-0 start-0 badge bg-danger text-uppercase p-2" style="font-size: 0.6rem; transform: rotate(-15deg); margin-top: -10px;">
+                Admin Copy
+            </div>
+        <?php endif; ?>
         <div class="university-name">Southern Luzon State University</div>
         <div class="result-title">Admission Examination Result Summary</div>
     </div>
@@ -171,8 +190,9 @@ $recommendations = CareerHelper::getRecommendations($student['preferred_track'] 
                 <tr>
                     <th>Examination Name</th>
                     <th class="text-center">Raw Score</th>
-                    <th class="text-center">Percentile</th>
-                    <th class="text-center" style="width: 150px;">Stanine Score</th>
+                    <th class="text-center">Percentile Range</th>
+                    <th class="text-center">Stanine Score</th>
+                    <th class="text-center">Interpretation</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -198,9 +218,22 @@ $recommendations = CareerHelper::getRecommendations($student['preferred_track'] 
                     }
                 }
 
+                // Fallback: Check if it's stored in the student's profile (cognitive_stanines)
+                if (empty($catScores) && isset($student['cognitive_stanines']) && !empty($student['cognitive_stanines'])) {
+                    $rawCatScores = $student['cognitive_stanines'];
+                    while (is_string($rawCatScores) && !empty($rawCatScores)) {
+                        $decoded = json_decode($rawCatScores, true);
+                        if (json_last_error() !== JSON_ERROR_NONE) break;
+                        $rawCatScores = $decoded;
+                    }
+                    if (is_array($rawCatScores)) {
+                        $catScores = $rawCatScores;
+                    }
+                }
+
                 // If no category scores (old data), estimate them for display
                 if (empty($catScores) && isset($achievementScore['score'])) {
-                    $totalScore = $sScore = $achievementScore['score'];
+                    $totalScore = $achievementScore['score'];
                     $totalParts = count($achievementCats);
                     $baseScore = floor($totalScore / $totalParts);
                     $remainder = $totalScore % $totalParts;
@@ -208,12 +241,7 @@ $recommendations = CareerHelper::getRecommendations($student['preferred_track'] 
                     $i = 0;
                     foreach ($achievementCats as $catName => $defaults) {
                         $pScore = $baseScore + ($i < $remainder ? 1 : 0);
-                        // Ensure part score doesn't exceed its total
-                        if ($pScore > 20) {
-                            $diff = $pScore - 20;
-                            $pScore = 20;
-                            // Add diff to next parts if possible (simplified fallback)
-                        }
+                        if ($pScore > 20) $pScore = 20;
                         
                         $pPercentile = ($pScore / 20) * 100;
                         
@@ -242,14 +270,15 @@ $recommendations = CareerHelper::getRecommendations($student['preferred_track'] 
                     $data = $catScores[$catName] ?? null;
                     $score = $data['score'] ?? 0;
                     $total = $data['total'] ?? $defaults['total'];
-                    $percentile = $data['percentile'] ?? 0;
                     $stanine = $data['stanine'] ?? 0;
+                    $stanineInfo = CareerHelper::getStanineInfo($stanine);
                     ?>
                     <tr>
                         <td class="ps-4"><i><?php echo $catName; ?></i></td>
                         <td class="text-center small"><?php echo $score; ?> / <?php echo $total; ?></td>
-                        <td class="text-center small"><?php echo $percentile; ?>%</td>
+                        <td class="text-center small"><?php echo $stanineInfo['range']; ?>%</td>
                         <td class="text-center small"><?php echo $stanine; ?></td>
+                        <td class="text-center small"><?php echo $stanineInfo['interpretation']; ?></td>
                         <td class="small text-muted">Part Result</td>
                     </tr>
                     <?php
@@ -258,24 +287,27 @@ $recommendations = CareerHelper::getRecommendations($student['preferred_track'] 
                 <tr class="table-light">
                     <td class="fw-bold">Scholastic Ability Test (Overall)</td>
                     <td class="text-center fw-bold"><?php echo $achievementScore['score'] ?? 'N/A'; ?> / <?php echo $achievementScore['total_questions'] ?? 'N/A'; ?></td>
-                    <td class="text-center fw-bold"><?php echo isset($achievementScore['percentage']) ? $achievementScore['percentage'] . '%' : 'N/A'; ?></td>
+                    <td class="text-center fw-bold">-</td>
                     <td class="text-center"><span class="stanine-badge"><?php echo $achievementScore['stanine'] ?? 'N/A'; ?></span></td>
+                    <td class="text-center fw-bold"><?php echo ($achievementScore && isset($achievementScore['stanine'])) ? CareerHelper::getStanineInfo($achievementScore['stanine'])['interpretation'] : 'N/A'; ?></td>
                     <td><?php echo ($achievementScore && $achievementScore['is_passed']) ? '<span class="text-success fw-bold">Passed</span>' : '<span class="text-danger fw-bold">Failed</span>'; ?></td>
                 </tr>
 
                 <?php if ($stemScore && $pathwayScores): ?>
                 <tr class="table-secondary">
-                    <td colspan="5" class="fw-bold">Interest-Based Assessment (STEM Pathways Breakdown)</td>
+                    <td colspan="6" class="fw-bold">Interest-Based Assessment (STEM Pathways Breakdown)</td>
                 </tr>
                 <?php 
                 foreach ($pathwayScores as $pId => $data) {
-                    $pPercentile = round(($data['raw_score'] / 40) * 100);
+                    $stanine = $data['stanine'];
+                    $stanineInfo = CareerHelper::getStanineInfo($stanine);
                     ?>
                     <tr>
                         <td class="ps-4"><i><?php echo $data['name']; ?></i></td>
                         <td class="text-center small"><?php echo $data['raw_score']; ?> / 40</td>
-                        <td class="text-center small"><?php echo $pPercentile; ?>%</td>
-                        <td class="text-center small"><?php echo $data['stanine']; ?></td>
+                        <td class="text-center small"><?php echo $stanineInfo['range']; ?>%</td>
+                        <td class="text-center small"><?php echo $stanine; ?></td>
+                        <td class="text-center small"><?php echo $stanineInfo['interpretation']; ?></td>
                         <td class="small text-muted">Pathway Interest</td>
                     </tr>
                 <?php } ?>
@@ -284,6 +316,7 @@ $recommendations = CareerHelper::getRecommendations($student['preferred_track'] 
                     <td class="text-center fw-bold">-</td>
                     <td class="text-center fw-bold">-</td>
                     <td class="text-center"><span class="stanine-badge">Done</span></td>
+                    <td class="text-center fw-bold">-</td>
                     <td><span class="text-success fw-bold">Completed</span></td>
                 </tr>
                 <?php elseif ($stemScore): ?>
@@ -292,6 +325,7 @@ $recommendations = CareerHelper::getRecommendations($student['preferred_track'] 
                     <td class="text-center">-</td>
                     <td class="text-center">-</td>
                     <td class="text-center"><span class="stanine-badge">Done</span></td>
+                    <td class="text-center">-</td>
                     <td><span class="text-success fw-bold">Completed</span></td>
                 </tr>
                 <?php endif; ?>
@@ -302,22 +336,35 @@ $recommendations = CareerHelper::getRecommendations($student['preferred_track'] 
     <!-- Top 3 Interests & Career Pathways -->
     <div class="section-title">Top 3 Career Interests & Recommendations</div>
     <?php if ($stemScore && !empty($recommendations)): ?>
-        <?php foreach (array_slice($recommendations, 0, 3) as $index => $rec): ?>
+        <?php foreach (array_slice($recommendations, 0, 3) as $index => $rec): 
+            $displayName = preg_replace('/^STEM PATHWAY \d+\.\s*/i', '', $rec['pathway']);
+        ?>
             <div class="pathway-card">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5 class="mb-0 fw-bold text-primary">#<?php echo $index + 1; ?> <?php echo $rec['pathway']; ?></h5>
-                    <span class="badge bg-secondary">Cluster: <?php echo $rec['cluster']; ?></span>
+                    <h5 class="mb-0 fw-bold text-primary">#<?php echo $index + 1; ?> <?php echo $displayName; ?></h5>
                 </div>
                 
+                <div class="mb-3">
+                    <div class="small text-dark mb-2"><?php echo htmlspecialchars($rec['description']); ?></div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="small fw-bold text-primary mb-1">RELATED COURSES TO PURSUE IN COLLEGE:</div>
+                    <div class="small text-muted"><?php echo implode(', ', $rec['courses']); ?></div>
+                </div>
+
                 <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <div class="small fw-bold text-muted mb-2">Academic Electives:</div>
+                    <div class="col-12">
+                        <div class="small fw-bold text-success mb-2">RECOMMENDED ELECTIVES TO TAKE IN SSHS:</div>
+                    </div>
+                    <div class="col-6">
+                        <div class="small fw-bold text-muted mb-2">ACADEMIC:</div>
                         <?php foreach ($rec['academic_electives'] as $elective): ?>
                             <span class="elective-tag"><?php echo $elective; ?></span>
                         <?php endforeach; ?>
                     </div>
-                    <div class="col-md-6">
-                        <div class="small fw-bold text-muted mb-2">TechPro Electives:</div>
+                    <div class="col-6">
+                        <div class="small fw-bold text-muted mb-2">TECH - PRO:</div>
                         <?php foreach ($rec['techpro_electives'] as $elective): ?>
                             <span class="elective-tag"><?php echo $elective; ?></span>
                         <?php endforeach; ?>

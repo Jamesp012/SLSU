@@ -23,6 +23,7 @@ function generateTempPassword($length = 10) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    header('Content-Type: application/json');
     $action = $_POST['action'] ?? '';
 
     if ($action === 'change_password') {
@@ -322,19 +323,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($action === 'delete_student') {
         $id = $_POST['id'] ?? '';
+        
         if (empty($id)) {
             echo json_encode(['status' => 'error', 'message' => 'Student ID is required']);
             exit();
         }
 
-        // Optional: Also delete from Supabase Auth if needed
-        // supabaseAuthRequest('DELETE', 'admin/users/' . $id);
+        try {
+            // 1. Delete scores first (to avoid constraint issues if not cascading)
+            require_once __DIR__ . '/../models/AchievementScoreModel.php';
+            require_once __DIR__ . '/../models/STEMScoreModel.php';
+            
+            $achievementScoreModel = new AchievementScoreModel();
+            $stemScoreModel = new STEMScoreModel();
+            
+            $achievementScoreModel->deleteScore($id);
+            $stemScoreModel->deleteScore($id);
+            $stemScoreModel->deletePathwayStanines($id);
 
-        $result = $studentModel->deleteStudent($id);
-        if (isset($result['error'])) {
-            echo json_encode(['status' => 'error', 'message' => 'Failed to delete student: ' . $result['error']]);
-        } else {
-            echo json_encode(['status' => 'success', 'message' => 'Student deleted successfully']);
+            // 2. Delete from Supabase Auth
+            // Using the GoTrue Admin API to delete the user
+            $authRes = supabaseAuthRequest('DELETE', 'admin/users/' . $id);
+            
+            // 3. Delete profile
+            $result = $studentModel->deleteStudent($id);
+            
+            if (isset($result['error'])) {
+                // If profile deletion failed, it might be due to existing constraints we missed
+                echo json_encode(['status' => 'error', 'message' => 'Failed to delete student profile: ' . $result['error']]);
+            } else {
+                echo json_encode(['status' => 'success', 'message' => 'Student and all related data deleted successfully']);
+            }
+        } catch (Exception $e) {
+            echo json_encode(['status' => 'error', 'message' => 'An error occurred during deletion: ' . $e->getMessage()]);
         }
         exit();
     }

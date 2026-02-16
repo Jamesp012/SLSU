@@ -137,6 +137,49 @@ $(document).ready(function() {
         }
     });
 
+    // Handle student deletion
+    $(document).on('click', '.delete-btn', function() {
+        const id = $(this).data('id');
+        
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "This will permanently delete the student profile!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: '../../controllers/admin_contr.php',
+                    type: 'POST',
+                    data: {
+                        action: 'delete_student',
+                        id: id
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            Swal.fire('Deleted!', response.message, 'success');
+                            studentsTable.ajax.reload();
+                        } else {
+                            Swal.fire('Error!', response.message, 'error');
+                        }
+                    },
+                    error: function() {
+                        Swal.fire('Error!', 'Could not connect to the server.', 'error');
+                    }
+                });
+            }
+        });
+    });
+
+    // Handle student edit (redirect to students page for now or implement modal)
+    $(document).on('click', '.edit-btn', function() {
+        window.location.href = 'students.php';
+    });
+
     $('#addStudentForm').on('submit', function(e) {
         e.preventDefault();
         const formData = $(this).serialize();
