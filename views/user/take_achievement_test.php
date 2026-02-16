@@ -188,6 +188,18 @@ $(document).ready(function() {
             const score = response.score;
             const total = response.total;
             const recommendations = response.recommendations;
+            const categoryScores = response.category_scores;
+
+            let categoryHtml = '<div class="table-responsive mt-3 mb-4"><table class="table table-sm table-bordered small"><thead><tr class="bg-light"><th>Examination Part</th><th class="text-center">Raw Score</th><th class="text-center">Percentile</th><th class="text-center">Stanine</th></tr></thead><tbody>';
+            for (const cat in categoryScores) {
+                categoryHtml += `<tr>
+                    <td>${cat}</td>
+                    <td class="text-center">${categoryScores[cat].score} / ${categoryScores[cat].total}</td>
+                    <td class="text-center">${categoryScores[cat].percentile}%</td>
+                    <td class="text-center"><span class="badge bg-primary">${categoryScores[cat].stanine}</span></td>
+                </tr>`;
+            }
+            categoryHtml += '</tbody></table></div>';
 
             let recommendationsHtml = '<ul class="list-group list-group-flush small">';
             if (recommendations && recommendations[0] && recommendations[0].courses) {
@@ -203,8 +215,11 @@ $(document).ready(function() {
                 html: `
                     <div class="py-4 text-center">
                         <div class="display-1 fw-bold mb-3 ${isPassed ? 'text-success' : 'text-primary'}">${stanine}</div>
-                        <div class="h4 text-muted mb-4">Stanine Equivalent</div>
+                        <div class="h4 text-muted mb-4">Average Stanine</div>
                         
+                        <h6 class="fw-bold text-dark text-start">Score Breakdown:</h6>
+                        ${categoryHtml}
+
                         <div class="row justify-content-center mb-4">
                             <div class="col-6">
                                 <div class="p-3 bg-white rounded shadow-sm border">

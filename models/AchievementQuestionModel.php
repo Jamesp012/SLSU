@@ -5,9 +5,9 @@ require_once __DIR__ . '/../config/connection.php';
 class AchievementQuestionModel {
     private $table = 'achievement_questions';
 
-    public function getAllQuestions() {
+    public function getAllQuestions($limit = 60) {
         global $php_fetch;
-        return $php_fetch($this->table, '*', [], 'question_number.asc', true);
+        return $php_fetch($this->table, '*', [], 'question_number.asc', true, $limit);
     }
 
     public function getQuestionsByCategory($category) {

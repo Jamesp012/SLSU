@@ -35,11 +35,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $correctCount = 0;
         $totalQuestions = count($questions);
-        $categoryScores = [];
-        $categoryCounts = [];
+        $categoryScores = [
+            'Scientific Ability' => 0,
+            'Verbal Comprehension' => 0,
+            'Numerical Ability' => 0
+        ];
+        $categoryCounts = [
+            'Scientific Ability' => 0,
+            'Verbal Comprehension' => 0,
+            'Numerical Ability' => 0
+        ];
 
         foreach ($questions as $q) {
-            $cat = $q['category'];
+            $qNum = (int)$q['question_number'];
+            
+            // Force category based on question number ranges
+            if ($qNum >= 1 && $qNum <= 20) {
+                $cat = 'Scientific Ability';
+            } elseif ($qNum >= 21 && $qNum <= 40) {
+                $cat = 'Verbal Comprehension';
+            } elseif ($qNum >= 41 && $qNum <= 60) {
+                $cat = 'Numerical Ability';
+            } else {
+                $cat = $q['category'] ?? 'General';
+            }
+
             if (!isset($categoryScores[$cat])) {
                 $categoryScores[$cat] = 0;
                 $categoryCounts[$cat] = 0;
@@ -53,30 +73,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        $totalCategoryPercentage = 0;
-        $numCategories = count($categoryCounts);
+        $totalStanine = 0;
+        $catResults = [];
+        $categoriesWithQuestions = 0;
 
-        foreach ($categoryScores as $cat => $score) {
-            $catPercentage = ($categoryCounts[$cat] > 0) ? ($score / $categoryCounts[$cat]) * 100 : 0;
-            $totalCategoryPercentage += $catPercentage;
+        // Sort categories to ensure consistent display order
+        $displayOrder = ['Scientific Ability', 'Verbal Comprehension', 'Numerical Ability'];
+        foreach ($displayOrder as $cat) {
+            if (!isset($categoryScores[$cat])) continue;
+            
+            $score = $categoryScores[$cat];
+            $count = $categoryCounts[$cat];
+            $categoriesWithQuestions++;
+            
+            // Calculate percentile (using percentage correct as proxy if table is missing)
+            $percentile = ($count > 0) ? ($score / $count) * 100 : 0;
+            
+            // Map to stanine based on standard distributions
+            $catStanine = 1;
+            if ($percentile >= 96) $catStanine = 9;
+            elseif ($percentile >= 89) $catStanine = 8;
+            elseif ($percentile >= 77) $catStanine = 7;
+            elseif ($percentile >= 60) $catStanine = 6;
+            elseif ($percentile >= 40) $catStanine = 5;
+            elseif ($percentile >= 23) $catStanine = 4;
+            elseif ($percentile >= 11) $catStanine = 3;
+            elseif ($percentile >= 4) $catStanine = 2;
+            else $catStanine = 1;
+
+            $catResults[$cat] = [
+                'score' => $score,
+                'total' => $count,
+                'percentile' => round($percentile),
+                'stanine' => $catStanine
+            ];
+            
+            $totalStanine += $catStanine;
         }
 
-        $overallPercentage = ($numCategories > 0) ? ($totalCategoryPercentage / $numCategories) : 0;
+        $averageStanine = ($categoriesWithQuestions > 0) ? ($totalStanine / $categoriesWithQuestions) : 0;
         
-        
-        // Stanine mapping logic
-        $stanine = 1;
-        if ($overallPercentage >= 97) $stanine = 9;
-        elseif ($overallPercentage >= 90) $stanine = 8;
-        elseif ($overallPercentage >= 80) $stanine = 7;
-        elseif ($overallPercentage >= 60) $stanine = 6;
-        elseif ($overallPercentage >= 50) $stanine = 5;
-        elseif ($overallPercentage >= 25) $stanine = 4;
-        elseif ($overallPercentage >= 15) $stanine = 3;
-        elseif ($overallPercentage >= 5) $stanine = 2;
-        else $stanine = 1;
+        // Final score uses the average stanine rounded to 1 decimal place for precision
+        // but we'll use whole number for passing criteria
+        $stanine = round($averageStanine);
+        $overallPercentage = ($totalQuestions > 0) ? ($correctCount / $totalQuestions) * 100 : 0;
 
-        $isPassed = ($stanine >= 4); // Passing criteria is now Stanine 4 or greater
+        $isPassed = ($stanine >= 4);
 
         $scoreData = [
             'student_id' => $student['id'],
@@ -84,6 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'total_questions' => $totalQuestions,
             'percentage' => round($overallPercentage, 2),
             'stanine' => $stanine,
+            'category_scores' => json_encode($catResults),
             'is_passed' => $isPassed
         ];
 
@@ -105,6 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'total' => $totalQuestions,
                 'percentage' => round($overallPercentage, 2),
                 'stanine' => $stanine,
+                'category_scores' => $catResults,
                 'is_passed' => $isPassed,
                 'recommendations' => $recommendations
             ]);

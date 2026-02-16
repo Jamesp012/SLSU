@@ -190,7 +190,7 @@ $php_raw_sql = function ($query) {
 };
 
 // Fetch (GET)
-$php_fetch = function ($table, $select = '*', $filters = [], $order = null, $useServiceRole = false) {
+$php_fetch = function ($table, $select = '*', $filters = [], $order = null, $useServiceRole = false, $limit = null) {
     // Special case: UPDATE
     if ($select === 'UPDATE') {
         $query = [];
@@ -271,6 +271,10 @@ $php_fetch = function ($table, $select = '*', $filters = [], $order = null, $use
         } else {
             $query['order'] = $order; // e.g. 'product_name.asc'
         }
+    }
+
+    if ($limit !== null) {
+        $query['limit'] = $limit;
     }
 
     return supabaseRequest('GET', $table, $query, $useServiceRole);

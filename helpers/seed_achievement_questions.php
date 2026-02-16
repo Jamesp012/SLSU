@@ -49,21 +49,39 @@ $lines = $matches[1];
 
 $questions = [];
 $current_category = "Scientific Ability";
+$global_q_num = 1;
 
 for ($i = 0; $i < count($lines); $i++) {
     $line = trim($lines[$i]);
     
-    if ($line === "Scientific Ability" || $line === "Verbal Comprehension" || $line === "Mathematical Ability") {
-        $current_category = $line;
+    if (preg_match('/Scientific Ability/i', $line)) {
+        $current_category = "Scientific Ability";
+        continue;
+    }
+    if (preg_match('/Verbal Comprehension/i', $line)) {
+        $current_category = "Verbal Comprehension";
+        continue;
+    }
+    if (preg_match('/Mathematical Ability|Numerical Ability/i', $line)) {
+        $current_category = "Numerical Ability";
         continue;
     }
 
     if (preg_match('/^(\d+)\.\s+(.*)/', $line, $m)) {
-        $q_num = $m[1];
         $q_text = trim($m[2]);
+        $q_num = $global_q_num++;
+        
+        // Ensure category matches the global number just in case
+        if ($q_num >= 1 && $q_num <= 20) {
+            $current_category = "Scientific Ability";
+        } elseif ($q_num >= 21 && $q_num <= 40) {
+            $current_category = "Verbal Comprehension";
+        } elseif ($q_num >= 41 && $q_num <= 60) {
+            $current_category = "Numerical Ability";
+        }
         
         // Append context to specific questions
-        if (in_array((int)$q_num, [21, 22, 23])) {
+        if (in_array($q_num, [21, 22, 23])) {
             $q_text .= "\n\n\"While social media connects people globally, studies suggest that excessive use leads to a decline in face-to-face social skills. Users often prioritize digital validation over genuine connection, creating a 'filter bubble' that limits exposure to diverse viewpoints.\"";
         }
         
@@ -92,7 +110,7 @@ for ($i = 0; $i < count($lines); $i++) {
         }
 
         $questions[] = [
-            'question_number' => (int)$q_num,
+            'question_number' => $q_num,
             'category' => $current_category,
             'question_text' => trim($q_text),
             'choice_a' => trim($choice_a),
@@ -110,7 +128,8 @@ global $php_insert, $php_fetch, $php_delete;
 echo "Seeding " . count($questions) . " questions...\n";
 
 // Clear existing to avoid duplicates if re-running
-$php_delete('achievement_questions', ['question_number' => 'gt.0'], true);
+// Using a more standard query to delete all
+$php_delete('achievement_questions', [], true);
 
 foreach ($questions as $q) {
     $php_insert('achievement_questions', $q, true);

@@ -88,9 +88,12 @@ if (isset($questions['error'])) {
     <div class="row justify-content-center">
         <div class="col-lg-10">
             <div class="card shadow-lg border-0 rounded-lg">
-                <div class="card-header bg-success text-white text-center py-4">
+                <div class="card-header bg-success text-white text-center py-4 position-relative">
                     <h2 class="mb-0">Interest-Based Assessment</h2>
                     <p class="mb-0 mt-2">STEM Strand Admission Exam</p>
+                    <button type="button" id="debugFill" class="btn btn-sm btn-outline-light position-absolute end-0 top-0 m-3">
+                        <i class="fas fa-bug me-1"></i> Debug
+                    </button>
                 </div>
                 <div class="card-body p-5">
                     <?php if (isset($error)): ?>
@@ -152,6 +155,17 @@ if (isset($questions['error'])) {
 <script>
 $(document).ready(function() {
     const STORAGE_KEY = 'interest_assessment_answers';
+
+    $('#debugFill').on('click', function() {
+        $('input[type="radio"][value="like"]').prop('checked', true).trigger('change');
+        Swal.fire({
+            icon: 'info',
+            title: 'Debug Fill',
+            text: 'All questions have been marked as "Like"',
+            timer: 1000,
+            showConfirmButton: false
+        });
+    });
 
     // Restore answers from localStorage
     function restoreAnswers() {

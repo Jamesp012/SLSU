@@ -138,4 +138,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
         exit();
     }
+
+    if ($action === 'debug_reset_stem') {
+        $email = $_SESSION['email'];
+        $student = $studentModel->getStudentByEmail($email);
+        if ($student) {
+            $scoreModel->deleteScore($student['id']);
+            $scoreModel->deletePathwayStanines($student['id']);
+            $studentModel->updateStudent($student['id'], ['cognitive_stanines' => null]);
+        }
+        header("Location: ../views/user/dashboard.php");
+        exit();
+    }
 }

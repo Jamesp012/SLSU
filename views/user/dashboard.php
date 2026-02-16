@@ -129,36 +129,58 @@ if (!$student_data) {
                         <?php if (!$achievement_score['is_passed']): ?>
                             <div class="alert alert-warning mb-4">
                                 <i class="fas fa-exclamation-triangle me-2"></i> 
-                                Since you did not pass the Scholastic Ability Test (Score: <?php echo $achievement_score['score']; ?>), you are no longer eligible for the STEM strand. You will be reconsidered for Technical Vocational.
+                                Since you did not pass the Scholastic Ability Test (Average Stanine: <?php echo $achievement_score['stanine']; ?>), you are no longer eligible for the STEM strand. You will be reconsidered for Technical Vocational.
                             </div>
                             <div class="card mb-4 border-left-info shadow-sm">
                                 <div class="card-body">
-                                    <div class="row align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Stanine Equivalent</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <?php 
-                                                    if (isset($achievement_score['stanine'])) {
-                                                        echo $achievement_score['stanine'];
-                                                    } else {
-                                                        $p = $achievement_score['percentage'];
-                                                        if ($p >= 97) echo 9;
-                                                        elseif ($p >= 90) echo 8;
-                                                        elseif ($p >= 80) echo 7;
-                                                        elseif ($p >= 60) echo 6;
-                                                        elseif ($p >= 50) echo 5;
-                                                        elseif ($p >= 25) echo 4;
-                                                        elseif ($p >= 15) echo 3;
-                                                        elseif ($p >= 5) echo 2;
-                                                        else echo 1;
-                                                    }
-                                                ?>
+                                    <h6 class="font-weight-bold text-info text-uppercase mb-3">Scholastic Ability Test Breakdown</h6>
+                                    <?php 
+                                        $catScores = $achievement_score['category_scores'] ?? null;
+                                        // Robust JSON decoding (handles double encoding)
+                                        while (is_string($catScores) && !empty($catScores)) {
+                                            $decoded = json_decode($catScores, true);
+                                            if (json_last_error() !== JSON_ERROR_NONE) break;
+                                            $catScores = $decoded;
+                                        }
+                                        
+                                        if ($catScores && is_array($catScores)) {
+                                            foreach ($catScores as $cat => $data):
+                                    ?>
+                                        <div class="row align-items-center mb-2">
+                                            <div class="col">
+                                                <div class="small fw-bold text-dark"><?php echo $cat; ?></div>
+                                                <div class="progress progress-sm">
+                                                    <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $data['percentile'] ?? 0; ?>%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto text-end" style="width: 120px;">
+                                                <div class="small text-muted">Pct: <?php echo $data['percentile'] ?? 0; ?>%</div>
+                                                <div class="small fw-bold">Stanine: <?php echo $data['stanine'] ?? 0; ?></div>
                                             </div>
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-chart-line fa-2x text-gray-300"></i>
+                                    <?php endforeach; ?>
+                                        <hr class="my-2">
+                                        <div class="row align-items-center">
+                                            <div class="col text-start">
+                                                <div class="small fw-bold text-primary">Average Stanine Score</div>
+                                            </div>
+                                            <div class="col-auto text-end" style="width: 120px;">
+                                                <div class="h5 mb-0 fw-bold text-primary"><?php echo $achievement_score['stanine'] ?? 'N/A'; ?></div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php  } else { ?>
+                                        <div class="row align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Overall Stanine Equivalent</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                    <?php echo $achievement_score['stanine'] ?? 'N/A'; ?>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-chart-line fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="card mb-4 shadow-sm">
@@ -213,9 +235,15 @@ if (!$student_data) {
                                 <div class="card mb-4 shadow-sm border-left-success">
                                     <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
                                         <h6 class="m-0 font-weight-bold"><i class="fas fa-award me-2"></i> Your Top STEM Interests</h6>
-                                        <a href="print_result.php" class="btn btn-sm btn-light text-success fw-bold">
-                                            <i class="fas fa-print me-1"></i> Print Result
-                                        </a>
+                                        <div class="d-flex">
+                                            <form action="../../controllers/stem_test_contr.php" method="POST" class="me-2" onsubmit="return confirm('DEBUG: Are you sure you want to reset your interest assessment?');">
+                                                <input type="hidden" name="action" value="debug_reset_stem">
+                                                <button type="submit" class="btn btn-sm btn-danger opacity-50"><i class="fas fa-bug"></i></button>
+                                            </form>
+                                            <a href="print_result.php" class="btn btn-sm btn-light text-success fw-bold">
+                                                <i class="fas fa-print me-1"></i> Print Result
+                                            </a>
+                                        </div>
                                     </div>
                                     <div class="card-body">
                                         <p class="text-muted small mb-4">Based on your Interest-Based Assessment, here are the top 3 pathways where you showed the most interest and aptitude:</p>
@@ -238,13 +266,16 @@ if (!$student_data) {
                                                     <span class="badge bg-success text-white">Stanine: <?php echo $res['stanine']; ?></span>
                                                 </div>
                                                 <div class="ps-4 ms-2 border-start">
-                                                    <p class="small text-muted mb-2">Recommended Courses:</p>
+                                                    <div class="small fw-bold text-muted mb-2">Recommended Career Cluster: <span class="text-dark"><?php echo htmlspecialchars($res['cluster']); ?></span></div>
                                                     <div class="row">
-                                                        <?php foreach ($courses as $course): ?>
-                                                            <div class="col-md-6">
-                                                                <div class="small mb-1"><i class="fas fa-graduation-cap me-2 text-success"></i> <?php echo htmlspecialchars($course); ?></div>
-                                                            </div>
-                                                        <?php endforeach; ?>
+                                                        <div class="col-md-6">
+                                                            <div class="small fw-bold text-muted mb-1">Academic Focus:</div>
+                                                            <div class="small"><?php echo implode(', ', $res['academic_electives']); ?></div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="small fw-bold text-muted mb-1">Technical Skills:</div>
+                                                            <div class="small"><?php echo implode(', ', $res['techpro_electives']); ?></div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

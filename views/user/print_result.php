@@ -170,21 +170,129 @@ $recommendations = CareerHelper::getRecommendations($student['preferred_track'] 
             <thead class="table-light">
                 <tr>
                     <th>Examination Name</th>
+                    <th class="text-center">Raw Score</th>
+                    <th class="text-center">Percentile</th>
                     <th class="text-center" style="width: 150px;">Stanine Score</th>
-                    <th>Status / Remarks</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Scholastic Ability Test</td>
+                <?php 
+                // Scholastic Ability Test Breakdown
+                $achievementCats = [
+                    'Scientific Ability' => ['total' => 20],
+                    'Verbal Comprehension' => ['total' => 20],
+                    'Numerical Ability' => ['total' => 20]
+                ];
+
+                $catScores = [];
+                if (isset($achievementScore['category_scores']) && !empty($achievementScore['category_scores'])) {
+                    $rawCatScores = $achievementScore['category_scores'];
+                    while (is_string($rawCatScores) && !empty($rawCatScores)) {
+                        $decoded = json_decode($rawCatScores, true);
+                        if (json_last_error() !== JSON_ERROR_NONE) break;
+                        $rawCatScores = $decoded;
+                    }
+                    if (is_array($rawCatScores)) {
+                        $catScores = $rawCatScores;
+                    }
+                }
+
+                // If no category scores (old data), estimate them for display
+                if (empty($catScores) && isset($achievementScore['score'])) {
+                    $totalScore = $sScore = $achievementScore['score'];
+                    $totalParts = count($achievementCats);
+                    $baseScore = floor($totalScore / $totalParts);
+                    $remainder = $totalScore % $totalParts;
+                    
+                    $i = 0;
+                    foreach ($achievementCats as $catName => $defaults) {
+                        $pScore = $baseScore + ($i < $remainder ? 1 : 0);
+                        // Ensure part score doesn't exceed its total
+                        if ($pScore > 20) {
+                            $diff = $pScore - 20;
+                            $pScore = 20;
+                            // Add diff to next parts if possible (simplified fallback)
+                        }
+                        
+                        $pPercentile = ($pScore / 20) * 100;
+                        
+                        // Map to stanine
+                        $pStanine = 1;
+                        if ($pPercentile >= 96) $pStanine = 9;
+                        elseif ($pPercentile >= 89) $pStanine = 8;
+                        elseif ($pPercentile >= 77) $pStanine = 7;
+                        elseif ($pPercentile >= 60) $pStanine = 6;
+                        elseif ($pPercentile >= 40) $pStanine = 5;
+                        elseif ($pPercentile >= 23) $pStanine = 4;
+                        elseif ($pPercentile >= 11) $pStanine = 3;
+                        elseif ($pPercentile >= 4) $pStanine = 2;
+                        
+                        $catScores[$catName] = [
+                            'score' => $pScore,
+                            'total' => 20,
+                            'percentile' => round($pPercentile),
+                            'stanine' => $pStanine
+                        ];
+                        $i++;
+                    }
+                }
+
+                foreach ($achievementCats as $catName => $defaults) {
+                    $data = $catScores[$catName] ?? null;
+                    $score = $data['score'] ?? 0;
+                    $total = $data['total'] ?? $defaults['total'];
+                    $percentile = $data['percentile'] ?? 0;
+                    $stanine = $data['stanine'] ?? 0;
+                    ?>
+                    <tr>
+                        <td class="ps-4"><i><?php echo $catName; ?></i></td>
+                        <td class="text-center small"><?php echo $score; ?> / <?php echo $total; ?></td>
+                        <td class="text-center small"><?php echo $percentile; ?>%</td>
+                        <td class="text-center small"><?php echo $stanine; ?></td>
+                        <td class="small text-muted">Part Result</td>
+                    </tr>
+                    <?php
+                }
+                ?>
+                <tr class="table-light">
+                    <td class="fw-bold">Scholastic Ability Test (Overall)</td>
+                    <td class="text-center fw-bold"><?php echo $achievementScore['score'] ?? 'N/A'; ?> / <?php echo $achievementScore['total_questions'] ?? 'N/A'; ?></td>
+                    <td class="text-center fw-bold"><?php echo isset($achievementScore['percentage']) ? $achievementScore['percentage'] . '%' : 'N/A'; ?></td>
                     <td class="text-center"><span class="stanine-badge"><?php echo $achievementScore['stanine'] ?? 'N/A'; ?></span></td>
                     <td><?php echo ($achievementScore && $achievementScore['is_passed']) ? '<span class="text-success fw-bold">Passed</span>' : '<span class="text-danger fw-bold">Failed</span>'; ?></td>
                 </tr>
-                <?php if ($stemScore): ?>
+
+                <?php if ($stemScore && $pathwayScores): ?>
+                <tr class="table-secondary">
+                    <td colspan="5" class="fw-bold">Interest-Based Assessment (STEM Pathways Breakdown)</td>
+                </tr>
+                <?php 
+                foreach ($pathwayScores as $pId => $data) {
+                    $pPercentile = round(($data['raw_score'] / 40) * 100);
+                    ?>
+                    <tr>
+                        <td class="ps-4"><i><?php echo $data['name']; ?></i></td>
+                        <td class="text-center small"><?php echo $data['raw_score']; ?> / 40</td>
+                        <td class="text-center small"><?php echo $pPercentile; ?>%</td>
+                        <td class="text-center small"><?php echo $data['stanine']; ?></td>
+                        <td class="small text-muted">Pathway Interest</td>
+                    </tr>
+                <?php } ?>
+                <tr class="table-light">
+                    <td class="fw-bold">Interest-Based Assessment (Overall Result)</td>
+                    <td class="text-center fw-bold">-</td>
+                    <td class="text-center fw-bold">-</td>
+                    <td class="text-center"><span class="stanine-badge">Done</span></td>
+                    <td><span class="text-success fw-bold">Completed</span></td>
+                </tr>
+                <?php elseif ($stemScore): ?>
                 <tr>
-                    <td>Interest-Based Assessment</td>
-                    <td class="text-center"><span class="stanine-badge"><?php echo $stemScore['max_score'] > 0 ? 'Completed' : 'N/A'; ?></span></td>
-                    <td><span class="text-success fw-bold">Assessment Completed</span></td>
+                    <td class="fw-bold">Interest-Based Assessment</td>
+                    <td class="text-center">-</td>
+                    <td class="text-center">-</td>
+                    <td class="text-center"><span class="stanine-badge">Done</span></td>
+                    <td><span class="text-success fw-bold">Completed</span></td>
                 </tr>
                 <?php endif; ?>
             </tbody>
@@ -203,26 +311,16 @@ $recommendations = CareerHelper::getRecommendations($student['preferred_track'] 
                 
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <div class="small fw-bold text-muted mb-2">Recommended Courses:</div>
-                        <ul class="ps-3 mb-0">
-                            <?php foreach ($rec['courses'] as $course): ?>
-                                <li class="small"><?php echo $course; ?></li>
-                            <?php endforeach; ?>
-                        </ul>
+                        <div class="small fw-bold text-muted mb-2">Academic Electives:</div>
+                        <?php foreach ($rec['academic_electives'] as $elective): ?>
+                            <span class="elective-tag"><?php echo $elective; ?></span>
+                        <?php endforeach; ?>
                     </div>
                     <div class="col-md-6">
-                        <div class="mb-2">
-                            <div class="small fw-bold text-muted">Academic Electives:</div>
-                            <?php foreach ($rec['academic_electives'] as $elective): ?>
-                                <span class="elective-tag"><?php echo $elective; ?></span>
-                            <?php endforeach; ?>
-                        </div>
-                        <div>
-                            <div class="small fw-bold text-muted">TechPro Electives:</div>
-                            <?php foreach ($rec['techpro_electives'] as $elective): ?>
-                                <span class="elective-tag"><?php echo $elective; ?></span>
-                            <?php endforeach; ?>
-                        </div>
+                        <div class="small fw-bold text-muted mb-2">TechPro Electives:</div>
+                        <?php foreach ($rec['techpro_electives'] as $elective): ?>
+                            <span class="elective-tag"><?php echo $elective; ?></span>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>

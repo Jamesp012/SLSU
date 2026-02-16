@@ -16,6 +16,11 @@ class AchievementScoreModel {
         return $php_insert($this->table, $data, true);
     }
 
+    public function deleteScore($studentId) {
+        global $php_delete;
+        return $php_delete($this->table, ['student_id' => $studentId], true);
+    }
+
     public function hasTakenTest($studentId) {
         $score = $this->getScoreByStudentId($studentId);
         return $score !== null;

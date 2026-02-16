@@ -165,7 +165,7 @@ class CareerHelper {
     private static function getGeneralCoursesByTrack($track) {
         switch ($track) {
             case 'Science Technology, Engineering and Mathematics':
-                return ['BS Information Technology', 'BS Computer Science', 'BS Civil Engineering', 'BS Mechanical Engineering'];
+                return [];
             case 'Field Experience':
                 return ['BS Hospitality Management', 'BS Nutrition and Dietetics', 'BS Tourism Management'];
             case 'Arts, social sciences and Humanities':

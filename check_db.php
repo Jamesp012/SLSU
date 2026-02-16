@@ -19,7 +19,8 @@ $required_tables = [
 ];
 
 $required_columns = [
-    'profiles' => ['achievement_stanine', 'cognitive_stanines', 'preferred_track', 'lrn', 'recent_school']
+    'profiles' => ['achievement_stanine', 'cognitive_stanines', 'preferred_track', 'lrn', 'recent_school'],
+    'achievement_scores' => ['category_scores']
 ];
 
 foreach ($required_tables as $table) {
@@ -123,9 +124,13 @@ CREATE TABLE IF NOT EXISTS public.achievement_scores (
     total_questions INT NOT NULL,
     percentage DECIMAL(5,2) NOT NULL,
     stanine INT,
+    category_scores JSONB,
     is_passed BOOLEAN NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+
+-- Ensure existing table has the new column
+ALTER TABLE public.achievement_scores ADD COLUMN IF NOT EXISTS category_scores JSONB;
 ";
 
 echo "<pre style='background:#f4f4f4; padding:15px; border:1px solid #ddd;'>" . htmlspecialchars($sql) . "</pre>";
